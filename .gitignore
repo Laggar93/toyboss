@@ -1,5 +1,6 @@
 .idea/
 config.py
+4f0vl1et5cf.sqlite3
 .htaccess
 cgi-bin/*
 index.wsgi
