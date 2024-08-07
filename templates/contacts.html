@@ -1,0 +1,126 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<section class="contacts-block">
+  <div class="container">
+    <div class="contacts-block-flex">
+      <div>
+        <h2 class="section-title">{{ contacts_page.page_title }}</h2>
+        <p class="desc">
+          {{ contacts_page.page_subtitle }}
+        </p>
+      </div>
+      <div>
+        <div class="social">
+          <span>{{ social_network.page_title }}:</span>
+            {% for i in social_network.social_items.all %}
+          <a href="{{ i.link }}">
+            <img src="{{ i.icon.url }}" alt="">
+          </a>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+    <div class="grid">
+      <div class="item" style="background-image: url({% static 'img/svg/item-1.svg' %});">
+        <h5 class="item-title">{{ schedule.schedule_title }}:</h5>
+        <ul>
+          <li>{{ schedule.monday_friday }}: {{ schedule.monday_friday_hours }}</li>
+          <li>{{ schedule.dinner }}: {{ schedule.dinner_hours }}</li>
+        </ul>
+      </div>
+      <div class="item" style="background-image: url({% static 'img/svg/item-2.svg' %})">
+        <h5 class="item-title">{{ marketing_department.marketing_department_title }}:</h5>
+        <ul>
+          <li>{{ marketing_department.marketing_department_email }}</li>
+          <li>{{ marketing_department.marketing_department_phone }}</li>
+        </ul>
+      </div>
+      <div class="item" style="background-image: url({% static 'img/svg/item-3.svg' %})">
+        <h5 class="item-title">{{ production_department.production_department_title }}:</h5>
+        <ul>
+          <li>{{ production_department.production_department_email }}</li>
+          <li>{{ production_department.production_department_phone }}</li>
+        </ul>
+      </div>
+      <div class="item" style="background-image: url({% static 'img/svg/item-4.svg' %})">
+        <h5 class="item-title">{{ accounting.accounting_department_title }}:</h5>
+        <ul>
+          <li>{{ accounting.accounting_department_email }}</li>
+          <li>{{ accounting.accounting_department_phone }}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="form-block">
+  <div class="container">
+    <h4 class="section-title">Остались вопросы?</h4>
+    <p class="desc">Задайте интересующий вас вопрос и наши менеджеры ответят вам в ближайшее время</p>
+    <form action="" class="form">
+      <label class="label">
+        <input type="text" placeholder="Ваше ФИО:">
+      </label>
+      <div class="form-grid">
+        <label class="label">
+          <input  type="email" placeholder="Ваш email">
+        </label>
+        <label class="label">
+          <input type="text" placeholder="Ваш номер:" id="phone" value="996 ">
+        </label>
+      </div>
+
+      <label class="label">
+        <textarea placeholder="Ваше сообщение" rows="3"></textarea>
+      </label>
+      <label class="label-checkbox">
+        <input type="checkbox">
+        <p>Я принимаю условия <span>Пользовательского соглашения</span>, ознакомлен с
+          <span>политикой конфиденциальности</span>, даю <span>Согласие на обработку персональных данных</span>.</p>
+      </label>
+      <div class="form-flex">
+        <button class="button red-button">Отправить</button>
+      </div>
+
+    </form>
+  </div>
+</section>
+<section class="grid-logo">
+  <div class="container">
+    <div class="grid">
+      <a href="" class="item">
+        <img src="{% static 'img/svg/group-logo-1.svg' %}" alt="">
+      </a>
+      <a href="" class="item">
+        <img src="{% static 'img/svg/group-logo-2.svg' %}" alt="">
+      </a>
+      <a href="" class="item">
+        <img src="{% static 'img/svg/group-logo-3.svg' %}" alt="">
+      </a>
+      <a href="" class="item">
+        <img src="{% static 'img/svg/group-logo-4.svg' %}" alt="">
+      </a>
+    </div>
+  </div>
+</section>
+<section class="maps">
+  <div class="container">
+    <div class="maps-grid">
+      <div class="item">
+        <h4 class="title">{{ central_office.central_office_title }}:</h4>
+        <p class="desc">{{ central_office.central_office_address }}</p>
+        <div class="maps-here">
+          <img src="{% static 'img/png/map1.png' %}" alt="">
+        </div>
+      </div>
+      <div class="item">
+        <h4 class="title">{{ corporate_office.corporate_office_title }}:</h4>
+        <p class="desc">{{ corporate_office.corporate_office_address }}</p>
+        <div class="maps-here">
+          <img src="{% static 'img/png/map2.png' %}" alt="">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

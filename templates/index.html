@@ -1,0 +1,620 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load custom_tags %}
+{% block content %}
+  <section class="main-block">
+    <div class="swiper">
+      <div class="swiper-wrapper ">
+          {% for i in main_page_slider.all %}
+        <div
+          class="swiper-slide"
+          style="background-image:  url({{ i.image.url }})">
+          <div class="container rellax" data-rellax-speed="-6">
+            <div class="main-block-text ">
+              <h2 class="main-block-title">
+                {{ i.title }}
+              </h2>
+              <p class="main-block-desc ">
+                {{ i.subtitle }}
+              </p>
+                {% if i.title and i.subtitle %}
+              <a href="" class="button red-button">Подробнее</a>
+                {% endif %}
+            </div>
+            <div class="swiper-button-wrapper ">
+              <div class="swiper-button-prev"></div>
+              <div class="swiper-button-next"></div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <section class="about-us-block">
+    <div class="container" >
+      <div class="decor decor-top rellax" data-rellax-speed="-3" data-rellax-percentage="0.5"></div>
+      <div class="decor decor-bottom rellax" data-rellax-speed="3" data-rellax-percentage="0"></div>
+      <h3 class="section-title">О нас</h3>
+      <div class="about-us-block-grid" >
+        <div class="about-us-block-grid-left rellax" data-rellax-speed="2" data-rellax-percentage="0.5">
+          <div id="tabs">
+            <ul class="about-us-block-grid-tabs" >
+              <li>
+                <a href="#about-us-tabs-1" class="about-us-block-grid-tabs-item">
+                  История
+                </a>
+              </li>
+              <li>
+                <a href="#about-us-tabs-2" class="about-us-block-grid-tabs-item">
+                  МИССИЯ
+                </a>
+              </li>
+              <li>
+                <a href="#about-us-tabs-3" class="about-us-block-grid-tabs-item">
+                  ЦЕННОСТИ
+                </a>
+              </li>
+            </ul>
+            <div class="about-us-block-grid-tabs-content" id="about-us-tabs-1">
+              <p>Торговая Марка «Тойбосс» была основана в 2012 году и за этот короткий срок смогла
+                зарекомендовать
+                себя на рынке Кыргызстана как производитель качественной, полезной, а самое главное вкусной
+                мясной продукции. Наша компания предлагает</p>
+              <a href="" class="button red-button">Подробнее</a>
+            </div>
+            <div class="about-us-block-grid-tabs-content" id="about-us-tabs-2">
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad amet animi autem eaque eius,
+                incidunt mollitia nam quisquam recusandae repellendus?</p>
+              <a href="" class="button red-button">Подробнее</a>
+            </div>
+            <div class="about-us-block-grid-tabs-content" id="about-us-tabs-3">
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus, ipsa.</p>
+              <a href="" class="button red-button">Подробнее</a>
+            </div>
+          </div>
+
+          <div class="about-us-block-footer-quote-wrapper desktop">
+            <div class="about-us-block-footer-quote" data-aos="fade-up" data-aos-delay="400">
+              <p>
+                Мы хотим сделать компанию международной. Основное производство будет расположено здесь, но
+                продукцию мы хотим вывести на экспортные рынки
+              </p>
+            </div>
+            <div class="about-us-block-footer-quote-author">
+              <div class="about-us-block-footer-quote-author-name" data-aos="fade-up" data-aos-delay="350">Мырзабек Орумбаев</div>
+              <div class="about-us-block-footer-quote-author-status" data-aos="fade-up" data-aos-delay="300">Генеральный директор</div>
+            </div>
+          </div>
+        </div>
+        <div class="about-us-block-grid-right rellax" id="scene-about-us"  data-rellax-speed="5" data-rellax-percentage="0.3">
+            <img data-depth="0.3" src="{% static 'img/png/human.png' %}"  class="image-1" alt="">
+          <img  src="{% static 'img/png/about-us.png' %}" data-depth="0.6"  class="image-2" alt="">
+        </div>
+      </div>
+      <div class="about-us-block-footer-quote-wrapper mobile">
+        <div class="about-us-block-footer-quote" data-aos="fade-up" data-aos-delay="400">
+          <p>
+            Мы хотим сделать компанию международной. Основное производство будет расположено здесь, но
+            продукцию мы хотим вывести на экспортные рынки
+          </p>
+        </div>
+        <div class="about-us-block-footer-quote-author">
+          <div class="about-us-block-footer-quote-author-name" data-aos="fade-up" data-aos-delay="350">Мырзабек Орумбаев</div>
+          <div class="about-us-block-footer-quote-author-status" data-aos="fade-up" data-aos-delay="300">Генеральный директор</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="advantages-block not-mode">
+  <div class="container" data-aos="fade-in">
+    <h3 class="section-title">{{ advantages.main_title }}</h3>
+    <div class="swiper">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <div class="advantages-block-card">
+            <div class="advantages-block-card-title">{{ advantages.first_advantage }}</div>
+            <div class="advantages-block-card-footer">
+              <div class="advantages-block-card-image">
+                <img src="{% static 'img/svg/advantages-1.svg' %}" alt="">
+              </div>
+              <div class="advantages-block-card-count">
+                1
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="advantages-block-card">
+            <div class="advantages-block-card-title">{{ advantages.second_advantage }}</div>
+            <div class="advantages-block-card-footer">
+              <div class="advantages-block-card-image">
+                <img src="{% static 'img/svg/advantages-2.svg' %}" alt="">
+              </div>
+              <div class="advantages-block-card-count">
+                2
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="advantages-block-card">
+            <div class="advantages-block-card-title">{{ advantages.third_advantage }}</div>
+            <div class="advantages-block-card-footer">
+              <div class="advantages-block-card-image">
+                <img src="{% static 'img/svg/advantages-3.svg' %}" alt="">
+              </div>
+              <div class="advantages-block-card-count">
+                3
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="advantages-block-card">
+            <div class="advantages-block-card-title">{{ advantages.fourth_advantage }}</div>
+            <div class="advantages-block-card-footer">
+              <div class="advantages-block-card-image">
+                <img src="{% static 'img/svg/advantages-4.svg' %}" alt="">
+              </div>
+              <div class="advantages-block-card-count">
+                4
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="advantages-block-card">
+            <div class="advantages-block-card-title">{{ advantages.fifth_advantage }}</div>
+            <div class="advantages-block-card-footer">
+              <div class="advantages-block-card-image">
+                <img src="{% static 'img/svg/advantages-5.svg' %}" alt="">
+              </div>
+              <div class="advantages-block-card-count">
+                5
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="advantages-block-card">
+            <div class="advantages-block-card-title">{{ advantages.sixth_advantage }}</div>
+            <div class="advantages-block-card-footer">
+              <div class="advantages-block-card-image">
+                <img src="{% static 'img/svg/advantages-6.svg' %}" alt="">
+              </div>
+              <div class="advantages-block-card-count">
+                6
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="swiper-pagination"></div>
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
+    </div>
+  </div>
+</section>
+
+
+  <section class="group-of-companies-block"
+           style="background-image: linear-gradient(90deg, rgba(41,91,184,0.9), rgba(30,30,30,0.9)), url(https://picsum.photos/1920/1080)">
+    <div class="container" >
+      <h3 class="section-title" data-aos="fade-up">{{ groups.title }}</h3>
+      <div class="swiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide" >
+            <div class="group-of-companies-block-card" data-aos="fade-up" data-aos-delay="200">
+              <div class="group-of-companies-block-card-logo">
+                <img src="{% static 'img/svg/group-logo-1.svg' %}" alt="">
+              </div>
+              <div class="group-of-companies-block-card-desc">
+                <p>
+                  {{ groups.sandwich_text }}
+                </p>
+              </div>
+              <img class="group-of-companies-block-card-decor" src="{% static 'img/svg/group-1.svg' %}" alt="" data-aos="fade-up-left" data-aos-delay="500">
+              <a href="https://sandwich.kg/ru/" class="group-of-companies-block-card-link red" target="_blank">sandwich.kg</a>
+            </div>
+          </div>
+          <div class="swiper-slide" >
+            <div class="group-of-companies-block-card" data-aos="fade-up" data-aos-delay="250">
+              <div class="group-of-companies-block-card-logo">
+                <img src="{% static 'img/svg/group-logo-2.svg' %}" alt="">
+              </div>
+              <div class="group-of-companies-block-card-desc">
+                <p>{{ groups.toyboss_text }}</p>
+              </div>
+              <img class="group-of-companies-block-card-decor" src="{% static 'img/svg/group-2.svg' %}" alt="" data-aos="fade-up-left" data-aos-delay="500">
+              <a href="" class="group-of-companies-block-card-link blue">toyboss.kg</a>
+            </div>
+          </div>
+          <div class="swiper-slide" >
+            <div class="group-of-companies-block-card" data-aos="fade-up" data-aos-delay="300">
+              <div class="group-of-companies-block-card-logo">
+                <img src="{% static 'img/svg/group-logo-3.svg' %}" alt="">
+              </div>
+              <div class="group-of-companies-block-card-desc">
+                <p>{{ groups.agrokush_text }}</p>
+              </div>
+              <img class="group-of-companies-block-card-decor" src="{% static 'img/svg/group-3.svg' %}" alt="" data-aos="fade-up-left" data-aos-delay="500">
+              <a href="https://www.agrokush.kg/" class="group-of-companies-block-card-link green">agrokush.kg</a>
+            </div>
+          </div>
+          <div class="swiper-slide" >
+            <div class="group-of-companies-block-card" data-aos="fade-up" data-aos-delay="350">
+              <div class="group-of-companies-block-card-logo">
+                <img src="{% static 'img/svg/group-logo-4.svg' %}" alt="">
+              </div>
+              <div class="group-of-companies-block-card-desc">
+                <p>{{ groups.broiler_text }}</p>
+              </div>
+              <img class="group-of-companies-block-card-decor" src="{% static 'img/svg/group-4.svg' %}" alt="" data-aos="fade-up-left" data-aos-delay="500">
+{#              <a href="" class="group-of-companies-block-card-link orange">broiler.kg</a>#}
+            </div>
+          </div>
+        </div>
+        <div class="swiper-pagination"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="production-block" data-aos="fade-in">
+    <div class="decor decor-left rellax" data-rellax-speed="-3" data-rellax-percentage="0.4"></div>
+    <div class="decor decor-right rellax" data-rellax-speed="-3" data-rellax-percentage="0.4"></div>
+    <div class="decor decor-bottom-left rellax" data-rellax-speed="3" data-rellax-percentage="0"></div>
+    <div class="decor decor-bottom-right rellax" data-rellax-speed="3" data-rellax-percentage="0"></div>
+
+    <div class="container">
+      <h3 class="section-title">{{ main_prod.title }}</h3>
+      <div class="production-block-text">
+        <p>{{ main_prod.top_text }}</p>
+
+      </div>
+    </div>
+    <div class="production-block-carousel">
+      <div class="swiper">
+        <div class="swiper-wrapper">
+            {% for i in main_prod.main_prod_slider.all %}
+          <div class="swiper-slide">
+            <img src="{{ i.image.url }}" alt="">
+          </div>
+          {% endfor %}
+        </div>
+        <div class="swiper-pagination"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="production-block-text">
+        <p>{{ main_prod.bottom_text }}</p>
+
+        <div class="section-show-more">
+          <a href="" class="button red-button">Подробнее</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section
+        class="statistics-block"
+        style="background-image: linear-gradient(90deg, rgba(41,91,184,0.9), rgba(30,30,30,0.9)), url({% static 'img/png/stats.png' %})">
+    <div class="container">
+        <h3 class="section-title">{{ statistic.title }}</h3>
+        <div class="statistics-block-grid">
+            {% for i in statistic_points %}
+            <div class="statistics-block-grid-item">
+                <div class="statistics-block-grid-item-title">{{ i.title }}</div>
+                <div class="statistics-block-grid-item-count">
+                    {% if i.left_postscript %}
+                    {{ i.left_postscript }}
+                    {% endif %}
+                    <span class="counter">{{ i.number }}</span>
+                {% if i.right_postscript %}
+                    {{ i.right_postscript }}
+                {% endif %}
+                </div>
+                <p class="statistics-block-grid-item-desc">
+                    {{ i.subtitle }}
+                </p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+  <section class="product-block" data-aos="fade-in">
+    <div class="container">
+      <h3 class="section-title">Продукция</h3>
+      <div id="tabs-production">
+        <ul class="product-block-nav">
+          <li>
+            <a class="product-block-nav-item" href="#product-tab-1">Полукопченые колбасы</a>
+          </li>
+          <li>
+            <a class="product-block-nav-item" href="#product-tab-2">Вареные колбасы</a>
+          </li>
+          <li>
+            <a class="product-block-nav-item" href="#product-tab-3">Сосиски</a>
+          </li>
+          <li>
+            <a class="product-block-nav-item" href="#product-tab-4">КУРИНОЕ МЯСО</a>
+          </li>
+          <li>
+            <a class="product-block-nav-item" href="#product-tab-5">Сэндвичи</a>
+          </li>
+          <li>
+            <a class="product-block-nav-item" href="#product-tab-6">Все</a>
+          </li>
+        </ul>
+        <div id="product-tab-1">
+          <div class="product-block-sub-nav">
+            <div class="product-block-sub-nav-item active">
+              Пепперони
+            </div>
+          </div>
+          <div class="product-block-content">
+            <div class="product-block-content-left">
+              <ul class="product-block-content-tabs">
+                <li class="product-block-content-tabs-item">
+                  <a href="#product-tab-1-1">Описание</a>
+                </li>
+                <li class="product-block-content-tabs-item">
+                  <a href="#product-tab-1-2">Состав</a>
+                </li>
+                <li class="product-block-content-tabs-item">
+                  <a href="#product-tab-1-3">Специи</a>
+                </li>
+              </ul>
+              <div class="product-block-content-tabs-content-wrapper" id="product-tab-1-1">
+                <p class="product-block-content-tabs-content-desc">Пепперони отлично подходит для
+                  приготовления
+                  пиццы. Изысканный, терпкий вкус пицце придает
+                  основной ингредиент – колбаса пепперони. Пепперони отлично подходит для приготовления
+                  пиццы.
+                  Изысканный, терпкий вкус пицце придает основной ингредиент – колбаса пепперони.
+                  Пепперони
+                  отлично подходит для приготовления пиццы. Изысканный, терпкий вкус пицце придает
+                  основной
+                  ингредиент – колбаса пепперони.
+                </p>
+              </div>
+              <div class="product-block-content-tabs-content-wrapper" id="product-tab-1-2">
+                <p class="product-block-content-tabs-content-desc">Lorem ipsum dolor sit amet, consectetur
+                  adipisicing elit. Doloribus, tempora!</p>
+              </div>
+              <div class="product-block-content-tabs-content-wrapper" id="product-tab-1-3">
+                <p class="product-block-content-tabs-content-desc">Lorem ipsum dolor sit amet, consectetur
+                  adipisicing elit. Consequuntur dicta dolore incidunt ipsa neque, quibusdam similique ut.
+                  Ab ipsa, nobis!</p>
+              </div>
+              <div class="product-block-content-certificates">
+                <div class="product-block-content-certificates-item">
+                  <img src="img/svg/certificate-halal-1.svg" alt="">
+                </div>
+                <div class="product-block-content-certificates-item">
+                  <img src="img/svg/certificate-halal-2.svg" alt="">
+                </div>
+              </div>
+            </div>
+            <div class="product-block-content-center">
+              <img src="img/png/man-product-decor.png" alt="">
+            </div>
+            <div class="product-block-content-center-right">
+              <div class="product-block-content-center-right-status">
+                ХИТ ПРОДАЖ
+              </div>
+              <div class="product-block-content-center-right-img">
+                <img src="img/png/man-product.png" alt="">
+              </div>
+              <h3 class="product-block-content-center-right-title">Фирменная</h3>
+              <p class="product-block-content-center-right-desc">
+                Фирменный продукт, выпускаемый по эксклюзивной
+                рецептуре отлично подходит для ...
+              </p>
+              <a href="" class="button red-button">Подробнее</a>
+            </div>
+          </div>
+        </div>
+        <div id="product-tab-2">
+          <div class="product-block-sub-nav">
+            <div class="product-block-sub-nav-item active">
+              Пепперони
+            </div>
+          </div>
+          <div class="product-block-content">
+            <div class="product-block-content-left">
+              <ul class="product-block-content-tabs">
+                <li class="product-block-content-tabs-item">
+                  <a href="#product-tab-2-1">Описание</a>
+                </li>
+                <li class="product-block-content-tabs-item">
+                  <a href="#product-tab-2-2">Состав</a>
+                </li>
+                <li class="product-block-content-tabs-item">
+                  <a href="#product-tab-2-3">Специи</a>
+                </li>
+              </ul>
+              <div class="product-block-content-tabs-content-wrapper" id="product-tab-2-1">
+                <p class="product-block-content-tabs-content-desc">Пепперони отлично подходит для
+                  приготовления
+                  пиццы. Изысканный, терпкий вкус пицце придает
+                  основной ингредиент – колбаса пепперони. Пепперони отлично подходит для приготовления
+                  пиццы.
+                  Изысканный, терпкий вкус пицце придает основной ингредиент – колбаса пепперони.
+                  Пепперони
+                  отлично подходит для приготовления пиццы. Изысканный, терпкий вкус пицце придает
+                  основной
+                  ингредиент – колбаса пепперони.
+                </p>
+              </div>
+              <div class="product-block-content-tabs-content-wrapper" id="product-tab-2-2">
+                <p class="product-block-content-tabs-content-desc">Lorem ipsum dolor sit amet, consectetur
+                  adipisicing elit. Doloribus, tempora!</p>
+              </div>
+              <div class="product-block-content-tabs-content-wrapper" id="product-tab-2-3">
+                <p class="product-block-content-tabs-content-desc">Lorem ipsum dolor sit amet, consectetur
+                  adipisicing elit. Consequuntur dicta dolore incidunt ipsa neque, quibusdam similique ut.
+                  Ab ipsa, nobis!</p>
+              </div>
+
+              <div class="product-block-content-certificates">
+                <div class="product-block-content-certificates-item">
+                  <img src="img/svg/certificate-halal-1.svg" alt="">
+                </div>
+                <div class="product-block-content-certificates-item">
+                  <img src="img/svg/certificate-halal-2.svg" alt="">
+                </div>
+              </div>
+            </div>
+            <div class="product-block-content-center">
+              <img src="img/png/man-product-decor.png" alt="">
+            </div>
+            <div class="product-block-content-center-right">
+              <div class="product-block-content-center-right-status">
+                ХИТ ПРОДАЖ
+              </div>
+              <div class="product-block-content-center-right-img">
+                <img src="img/png/man-product.png" alt="">
+              </div>
+              <h3 class="product-block-content-center-right-title">Фирменная</h3>
+              <p class="product-block-content-center-right-desc">
+                Фирменный продукт, выпускаемый по эксклюзивной
+                рецептуре отлично подходит для ...
+              </p>
+              <a href="" class="button red-button">Подробнее</a>
+            </div>
+          </div>
+        </div>
+        <div id="product-tab-3"></div>
+        <div id="product-tab-4"></div>
+        <div id="product-tab-5"></div>
+        <div id="product-tab-6"></div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="news-block" data-aos="fade-in">
+    <div class="container">
+      <h3 class="section-title news-block-title">{{ news_page.page_title }}</h3>
+      <div class="swiper">
+        <div class="swiper-wrapper">
+            {% for i in news_items %}
+          <div class="swiper-slide">
+            <div class="news-block-card">
+              <a href="" class="news-block-card-link"></a>
+              <picture class="news-block-card-picture">
+                <img class="news-block-card-img" src="https://picsum.photos/350/300" alt="">
+              </picture>
+              <h6 class="news-block-card-date">{{ i.published }}</h6>
+              <h2 class="news-block-card-title">
+                {{ i.news_title }}
+              </h2>
+              <p class="news-block-card-desc">
+                {% autoescape off %}{{ i.text|truncatewords:10|add_class_to_p }}{% endautoescape %}
+              </p>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        <div class="swiper-pagination"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+      </div>
+      <div class="section-show-more">
+        <a href="" class="button red-button">Все новости</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="certificate-block" data-aos="fade-in">
+    <div class="container">
+      <h3 class="section-title">{{ certificates.title }}</h3>
+      <div class="swiper">
+        <div class="swiper-wrapper" id="lightgallery">
+
+          {% for i in certificates.cert_images.all %}
+                <div class="swiper-slide" data-src="{{ i.cert_image }}" data-sub-html="<h4>{{ i.title }}</h4><p>{{ i.description }}</p>">
+                    <picture class="certificate-block-card-picture">
+                        <img class="certificate-block-card-img" src="{{ i.cert_image.url }}" alt="{{ i.title }}">
+                    </picture>
+                </div>
+                {% endfor %}
+
+
+        </div>
+        <div class="swiper-pagination"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+      </div>
+    </div>
+    <div class="section-show-more">
+      <a href="" class="button red-button">{{ certificates.button_name }}</a>
+    </div>
+  </section>
+
+  <section
+          class="cooperation-block"
+          data-aos="fade-in"
+          style="background-image: linear-gradient(90deg, rgba(41,91,184,0.9), rgba(30,30,30,0.9)), url(https://picsum.photos/1920/465)"
+  >
+    <div class="container">
+      <div class="cooperation-block-grid">
+        <div class="cooperation-block-grid-left">
+          <h4 class="cooperation-block-grid-left-title">{{ main_cooperation.title }}</h4>
+          <p class="cooperation-block-grid-left-desc">{{ main_cooperation.subtitle }}:</p>
+        </div>
+        <div class="cooperation-block-grid-right">
+          <img class="cooperation-block-grid-right-img" src="{% static 'img/svg/logo.svg' %}" alt="">
+        </div>
+      </div>
+    </div>
+    <div class="cooperation-block-line"></div>
+    <div class="container">
+      <div class="cooperation-block-contacts">
+        <a class="cooperation-block-contacts-link" href="tel:{{ main_cooperation.first_phone }}">{{ main_cooperation.first_city }}:
+          <span>{{ main_cooperation.first_phone }}</span></a>
+        <a class="cooperation-block-contacts-link" href="tel:{{ main_cooperation.second_phone }}">{{ main_cooperation.second_city }}:
+          <span>{{ main_cooperation.second_phone }}</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="faq-block" data-aos="fade-in">
+    <div class="container">
+        <h3 class="section-title">{{ faq_page.page_title }}</h3>
+        <div class="faq-block-container">
+            <div class="faq-block-accordions" id="faq">
+                {% for i in questions %}
+                <div class="faq-block-accordion-item">
+                    <button class="faq-block-accordion">{{ i.question }}</button>
+                </div>
+                <div class="faq-block-accordion-panel">
+                    {% autoescape off %}{{ i.answer }}{% endautoescape %}
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+
+  <section class="question-block" data-aos="fade-in">
+    <div class="container">
+      <div class="question-block-content">
+        <h5 class="question-block-content-title">Примите участие в опросе</h5>
+        <h6 class="question-block-content-subtitle">Уделите 2 минуты и помогите стать нам лучше</h6>
+        <div class="question-block-content-grid">
+          <a href="" class="button red-button">От друзей</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+ {% endblock %}

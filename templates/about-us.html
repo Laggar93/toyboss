@@ -1,0 +1,233 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<section class="about-us-bg-block" style="background-image: url({% static 'img/5L7A3982.jpg' %})">
+    <div class="container">
+        <h1 class="about-us-bg-block-title rellax" data-rellax-speed="3" >{{ about_page.page_title }}</h1>
+    </div>
+</section>
+<section class="history-block">
+    <div class="container">
+        <div class="history-block-preview-grid " >
+            <div class="history-block-preview-grid-left rellax"  data-rellax-speed="4">
+                <h2 class="history-block-preview-grid-left-title">{{ history.title }}</h2>
+                <p class="history-block-preview-grid-left-desc">
+                    {{ history.text }}
+                </p>
+            </div>
+            <div class="history-block-preview-grid-right rellax" id="scene-about-us" data-rellax-speed="2">
+                <img class="history-block-preview-grid-right-img" data-depth="0.3" src="{{ history.image.url }}" alt="{{ history.title }}">
+            </div>
+        </div>
+        <div class="history-block-tab" id="tab-history">
+            <div class="swiper">
+                <ul class="swiper-wrapper">
+                    {% for i in years %}
+                    <li class="swiper-slide">
+                        <a href="#history-block-tab-{{ forloop.counter }}" class="history-block-card">
+                            {{ i.year }}
+                        </a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+            <div class="history-block-tab-content">
+                {% for i in years %}
+                <div id="history-block-tab-{{ forloop.counter }}">
+                   {% autoescape off %}{{ i.description }}{% endautoescape %}
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+<section class="mission-block">
+    <div class="container">
+        <div class="mission-block-wrapper">
+            <h2 class="mission-block-title">{{ mission.title }}</h2>
+            <p class="mission-block-slogan">{{ mission.quote }}</p>
+            <p class="mission-block-desc">{{ mission.text }}</p>
+            <h2 class="mission-block-title">{{ vision.title }}</h2>
+            <p class="mission-block-desc">{{ vision.text }}</p>
+        </div>
+    </div>
+</section>
+
+<section class="advantages-block mode">
+    <div class="container">
+        <h3 class="section-title">{{ value.title }}</h3>
+        <p class="advantages-block-desc">{{ value.text }}</p>
+        <div id="tabs-advantages">
+            <div class="swiper">
+                <ul class="swiper-wrapper">
+                    <li class="swiper-slide">
+                        <a href="#tabs-advantages-1" class="advantages-block-card">
+                            <div class="advantages-block-card-title">{{ value_points.first_title }}
+                            </div>
+                            <div class="advantages-block-card-footer">
+                                <div class="advantages-block-card-image">
+                                    <img class="advantages-block-card-decor" src="{% static 'img/svg/caret-down.svg' %}" alt="">
+                                </div>
+                                <div class="advantages-block-card-count">
+                                    1
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="swiper-slide">
+                        <a href="#tabs-advantages-2" class="advantages-block-card">
+                            <div class="advantages-block-card-title">{{ value_points.second_title }}
+                            </div>
+                            <div class="advantages-block-card-footer">
+                                <div class="advantages-block-card-image">
+                                    <img class="advantages-block-card-decor" src="{% static 'img/svg/caret-down.svg' %}" alt="">
+                                </div>
+                                <div class="advantages-block-card-count">
+                                    2
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="swiper-slide">
+                        <a href="#tabs-advantages-3" class="advantages-block-card">
+                            <div class="advantages-block-card-title">{{ value_points.third_title }}
+                            </div>
+                            <div class="advantages-block-card-footer">
+                                <div class="advantages-block-card-image">
+                                    <img class="advantages-block-card-decor" src="{% static 'img/svg/caret-down.svg' %}" alt="">
+                                </div>
+                                <div class="advantages-block-card-count">
+                                    3
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="swiper-slide">
+                        <a href="#tabs-advantages-4" class="advantages-block-card">
+                            <div class="advantages-block-card-title">{{ value_points.fourth_title }}
+                            </div>
+                            <div class="advantages-block-card-footer">
+                                <div class="advantages-block-card-image">
+                                    <img class="advantages-block-card-decor" src="{% static 'img/svg/caret-down.svg' %}" alt="">
+                                </div>
+                                <div class="advantages-block-card-count">
+                                    4
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="swiper-slide">
+                        <a href="#tabs-advantages-5" class="advantages-block-card">
+                            <div class="advantages-block-card-title">
+                                {{ value_points.fifth_title }}
+                            </div>
+                            <div class="advantages-block-card-footer">
+                                <div class="advantages-block-card-image">
+                                    <img class="advantages-block-card-decor" src="{% static 'img/svg/caret-down.svg' %}" alt="">
+                                </div>
+                                <div class="advantages-block-card-count">
+                                    5
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+            </div>
+            <div class="advantages-block-tab-text" id="tabs-advantages-1">
+                <p>{{ value_points.first_text }}</p>
+            </div>
+            <div class="advantages-block-tab-text" id="tabs-advantages-2">
+                <p>{{ value_points.second_text }}</p>
+            </div>
+            <div class="advantages-block-tab-text" id="tabs-advantages-3">
+                <p>{{ value_points.third_text }}</p>
+            </div>
+            <div class="advantages-block-tab-text" id="tabs-advantages-4">
+                <p>{{ value_points.fourth_text }}</p>
+            </div>
+            <div class="advantages-block-tab-text" id="tabs-advantages-5">
+                <p>{{ value_points.fifth_text }}</p>
+            </div>
+        </div>
+    </div>
+</section>
+<section
+        class="statistics-block"
+        style="background-image: linear-gradient(90deg, rgba(41,91,184,0.9), rgba(30,30,30,0.9)), url({% static 'img/png/stats.png' %})">
+    <div class="container">
+        <h3 class="section-title">{{ statistic.title }}</h3>
+        <div class="statistics-block-grid">
+            {% for i in statistic_points %}
+            <div class="statistics-block-grid-item">
+                <div class="statistics-block-grid-item-title">{{ i.title }}</div>
+                <div class="statistics-block-grid-item-count">
+                    {% if i.left_postscript %}
+                    {{ i.left_postscript }}
+                    {% endif %}
+                    <span class="counter">{{ i.number }}</span>
+                {% if i.right_postscript %}
+                    {{ i.right_postscript }}
+                {% endif %}
+                </div>
+                <p class="statistics-block-grid-item-desc">
+                    {{ i.subtitle }}
+                </p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+<section class="certificate-block">
+    <div class="container">
+        <h3 class="section-title">{{ certificates.title }}</h3>
+        <div class="swiper">
+            <div class="swiper-wrapper" id="lightgallery">
+                {% for i in certificates.cert_images.all %}
+                <div class="swiper-slide" data-src="{{ i.cert_image }}" data-sub-html="<h4>{{ i.title }}</h4><p>{{ i.description }}</p>">
+                    <picture class="certificate-block-card-picture">
+                        <img class="certificate-block-card-img" src="{{ i.cert_image.url }}" alt="{{ i.title }}">
+                    </picture>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+        </div>
+    </div>
+    <div class="section-show-more">
+        <a href="" class="button red-button">{{ certificates.button_name }}</a>
+    </div>
+</section>
+<div class="hr"></div>
+
+<section class="certificate-block">
+    <div class="container">
+        <h3 class="section-title">{{ rewards.title }}</h3>
+        <div class="swiper">
+            <div class="swiper-wrapper">
+                {% for i in rewards.rewards_images.all %}
+                <div class="swiper-slide">
+                    <picture class="certificate-block-card-picture">
+                        <img class="certificate-block-card-img" src="{{ i.reward_image.url }}" alt="{{ rewards.title }}">
+                    </picture>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+        </div>
+    </div>
+    <div class="section-show-more">
+        <a href="" class="button red-button">{{ rewards.button_name }}</a>
+    </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,139 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<section class="video-youtube">
+  <div class="container">
+    <h3 class="section-title">{{ production_page.page_title }}</h3>
+    <iframe width="1500" height="805" src="{{ production_page.youtube_link }}"
+            title="YouTube video player" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+  </div>
+</section>
+
+<section class="advantages-block not-mode">
+  <div class="container" data-aos="fade-in">
+    <h3 class="section-title">{{ advantages.main_title }}</h3>
+    <div class="swiper">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <div class="advantages-block-card">
+            <div class="advantages-block-card-title">{{ advantages.first_advantage }}</div>
+            <div class="advantages-block-card-footer">
+              <div class="advantages-block-card-image">
+                <img src="{% static 'img/svg/advantages-1.svg' %}" alt="">
+              </div>
+              <div class="advantages-block-card-count">
+                1
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="advantages-block-card">
+            <div class="advantages-block-card-title">{{ advantages.second_advantage }}</div>
+            <div class="advantages-block-card-footer">
+              <div class="advantages-block-card-image">
+                <img src="{% static 'img/svg/advantages-2.svg' %}" alt="">
+              </div>
+              <div class="advantages-block-card-count">
+                2
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="advantages-block-card">
+            <div class="advantages-block-card-title">{{ advantages.third_advantage }}</div>
+            <div class="advantages-block-card-footer">
+              <div class="advantages-block-card-image">
+                <img src="{% static 'img/svg/advantages-3.svg' %}" alt="">
+              </div>
+              <div class="advantages-block-card-count">
+                3
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="advantages-block-card">
+            <div class="advantages-block-card-title">{{ advantages.fourth_advantage }}</div>
+            <div class="advantages-block-card-footer">
+              <div class="advantages-block-card-image">
+                <img src="{% static 'img/svg/advantages-4.svg' %}" alt="">
+              </div>
+              <div class="advantages-block-card-count">
+                4
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="advantages-block-card">
+            <div class="advantages-block-card-title">{{ advantages.fifth_advantage }}</div>
+            <div class="advantages-block-card-footer">
+              <div class="advantages-block-card-image">
+                <img src="{% static 'img/svg/advantages-5.svg' %}" alt="">
+              </div>
+              <div class="advantages-block-card-count">
+                5
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="advantages-block-card">
+            <div class="advantages-block-card-title">{{ advantages.fifth_advantage }}</div>
+            <div class="advantages-block-card-footer">
+              <div class="advantages-block-card-image">
+                <img src="{% static 'img/svg/advantages-6.svg' %}" alt="">
+              </div>
+              <div class="advantages-block-card-count">
+                6
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="swiper-pagination"></div>
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
+    </div>
+  </div>
+</section>
+
+<section class="products-info">
+  <div class="container">
+    <div class="line"></div>
+      {% for i in points %}
+    <div class="products-info-row">
+      <div class="products-info-grid">
+        <div class="products-info-grid-left">
+          <img src="{{ i.icon.url }}" alt="">
+          <h4>{{ i.point_title }}</h4>
+        </div>
+        <div class="products-info-grid-right">
+          {% autoescape off %}{{ i.text }}{% endautoescape %}
+        </div>
+      </div>
+      <div class="swiper">
+        <div class="swiper-wrapper">
+            {% for j in i.points_slider.all %}
+          <div class="swiper-slide">
+            <picture class="image">
+              <source type="image/webp" media="(min-width: 1200px)" srcset="{{ j.image_735_webp.url }} 1x, {{ j.image_735_webp.url }} 2x">
+              <source type="image/jpeg" media="(min-width: 1200px)" srcset="{{ j.image_735_jpg.url }} 1x, {{ j.image_735_jpg.url }} 2x">
+              <img class="photo-card__img" src="{{ j.image.url }}" srcset="{{ j.image.url }} 2x" width="735" height="561" alt="">
+            </picture>
+          </div>
+          {% endfor %}
+        </div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}

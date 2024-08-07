@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load custom_tags %}
+{% block content %}
+    <section class="news-detail">
+        <div class="container">
+            <div class="date">{{ current_news.published }}</div>
+            <h1 class="title">{{ current_news.news_title }}</h1>
+            <div class="swiper-container">
+                <div class="swiper">
+                    <div class="swiper-wrapper">
+                        {% for i in current_news.news_images.all %}
+                            <div class="swiper-slide">
+                                <picture class="image">
+                                    <source type="image/webp" media="(min-width: 1200px)" srcset="{{ i.image_1499_webp.url }} 1x, {{ i.image_1499_webp.url }} 2x">
+                                    <source type="image/jpeg" media="(min-width: 1200px)" srcset="{{ i.image_1499_jpg.url }} 1x, {{ i.image_1499_jpg.url }} 2x">
+                                    <img class="photo-card__img" src="{{ i.image_1499_jpg.url }}" srcset="{{ i.image_1499_jpg.url }} 2x" width="1500" height="576" alt="">
+                                </picture>
+                            </div>
+                        {% endfor %}
+
+                    </div>
+                </div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+            </div>
+            <div class="swiper-pagination"></div>
+            <div class="desc">
+                {% autoescape off %}{{ current_news.text|add_class_to_p }}{% endautoescape %}
+
+                <div class="line"></div>
+
+            </div>
+
+            {#        <div class="social">#}
+            {#            Поделиться:#}
+            {#            <a href="">#}
+            {#                <img src="img/svg/vk.svg" alt="">#}
+            {#            </a>#}
+            {#            <a href="">#}
+            {#                <img src="img/svg/ok.svg" alt="">#}
+            {#            </a>#}
+            {#            <a href="">#}
+            {#                <img src="img/svg/telegram.svg" alt="">#}
+            {#            </a>#}
+            {#            <a href="">#}
+            {#                <img src="img/svg/whatsappI.svg" alt="">#}
+            {#            </a>#}
+            {#        </div>#}
+        </div>
+    </section>
+    <section class="news-block">
+        <div class="container">
+            <h3 class="section-title section-title-left news-block-title">{{ news_page.other_news_title }}</h3>
+            <div class="swiper">
+                <div class="swiper-wrapper">
+                    {% for i in other_news %}
+                        <div class="swiper-slide">
+                            <div class="news-block-card">
+                                <a href="{% url 'news_items' i.slug %}" class="news-block-card-link"></a>
+                                <picture class="news-block-card-picture">
+                                    <img class="news-block-card-img" src="https://picsum.photos/350/300" alt="">
+                                </picture>
+                                <h6 class="news-block-card-date">{{ i.published }}</h6>
+                                <h2 class="news-block-card-title">
+                                    {{ i.news_title }}
+                                </h2>
+                                <p class="news-block-card-desc">
+                                    {% autoescape off %}{{ i.text|truncatewords:10|add_class_to_p }}{% endautoescape %}
+                                </p>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+            </div>
+            <div class="section-show-more">
+                <a href="" class="button red-button">{{ news_page.button_name }}</a>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

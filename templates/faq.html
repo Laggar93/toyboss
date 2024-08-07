@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<section class="faq-block" data-aos="fade-in">
+    <div class="container">
+        <h3 class="section-title">{{ faq_page.page_title }}</h3>
+        <div class="faq-block-container">
+            <div class="faq-block-accordions" id="faq">
+                {% for i in questions %}
+                <div class="faq-block-accordion-item">
+                    <button class="faq-block-accordion">{{ i.question }}</button>
+                </div>
+                <div class="faq-block-accordion-panel">
+                    {% autoescape off %}{{ i.answer }}{% endautoescape %}
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="cooperation-block" data-aos="fade-in" style="background-image: linear-gradient(90deg, rgba(41,91,184,0.9), rgba(30,30,30,0.9)), url(https://picsum.photos/1920/465)">
+    <div class="container">
+        <div class="cooperation-block-grid">
+            <div class="cooperation-block-grid-left">
+                <h4 class="cooperation-block-grid-left-title">{{ main_cooperation.title }}</h4>
+                <p class="cooperation-block-grid-left-desc">{{ main_cooperation.subtitle }}:</p>
+            </div>
+            <div class="cooperation-block-grid-right">
+                <img class="cooperation-block-grid-right-img" src="{% static 'img/svg/logo.svg' %}" alt="">
+            </div>
+        </div>
+    </div>
+    <div class="cooperation-block-line"></div>
+    <div class="container">
+        <div class="cooperation-block-contacts">
+            <a class="cooperation-block-contacts-link" href="tel:{{ main_cooperation.first_phone }}">{{ main_cooperation.first_city }}:
+                <span>{{ main_cooperation.first_phone }}</span></a>
+            <a class="cooperation-block-contacts-link" href="tel:{{ main_cooperation.second_phone }}">{{ main_cooperation.second_city }}:
+                <span>{{ main_cooperation.second_phone }}</span></a>
+        </div>
+    </div>
+</section>
+{% endblock %}

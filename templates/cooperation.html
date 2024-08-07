@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<section class="cooperation-page">
+  <div class="container">
+    <h1 class="section-title">{{ cooperation_page.page_title }}</h1>
+    <picture class="image">
+      <source type="image/webp" media="(min-width: 1200px)" srcset="{{ cooperation_page.image_1500_webp.url }} 1x, {{ cooperation_page.image_1500_webp.url }} 2x">
+      <source type="image/jpeg" media="(min-width: 1200px)" srcset="{{ cooperation_page.image_1500_png.url }} 1x, {{ cooperation_page.image_1500_png.url }} 2x">
+      <img class="photo-card__img" src="{{ cooperation_page.image_1500_png.url }}" srcset="{{ cooperation_page.image_1500_png.url }} 2x" width="1500" height="460" alt="{{ cooperation_page.page_title }}">
+    </picture>
+    <div class="cooperation-page-grid">
+      <div>
+        <p>
+          {{ cooperation_page.left_text }}
+        </p>
+      </div>
+      <div>
+        <p>
+         {{ cooperation_page.right_text }}
+        </p>
+      </div>
+    </div>
+    <div class="cooperation-page-info">
+      <div class="cooperation-page-info-card">
+        <div class="cooperation-page-info-card-wrapper">
+        <h5 class="title red">{{ wholesale.title }}</h5>
+        <p class="desc">{{ wholesale.subtitle }}:</p>
+        </div>
+        <div class="cooperation-page-info-contact red">
+          <a href="tel:{{ wholesale.first_phone }}">{{ wholesale.first_city }}: {{ wholesale.first_phone }}</a>
+          <a href="tel:{{ wholesale.second_phone }}">{{ wholesale.second_city }}: {{ wholesale.second_phone }}</a>
+        </div>
+      </div>
+      <div class="cooperation-page-info-card">
+        <div class="cooperation-page-info-card-wrapper">
+        <h5 class="title blue">{{ retailsale.title }}</h5>
+        <p class="desc">{{ retailsale.subtitle }}:</p>
+        </div>
+        <div class="cooperation-page-info-contact blue">
+          <a href="tel:{{ retailsale.first_phone }}">{{ retailsale.first_city }}: {{ retailsale.first_phone }}</a>
+          <a href="tel:{{ retailsale.second_phone }}">{{ retailsale.second_city }}: {{ retailsale.second_phone }}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="partners">
+  <div class="container">
+    <h2 class="section-title">{{ partners.title }}</h2>
+    <p class="desc">{{ partners.subtitle }}</p>
+    <div class="grid">
+        {% for i in partners.partner_items.all %}
+      <div class="item">
+        <img src="{{ i.image.url }}" alt="">
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+<section class="form-block">
+  <div class="container">
+    <h4 class="section-title">{{ cooperation_form.main_title }}</h4>
+    <p class="desc">{{ cooperation_form.subtitle }}</p>
+    <form action="" class="form">
+      <div class="form-grid">
+        <label class="label">
+          <input type="text" placeholder="{{ cooperation_form.name }}:">
+        </label>
+        <label class="label">
+          <input type="text" placeholder="{{ cooperation_form.phone }}:">
+        </label>
+      </div>
+      <label class="label">
+        <input type="text" placeholder="{{ cooperation_form.position }}">
+      </label>
+      <label class="label">
+        <textarea placeholder="{{ cooperation_form.message }}" rows="3"></textarea>
+      </label>
+      <label class="label-checkbox">
+        <input type="checkbox">
+        {% autoescape off %}{{ cooperation_form.rules }}{% endautoescape %}
+      </label>
+      <div class="form-flex">
+        <label class="label-file"><input type="file">{{ cooperation_form.file }}</label>
+        <button class="button red-button">{{ cooperation_form.send_button }}</button>
+      </div>
+
+    </form>
+  </div>
+</section>
+
+{% endblock %}
