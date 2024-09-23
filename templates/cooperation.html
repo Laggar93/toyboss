@@ -97,7 +97,6 @@
                 </label>
                 <div class="form-flex">
                     <label class="label-file">
-
                         <input type="file" id="docpicker"
                                                      accept=".doc,.docx,.xml,application/msword,.pdf,.csv" name="file">
 
@@ -138,6 +137,7 @@
                 success: function (response) {
                     if (response.success_message) {
                         showSuccessModal(response.success_message);
+                        myform.reset();
                     } else if (response.form_errors) {
                         showSuccessModal('Ошибка отправки. Проверьте введенные данные.');
                     }

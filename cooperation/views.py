@@ -26,7 +26,6 @@ def cooperation_view(request):
 def coop_form_view(request):
     if request.method == 'POST':
         form = CoopForm(request.POST, request.FILES)
-        print(form.errors)
         if form.is_valid():
             name = form.cleaned_data['name']
             phone = form.cleaned_data['phone']

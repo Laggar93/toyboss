@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import JsonResponse
 from toyboss.sendform import send_form
-from .forms import ContactForm
+from .forms import ContactForm as ContactPageForm
 from .models import ContactsPage, SocialNetwork, Schedule, MarketingDepartment, ProductionDepartment, \
     Accounting, CentralOffice, CorporateOffice, ContactForm
 
@@ -27,7 +27,7 @@ def contacts_view(request):
 
 def form_view(request):
     if request.method == 'POST':
-        form = ContactForm(request.POST)
+        form = ContactPageForm(request.POST)
         if form.is_valid():
             name = form.cleaned_data['name']
             email = form.cleaned_data['email']
