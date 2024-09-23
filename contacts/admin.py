@@ -86,6 +86,10 @@ class CorporateOfficeAdmin(TranslationAdmin):
 class ContactFormAdmin(TranslationAdmin):
     model = ContactForm
     save_on_top = True
+    def has_add_permission(self, request, obj=None):
+        return False
+    def has_delete_permission(self, request, obj=None):
+        return False
 
 
 admin.site.register(ContactsPage, ContactsPageAdmin)

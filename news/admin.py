@@ -16,6 +16,7 @@ class NewsSliderAdmin(admin.StackedInline):
     model = NewsSlider
     readonly_fields = ('display_image',)
     extra = 0
+    exclude = ('image_1499_webp', 'image_1499_jpg', 'image_main_jpg')
 
 
 class NewsItemPage(TranslationAdmin):

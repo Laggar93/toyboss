@@ -61,6 +61,7 @@ class NewsSlider(models.Model):
 
     image_1499_webp = models.ImageField(upload_to=get_file_path)
     image_1499_jpg = models.ImageField(upload_to=get_file_path)
+    image_main_jpg = models.ImageField(upload_to=get_file_path)
 
     __original_image = None
 
@@ -70,11 +71,10 @@ class NewsSlider(models.Model):
 
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
-
         if self.image and self.image != self.__original_image:
             self.image_1499_webp = resize_img(self.image_1499_webp, self.image, [1499, 576], 'webp')
             self.image_1499_jpg = resize_img(self.image_1499_jpg, self.image, [1499, 576], 'jpeg')
-
+            self.image_main_jpg = resize_img(self.image_main_jpg, self.image, [350, 300], 'jpeg')
         super().save(*args, **kwargs)
 
     def __str__(self):

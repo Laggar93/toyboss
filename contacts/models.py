@@ -142,10 +142,11 @@ class CorporateOffice(models.Model):
 
 class ContactForm(models.Model):
 
-    main_title = models.CharField('Работа в Тойбосс', max_length=255)
-    subtitle = models.TextField('Подзаголовок (Хотите расти вместе с нами...)')
+    main_title = models.CharField('Остались вопросы', max_length=255)
+    subtitle = models.TextField('Подзаголовок (Задайте интересующий вас вопрос...)')
 
     name = models.CharField('Ваше имя', max_length=255)
+    email = models.CharField('Ваш email', max_length=255)
     phone = models.CharField('Ваш номер', max_length=255)
     message = models.CharField('Ваше сообщение', max_length=255)
 

@@ -1,5 +1,14 @@
 {% extends 'base.html' %}
 {% load static %}
+{% block seo %}
+    <title>{{ faq_page.title }}</title>
+    <meta name="title" content="{{ faq_page.title }}">
+    <meta name="keywords" content="{{ faq_page.keywords }}">
+    <meta name="description" content="{{ faq_page.description }}">
+    <meta property="og:title" content="{{ faq_page.title }}">
+    <meta property="og:url" content="{{ site_name }}{{ request.path }}">
+    <meta property="og:description" content="{{ faq_page.description }}">
+{% endblock %}
 {% block content %}
 
 <section class="faq-block" data-aos="fade-in">
@@ -20,7 +29,11 @@
     </div>
 </section>
 
-<section class="cooperation-block" data-aos="fade-in" style="background-image: linear-gradient(90deg, rgba(41,91,184,0.9), rgba(30,30,30,0.9)), url(https://picsum.photos/1920/465)">
+<section
+        class="cooperation-block"
+        data-aos="fade-in"
+        style="background-image: linear-gradient(90deg, rgba(41,91,184,0.9), rgba(30,30,30,0.9)), url({% static 'img/png/stats.png' %})"
+>
     <div class="container">
         <div class="cooperation-block-grid">
             <div class="cooperation-block-grid-left">

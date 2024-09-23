@@ -26,6 +26,7 @@ INSTALLED_APPS = [
     'production.apps.ProductionConfig',
     'about.apps.AboutConfig',
     'main.apps.MainConfig',
+    'blocks.apps.BlocksConfig',
     'news.templatetags.custom_tags'
 ]
 
@@ -156,6 +157,15 @@ CKEDITOR_CONFIGS = {
         ]
     },
 }
+
+
+
+EMAIL_HOST = config.mail_host
+EMAIL_PORT = config.mail_port
+EMAIL_HOST_USER = config.mail_login
+EMAIL_HOST_PASSWORD = config.mail_password
+EMAIL_USE_TLS = config.mail_use_tls
+
 
 
 

@@ -1,5 +1,14 @@
 {% extends 'base.html' %}
 {% load static %}
+{% block seo %}
+    <title>{{ production_page.title }}</title>
+    <meta name="title" content="{{ production_page.title }}">
+    <meta name="keywords" content="{{ production_page.keywords }}">
+    <meta name="description" content="{{ production_page.description }}">
+    <meta property="og:title" content="{{ production_page.title }}">
+    <meta property="og:url" content="{{ site_name }}{{ request.path }}">
+    <meta property="og:description" content="{{ production_page.description }}">
+{% endblock %}
 {% block content %}
 
 <section class="video-youtube">
@@ -18,7 +27,7 @@
     <div class="swiper">
       <div class="swiper-wrapper">
         <div class="swiper-slide">
-          <div class="advantages-block-card">
+          <div class="advantages-block-card hover-blue">
             <div class="advantages-block-card-title">{{ advantages.first_advantage }}</div>
             <div class="advantages-block-card-footer">
               <div class="advantages-block-card-image">
@@ -31,7 +40,7 @@
           </div>
         </div>
         <div class="swiper-slide">
-          <div class="advantages-block-card">
+          <div class="advantages-block-card hover-blue">
             <div class="advantages-block-card-title">{{ advantages.second_advantage }}</div>
             <div class="advantages-block-card-footer">
               <div class="advantages-block-card-image">
@@ -44,7 +53,7 @@
           </div>
         </div>
         <div class="swiper-slide">
-          <div class="advantages-block-card">
+          <div class="advantages-block-card hover-blue">
             <div class="advantages-block-card-title">{{ advantages.third_advantage }}</div>
             <div class="advantages-block-card-footer">
               <div class="advantages-block-card-image">
@@ -57,7 +66,7 @@
           </div>
         </div>
         <div class="swiper-slide">
-          <div class="advantages-block-card">
+          <div class="advantages-block-card hover-blue">
             <div class="advantages-block-card-title">{{ advantages.fourth_advantage }}</div>
             <div class="advantages-block-card-footer">
               <div class="advantages-block-card-image">
@@ -70,7 +79,7 @@
           </div>
         </div>
         <div class="swiper-slide">
-          <div class="advantages-block-card">
+          <div class="advantages-block-card hover-blue">
             <div class="advantages-block-card-title">{{ advantages.fifth_advantage }}</div>
             <div class="advantages-block-card-footer">
               <div class="advantages-block-card-image">
@@ -83,7 +92,7 @@
           </div>
         </div>
         <div class="swiper-slide">
-          <div class="advantages-block-card">
+          <div class="advantages-block-card hover-blue">
             <div class="advantages-block-card-title">{{ advantages.fifth_advantage }}</div>
             <div class="advantages-block-card-footer">
               <div class="advantages-block-card-image">
@@ -107,7 +116,7 @@
   <div class="container">
     <div class="line"></div>
       {% for i in points %}
-    <div class="products-info-row">
+    <div class="products-info-row" id="swiper-{{ forloop.counter }}">
       <div class="products-info-grid">
         <div class="products-info-grid-left">
           <img src="{{ i.icon.url }}" alt="">
@@ -119,21 +128,64 @@
       </div>
       <div class="swiper">
         <div class="swiper-wrapper">
-            {% for j in i.points_slider.all %}
+          {% for j in i.points_slider.all %}
           <div class="swiper-slide">
             <picture class="image">
               <source type="image/webp" media="(min-width: 1200px)" srcset="{{ j.image_735_webp.url }} 1x, {{ j.image_735_webp.url }} 2x">
               <source type="image/jpeg" media="(min-width: 1200px)" srcset="{{ j.image_735_jpg.url }} 1x, {{ j.image_735_jpg.url }} 2x">
-              <img class="photo-card__img" src="{{ j.image.url }}" srcset="{{ j.image.url }} 2x" width="735" height="561" alt="">
+              <img class="photo-card__img" src="{{ j.image.url }}" srcset="{{ j.image.url }} 2x" width="735" height="561" alt="" loading="lazy">
             </picture>
           </div>
           {% endfor %}
+
         </div>
         <div class="swiper-button-prev"></div>
         <div class="swiper-button-next"></div>
       </div>
     </div>
-    {% endfor %}
+      {% endfor %}
+
+
   </div>
 </section>
+
+{% endblock %}
+
+{% block scripts %}
+
+<script>
+  // надо зафорычить и подставлять index в #swiper-сюда
+  {% for i in points %}
+  const productInfoSwiper{{ forloop.counter }} = new Swiper('#swiper-{{ forloop.counter }} .swiper', {
+    slidesPerView: 2,
+    initialSlide: 1,
+    centeredSlides: true,
+    speed: 1200,
+    spaceBetween: 30,
+    breakpoints: {
+      // mobile + tablet - 320-990
+      0: {
+        slidesPerView: 1,
+      },
+      1200: {
+        slidesPerView: 2,
+      },
+
+    },
+    pagination: {
+      el: '.products-info-row .swiper-pagination',
+    },
+    navigation: {
+      nextEl: '.products-info-row .swiper-button-next',
+      prevEl: '.products-info-row .swiper-button-prev',
+    },
+
+  })
+
+  $('#swiper-{{ forloop.counter }} .swiper-slide').on('mouseover', function() {
+    productInfoSwiper{{ forloop.counter }}?.slideTo($(this).index());
+  })
+  {% endfor %}
+
+</script>
 {% endblock %}

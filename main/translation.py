@@ -37,9 +37,9 @@ class SurveyTranslationOptions(TranslationOptions):
 
 
 class MainQuoteTranslationOptions(TranslationOptions):
-    fields = ('first_line', 'second_line', 'third_line', 'first_name', 'position')
-    required_languages = {'ky': ('first_line', 'second_line', 'third_line', 'first_name', 'position'),
-                          'en': ('first_line', 'second_line', 'third_line', 'first_name', 'position')}
+    fields = ('first_line', 'second_line', 'third_line', 'first_name', 'position', 'history_title', 'history_text', 'mission_title', 'mission_text', 'value_title', 'value_text')
+    required_languages = {'ky': ('first_line', 'second_line', 'third_line', 'first_name', 'position', 'history_title', 'history_text', 'mission_title', 'mission_text', 'value_title', 'value_text'),
+                          'en': ('first_line', 'second_line', 'third_line', 'first_name', 'position', 'history_title', 'history_text', 'mission_title', 'mission_text', 'value_title', 'value_text')}
 
 
 

@@ -12,6 +12,8 @@ class FaqPage(models.Model):
 
     link = models.URLField('Ссылка на опросник')
 
+    main_button = models.CharField('Все вопросы (кнопка на главной странице)', max_length=255)
+
     def __str__(self):
         return 'Общая страница часто задаваемых вопросов'
 

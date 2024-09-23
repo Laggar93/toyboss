@@ -116,6 +116,11 @@ class MainProdSlider(models.Model):
         verbose_name = 'Слайдер производства'
         verbose_name_plural = 'Слайдер производства'
 
+    @cached_property
+    def display_image(self):
+        return format_html('<img src="{img}" width="200">', img=self.image.url)
+    display_image.short_description = 'Предпросмотр изображения'
+
 
 class MainCooperation(models.Model):
 
@@ -152,6 +157,15 @@ class Survey(models.Model):
 
 
 class MainQuote(models.Model):
+
+    history_title = models.CharField('Заголовок истории', max_length=255)
+    history_text = models.TextField('Текст истории')
+
+    mission_title = models.CharField('Заголовок миссии', max_length=255)
+    mission_text = models.TextField('Текст миссии')
+
+    value_title = models.CharField('Заголовок ценности', max_length=255)
+    value_text = models.TextField('Текст ценности')
 
     first_line = models.CharField('Первая строка', max_length=255)
     second_line = models.CharField('Вторая строка', max_length=255)

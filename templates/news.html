@@ -1,51 +1,78 @@
 {% extends 'base.html' %}
 {% load static %}
+{% block seo %}
+    <title>{{ news_page.title }}</title>
+    <meta name="title" content="{{ news_page.title }}">
+    <meta name="keywords" content="{{ news_page.keywords }}">
+    <meta name="description" content="{{ news_page.description }}">
+    <meta property="og:title" content="{{ news_page.title }}">
+    <meta property="og:url" content="{{ site_name }}{{ request.path }}">
+    <meta property="og:description" content="{{ news_page.description }}">
+{% endblock %}
 {% load custom_tags %}
 {% block content %}
-
-<section class="news-block">
-    <div class="container">
-        <h3 class="section-title news-block-title">{{ news_page.page_title }}</h3>
-        <div class="news-block-grid">
-            {% for i in page_obj %}
-            <div class="news-block-card">
-                <a href="{% url 'news_items' i.slug %}" class="news-block-card-link"></a>
-                <picture class="news-block-card-picture">
-                    <img class="news-block-card-img" src="https://picsum.photos/350/300" alt="{{ i.news_title }}">
-                </picture>
-                <h6 class="news-block-card-date">{{ i.published }}</h6>
-                <h2 class="news-block-card-title">
-                    {{ i.news_title }}
-                </h2>
-                <p class="news-block-card-desc">
-                    {% autoescape off %}{{ i.text|truncatewords:10|add_class_to_p }}{% endautoescape %}
-                </p>
+    <section class="news-block">
+        <div class="container">
+            <h3 class="section-title news-block-title">{{ news_page.page_title }}</h3>
+            <div class="news-block-grid">
+                {% for i in page_obj %}
+                    <div class="news-block-card">
+                        <a href="{% url 'news_items' i.slug %}" class="news-block-card-link"></a>
+                        {% for j in i.news_images.all %}
+                            {% if forloop.first %}
+                                <picture class="news-block-card-picture">
+                                    <img class="news-block-card-img" src="{{ j.image_main_jpg.url }}" alt="">
+                                </picture>
+                            {% endif %}
+                        {% endfor %}
+                        <h6 class="news-block-card-date">{{ i.published }}</h6>
+                        <h2 class="news-block-card-title">
+                            {{ i.news_title }}
+                        </h2>
+                        <p class="news-block-card-desc">
+                            {% autoescape off %}{{ i.text|truncatewords:10|add_class_to_p }}{% endautoescape %}
+                        </p>
+                    </div>
+                {% endfor %}
             </div>
-            {% endfor %}
-        </div>
- <div class="pagination">
-            <div class="pagination-grid">
-                <a href="" class="pagination-item pagination-item-button">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <g>
-                            <path fill-rule="evenodd" clip-rule="evenodd" d="M15.2289 5.32372C15.6605 5.75535 15.6605 6.45517 15.2289 6.8868L10.1158 12L15.2289 17.1132C15.6605 17.5449 15.6605 18.2446 15.2289 18.6762C14.7972 19.1079 14.0975 19.1079 13.6659 18.6762L7.77109 12.7815C7.33946 12.3499 7.33946 11.6501 7.77109 11.2185L13.6659 5.32372C14.0975 4.89209 14.7972 4.89209 15.2289 5.32372Z" fill="currentColor"/>
-                        </g>
-                    </svg>
-                </a>
-
-                <div class="pagination-item">1</div>
-                <a href="" class="pagination-item">2</a>
-                <a href="" class="pagination-item">3</a>
-                <a href="" class="pagination-item">4</a>
-                <a href="" class="pagination-item">...</a>
-                <a href="" class="pagination-item">34</a>
-                <a href="" class="pagination-item pagination-item-button">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd" clip-rule="evenodd" d="M8.77115 5.32372C8.3395 5.75535 8.3395 6.45517 8.77115 6.8868L13.8842 12L8.77115 17.1132C8.3395 17.5449 8.3395 18.2446 8.77115 18.6762C9.20279 19.1079 9.90249 19.1079 10.3341 18.6762L16.2289 12.7815C16.6605 12.3499 16.6605 11.6501 16.2289 11.2185L10.3341 5.32372C9.90249 4.89209 9.20279 4.89209 8.77115 5.32372Z" fill="currentColor"/>
-                    </svg>
-                </a>
+            <div class="pagination">
+                <div class="pagination-grid">
+                    {% if page_obj.has_previous %}
+                        <a href="?page={{ page_obj.previous_page_number }}" class="pagination-item pagination-item-button">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <g>
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                          d="M15.2289 5.32372C15.6605 5.75535 15.6605 6.45517 15.2289 6.8868L10.1158 12L15.2289 17.1132C15.6605 17.5449 15.6605 18.2446 15.2289 18.6762C14.7972 19.1079 14.0975 19.1079 13.6659 18.6762L7.77109 12.7815C7.33946 12.3499 7.33946 11.6501 7.77109 11.2185L13.6659 5.32372C14.0975 4.89209 14.7972 4.89209 15.2289 5.32372Z"
+                                          fill="currentColor"/>
+                                </g>
+                            </svg>
+                        </a>
+                    {% endif %}
+                    {% if page_obj.number|add:'-3' > 1 %}
+                        <a href="?page={{ page_obj.number|add:'-3' }}" class="pagination-item">...</a>
+                    {% endif %}
+                    {% for i in page_obj.paginator.page_range %}
+                        {% if page_obj.number == i %}
+                            <a href="?page={{ i }}" class="pagination-item" style="color: #BA2828;border-color: #BA2828;">{{ i }}</a>
+                        {% elif i > page_obj.number|add:'-3' and i < page_obj.number|add:'3' %}
+                            <a href="?page={{ i }}" class="pagination-item">{{ i }}</a>
+                        {% endif %}
+                    {% endfor %}
+                    {% if page_obj.paginator.num_pages > page_obj.number|add:'3' %}
+                        <a href="?page={{ page_obj.number|add:'-3' }}" class="pagination-item">...</a>
+                        <a href="?page={{ page_obj.paginator.num_pages }}" class="pagination-item">{{ page_obj.paginator.num_pages }}</a>
+                    {% endif %}
+                    {% if page_obj.has_next %}
+                        <a href="?page={{ page_obj.next_page_number }}" class="pagination-item pagination-item-button">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                      d="M8.77115 5.32372C8.3395 5.75535 8.3395 6.45517 8.77115 6.8868L13.8842 12L8.77115 17.1132C8.3395 17.5449 8.3395 18.2446 8.77115 18.6762C9.20279 19.1079 9.90249 19.1079 10.3341 18.6762L16.2289 12.7815C16.6605 12.3499 16.6605 11.6501 16.2289 11.2185L10.3341 5.32372C9.90249 4.89209 9.20279 4.89209 8.77115 5.32372Z"
+                                      fill="currentColor"/>
+                            </svg>
+                        </a>
+                    {% endif %}
+                </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 {% endblock %}

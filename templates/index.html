@@ -1,620 +1,570 @@
 {% extends 'base.html' %}
 {% load static %}
+{% block seo %}
+    <title>{{ main_page.title }}</title>
+    <meta name="title" content="{{ main_page.title }}">
+    <meta name="keywords" content="{{ main_page.keywords }}">
+    <meta name="description" content="{{ main_page.description }}">
+    <meta property="og:title" content="{{ main_page.title }}">
+    <meta property="og:url" content="{{ site_name }}{{ request.path }}">
+    <meta property="og:description" content="{{ main_page.description }}">
+{% endblock %}
 {% load custom_tags %}
 {% block content %}
-  <section class="main-block">
-    <div class="swiper">
-      <div class="swiper-wrapper ">
-          {% for i in main_page_slider.all %}
-        <div
-          class="swiper-slide"
-          style="background-image:  url({{ i.image.url }})">
-          <div class="container rellax" data-rellax-speed="-6">
-            <div class="main-block-text ">
-              <h2 class="main-block-title">
-                {{ i.title }}
-              </h2>
-              <p class="main-block-desc ">
-                {{ i.subtitle }}
-              </p>
-                {% if i.title and i.subtitle %}
-              <a href="" class="button red-button">Подробнее</a>
-                {% endif %}
-            </div>
-            <div class="swiper-button-wrapper ">
-              <div class="swiper-button-prev"></div>
-              <div class="swiper-button-next"></div>
-            </div>
-          </div>
-        </div>
-        {% endfor %}
-      </div>
-    </div>
-  </section>
 
-  <section class="about-us-block">
-    <div class="container" >
-      <div class="decor decor-top rellax" data-rellax-speed="-3" data-rellax-percentage="0.5"></div>
-      <div class="decor decor-bottom rellax" data-rellax-speed="3" data-rellax-percentage="0"></div>
-      <h3 class="section-title">О нас</h3>
-      <div class="about-us-block-grid" >
-        <div class="about-us-block-grid-left rellax" data-rellax-speed="2" data-rellax-percentage="0.5">
-          <div id="tabs">
-            <ul class="about-us-block-grid-tabs" >
-              <li>
-                <a href="#about-us-tabs-1" class="about-us-block-grid-tabs-item">
-                  История
-                </a>
-              </li>
-              <li>
-                <a href="#about-us-tabs-2" class="about-us-block-grid-tabs-item">
-                  МИССИЯ
-                </a>
-              </li>
-              <li>
-                <a href="#about-us-tabs-3" class="about-us-block-grid-tabs-item">
-                  ЦЕННОСТИ
-                </a>
-              </li>
-            </ul>
-            <div class="about-us-block-grid-tabs-content" id="about-us-tabs-1">
-              <p>Торговая Марка «Тойбосс» была основана в 2012 году и за этот короткий срок смогла
-                зарекомендовать
-                себя на рынке Кыргызстана как производитель качественной, полезной, а самое главное вкусной
-                мясной продукции. Наша компания предлагает</p>
-              <a href="" class="button red-button">Подробнее</a>
+    <section class="main-block">
+        <div class="swiper">
+            <div class="swiper-left"></div>
+            <div class="swiper-right"></div>
+            <div class="swiper-wrapper ">
+                {% for i in main_page_slider.all %}
+                    <div class="swiper-slide" style="background-image:  url({{ i.image.url }})">
+                        <div class="container rellax" data-rellax-speed="-6">
+                            <div class="main-block-text ">
+                                <h2 class="main-block-title">
+                                    {{ i.title }}
+                                </h2>
+                                <p class="main-block-desc ">
+                                    {{ i.subtitle }}
+                                </p>
+                                {% if i.title and i.subtitle %}
+                                    <a href="{% url 'about_page' %}" class="button red-button">{{ general_translations.detail_button }}</a>
+                                {% endif %}
+                            </div>
+                            <div class="swiper-button-wrapper ">
+                                <div class="swiper-button-prev"></div>
+                                <div class="swiper-button-next"></div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
             </div>
-            <div class="about-us-block-grid-tabs-content" id="about-us-tabs-2">
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad amet animi autem eaque eius,
-                incidunt mollitia nam quisquam recusandae repellendus?</p>
-              <a href="" class="button red-button">Подробнее</a>
-            </div>
-            <div class="about-us-block-grid-tabs-content" id="about-us-tabs-3">
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus, ipsa.</p>
-              <a href="" class="button red-button">Подробнее</a>
-            </div>
-          </div>
-
-          <div class="about-us-block-footer-quote-wrapper desktop">
-            <div class="about-us-block-footer-quote" data-aos="fade-up" data-aos-delay="400">
-              <p>
-                Мы хотим сделать компанию международной. Основное производство будет расположено здесь, но
-                продукцию мы хотим вывести на экспортные рынки
-              </p>
-            </div>
-            <div class="about-us-block-footer-quote-author">
-              <div class="about-us-block-footer-quote-author-name" data-aos="fade-up" data-aos-delay="350">Мырзабек Орумбаев</div>
-              <div class="about-us-block-footer-quote-author-status" data-aos="fade-up" data-aos-delay="300">Генеральный директор</div>
-            </div>
-          </div>
         </div>
-        <div class="about-us-block-grid-right rellax" id="scene-about-us"  data-rellax-speed="5" data-rellax-percentage="0.3">
-            <img data-depth="0.3" src="{% static 'img/png/human.png' %}"  class="image-1" alt="">
-          <img  src="{% static 'img/png/about-us.png' %}" data-depth="0.6"  class="image-2" alt="">
-        </div>
-      </div>
-      <div class="about-us-block-footer-quote-wrapper mobile">
-        <div class="about-us-block-footer-quote" data-aos="fade-up" data-aos-delay="400">
-          <p>
-            Мы хотим сделать компанию международной. Основное производство будет расположено здесь, но
-            продукцию мы хотим вывести на экспортные рынки
-          </p>
-        </div>
-        <div class="about-us-block-footer-quote-author">
-          <div class="about-us-block-footer-quote-author-name" data-aos="fade-up" data-aos-delay="350">Мырзабек Орумбаев</div>
-          <div class="about-us-block-footer-quote-author-status" data-aos="fade-up" data-aos-delay="300">Генеральный директор</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="advantages-block not-mode">
-  <div class="container" data-aos="fade-in">
-    <h3 class="section-title">{{ advantages.main_title }}</h3>
-    <div class="swiper">
-      <div class="swiper-wrapper">
-        <div class="swiper-slide">
-          <div class="advantages-block-card">
-            <div class="advantages-block-card-title">{{ advantages.first_advantage }}</div>
-            <div class="advantages-block-card-footer">
-              <div class="advantages-block-card-image">
-                <img src="{% static 'img/svg/advantages-1.svg' %}" alt="">
-              </div>
-              <div class="advantages-block-card-count">
-                1
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="swiper-slide">
-          <div class="advantages-block-card">
-            <div class="advantages-block-card-title">{{ advantages.second_advantage }}</div>
-            <div class="advantages-block-card-footer">
-              <div class="advantages-block-card-image">
-                <img src="{% static 'img/svg/advantages-2.svg' %}" alt="">
-              </div>
-              <div class="advantages-block-card-count">
-                2
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="swiper-slide">
-          <div class="advantages-block-card">
-            <div class="advantages-block-card-title">{{ advantages.third_advantage }}</div>
-            <div class="advantages-block-card-footer">
-              <div class="advantages-block-card-image">
-                <img src="{% static 'img/svg/advantages-3.svg' %}" alt="">
-              </div>
-              <div class="advantages-block-card-count">
-                3
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="swiper-slide">
-          <div class="advantages-block-card">
-            <div class="advantages-block-card-title">{{ advantages.fourth_advantage }}</div>
-            <div class="advantages-block-card-footer">
-              <div class="advantages-block-card-image">
-                <img src="{% static 'img/svg/advantages-4.svg' %}" alt="">
-              </div>
-              <div class="advantages-block-card-count">
-                4
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="swiper-slide">
-          <div class="advantages-block-card">
-            <div class="advantages-block-card-title">{{ advantages.fifth_advantage }}</div>
-            <div class="advantages-block-card-footer">
-              <div class="advantages-block-card-image">
-                <img src="{% static 'img/svg/advantages-5.svg' %}" alt="">
-              </div>
-              <div class="advantages-block-card-count">
-                5
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="swiper-slide">
-          <div class="advantages-block-card">
-            <div class="advantages-block-card-title">{{ advantages.sixth_advantage }}</div>
-            <div class="advantages-block-card-footer">
-              <div class="advantages-block-card-image">
-                <img src="{% static 'img/svg/advantages-6.svg' %}" alt="">
-              </div>
-              <div class="advantages-block-card-count">
-                6
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="swiper-pagination"></div>
-      <div class="swiper-button-prev"></div>
-      <div class="swiper-button-next"></div>
-    </div>
-  </div>
-</section>
+    </section>
 
 
-  <section class="group-of-companies-block"
-           style="background-image: linear-gradient(90deg, rgba(41,91,184,0.9), rgba(30,30,30,0.9)), url(https://picsum.photos/1920/1080)">
-    <div class="container" >
-      <h3 class="section-title" data-aos="fade-up">{{ groups.title }}</h3>
-      <div class="swiper">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide" >
-            <div class="group-of-companies-block-card" data-aos="fade-up" data-aos-delay="200">
-              <div class="group-of-companies-block-card-logo">
-                <img src="{% static 'img/svg/group-logo-1.svg' %}" alt="">
-              </div>
-              <div class="group-of-companies-block-card-desc">
-                <p>
-                  {{ groups.sandwich_text }}
-                </p>
-              </div>
-              <img class="group-of-companies-block-card-decor" src="{% static 'img/svg/group-1.svg' %}" alt="" data-aos="fade-up-left" data-aos-delay="500">
-              <a href="https://sandwich.kg/ru/" class="group-of-companies-block-card-link red" target="_blank">sandwich.kg</a>
+
+
+
+    <section class="about-us-block">
+        <div class="container">
+            <div class="decor decor-top rellax" data-rellax-speed="-3" data-rellax-percentage="0.5"></div>
+            <div class="decor decor-bottom rellax" data-rellax-speed="3" data-rellax-percentage="0"></div>
+            <h3 class="section-title" data-aos="fade-up" data-aos-delay="250">{{ about_page.page_title }}</h3>
+            <div class="about-us-block-grid">
+                <div class="about-us-block-grid-left rellax" data-rellax-speed="2" data-rellax-percentage="0.5">
+                    <div id="tabs">
+                        <ul class="about-us-block-grid-tabs" data-aos="fade-up" data-aos-delay="300">
+                            <li>
+                                <a href="#about-us-tabs-1" class="about-us-block-grid-tabs-item">
+                                    {{ main_quote.history_title }}
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#about-us-tabs-2" class="about-us-block-grid-tabs-item">
+                                    {{ main_quote.mission_title }}
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#about-us-tabs-3" class="about-us-block-grid-tabs-item">
+                                    {{ main_quote.value_title }}
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="about-us-block-grid-tabs-content" id="about-us-tabs-1" data-aos="fade-up" data-aos-delay="350">
+                            <p>{{ main_quote.history_text }}</p>
+                            <a href="{% url 'about_page' %}" class="button red-button">{{ general_translations.detail_button }}</a>
+                        </div>
+                        <div class="about-us-block-grid-tabs-content" id="about-us-tabs-2" data-aos="fade-up" data-aos-delay="350">
+                            <p>{{ main_quote.mission_text }}</p>
+                            <a href="{% url 'about_page' %}" class="button red-button">{{ general_translations.detail_button }}</a>
+                        </div>
+                        <div class="about-us-block-grid-tabs-content" id="about-us-tabs-3" data-aos="fade-up" data-aos-delay="350">
+                            <p>{{ main_quote.value_text }}</p>
+                            <a href="{% url 'about_page' %}" class="button red-button">{{ general_translations.detail_button }}</a>
+                        </div>
+                    </div>
+
+                    <div class="about-us-block-footer-quote-wrapper desktop">
+                        <div class="about-us-block-footer-quote">
+                            <p data-aos="fade-up" data-aos-delay="400">{{ main_quote.first_line }}</p>
+                            <p data-aos="fade-up" data-aos-delay="450">{{ main_quote.second_line }}</p>
+                            <p data-aos="fade-up" data-aos-delay="500">
+                                {{ main_quote.third_line }}
+                            </p>
+                        </div>
+                        <div class="about-us-block-footer-quote-author">
+                            <div class="about-us-block-footer-quote-author-name" data-aos="fade-up" data-aos-delay="350">{{ main_quote.first_name }}</div>
+                            <div class="about-us-block-footer-quote-author-status" data-aos="fade-up" data-aos-delay="300">{{ main_quote.position }}</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-us-block-grid-right rellax" data-rellax-speed="5" data-rellax-percentage="0.3">
+                    <img src="{% static 'img/png/human.png' %}" data-aos="fade-up" data-aos-delay="300" class="image-1" alt="">
+                    <img src="{% static 'img/png/about-us.png' %}" data-aos="fade-up" data-aos-delay="350" class="image-2" alt="">
+                </div>
             </div>
-          </div>
-          <div class="swiper-slide" >
-            <div class="group-of-companies-block-card" data-aos="fade-up" data-aos-delay="250">
-              <div class="group-of-companies-block-card-logo">
-                <img src="{% static 'img/svg/group-logo-2.svg' %}" alt="">
-              </div>
-              <div class="group-of-companies-block-card-desc">
-                <p>{{ groups.toyboss_text }}</p>
-              </div>
-              <img class="group-of-companies-block-card-decor" src="{% static 'img/svg/group-2.svg' %}" alt="" data-aos="fade-up-left" data-aos-delay="500">
-              <a href="" class="group-of-companies-block-card-link blue">toyboss.kg</a>
+            <div class="about-us-block-footer-quote-wrapper mobile">
+                <div class="about-us-block-footer-quote">
+                    <p data-aos="fade-up" data-aos-delay="400">{{ main_quote.first_line }}</p>
+                    <p data-aos="fade-up" data-aos-delay="450">{{ main_quote.second_line }}</p>
+                    <p data-aos="fade-up" data-aos-delay="500">
+                        {{ main_quote.third_line }}
+                    </p>
+                </div>
+                <div class="about-us-block-footer-quote-author">
+                    <div class="about-us-block-footer-quote-author-name" data-aos="fade-up" data-aos-delay="350">{{ main_quote.first_name }}</div>
+                    <div class="about-us-block-footer-quote-author-status" data-aos="fade-up" data-aos-delay="300">{{ main_quote.position }}</div>
+                </div>
             </div>
-          </div>
-          <div class="swiper-slide" >
-            <div class="group-of-companies-block-card" data-aos="fade-up" data-aos-delay="300">
-              <div class="group-of-companies-block-card-logo">
-                <img src="{% static 'img/svg/group-logo-3.svg' %}" alt="">
-              </div>
-              <div class="group-of-companies-block-card-desc">
-                <p>{{ groups.agrokush_text }}</p>
-              </div>
-              <img class="group-of-companies-block-card-decor" src="{% static 'img/svg/group-3.svg' %}" alt="" data-aos="fade-up-left" data-aos-delay="500">
-              <a href="https://www.agrokush.kg/" class="group-of-companies-block-card-link green">agrokush.kg</a>
-            </div>
-          </div>
-          <div class="swiper-slide" >
-            <div class="group-of-companies-block-card" data-aos="fade-up" data-aos-delay="350">
-              <div class="group-of-companies-block-card-logo">
-                <img src="{% static 'img/svg/group-logo-4.svg' %}" alt="">
-              </div>
-              <div class="group-of-companies-block-card-desc">
-                <p>{{ groups.broiler_text }}</p>
-              </div>
-              <img class="group-of-companies-block-card-decor" src="{% static 'img/svg/group-4.svg' %}" alt="" data-aos="fade-up-left" data-aos-delay="500">
-{#              <a href="" class="group-of-companies-block-card-link orange">broiler.kg</a>#}
-            </div>
-          </div>
         </div>
-        <div class="swiper-pagination"></div>
-        <div class="swiper-button-prev"></div>
-        <div class="swiper-button-next"></div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="production-block" data-aos="fade-in">
-    <div class="decor decor-left rellax" data-rellax-speed="-3" data-rellax-percentage="0.4"></div>
-    <div class="decor decor-right rellax" data-rellax-speed="-3" data-rellax-percentage="0.4"></div>
-    <div class="decor decor-bottom-left rellax" data-rellax-speed="3" data-rellax-percentage="0"></div>
-    <div class="decor decor-bottom-right rellax" data-rellax-speed="3" data-rellax-percentage="0"></div>
 
-    <div class="container">
-      <h3 class="section-title">{{ main_prod.title }}</h3>
-      <div class="production-block-text">
-        <p>{{ main_prod.top_text }}</p>
 
-      </div>
-    </div>
-    <div class="production-block-carousel">
-      <div class="swiper">
-        <div class="swiper-wrapper">
-            {% for i in main_prod.main_prod_slider.all %}
-          <div class="swiper-slide">
-            <img src="{{ i.image.url }}" alt="">
-          </div>
-          {% endfor %}
+
+
+
+
+    <section class="advantages-block not-mode">
+        <div class="container">
+            <h3 class="section-title" data-aos="fade-up" data-aos-delay="200">{{ advantages.main_title }}</h3>
+            <div class="swiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div data-aos="fade-up" data-aos-delay="200" class="advantages-block-card">
+                            <div class="advantages-block-card-title">{{ advantages.first_advantage }}</div>
+                            <div class="advantages-block-card-footer">
+                                <div class="advantages-block-card-image">
+                                    <img src="{% static 'img/svg/advantages-1.svg' %}" alt="">
+                                </div>
+                                <div class="advantages-block-card-count">
+                                    1
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div data-aos="fade-up" data-aos-delay="250" class="advantages-block-card">
+                            <div class="advantages-block-card-title">{{ advantages.second_advantage }}</div>
+                            <div class="advantages-block-card-footer">
+                                <div class="advantages-block-card-image">
+                                    <img src="{% static 'img/svg/advantages-2.svg' %}" alt="">
+                                </div>
+                                <div class="advantages-block-card-count">
+                                    2
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div data-aos="fade-up" data-aos-delay="300" class="advantages-block-card">
+                            <div class="advantages-block-card-title">{{ advantages.third_advantage }}</div>
+                            <div class="advantages-block-card-footer">
+                                <div class="advantages-block-card-image">
+                                    <img src="{% static 'img/svg/advantages-3.svg' %}" alt="">
+                                </div>
+                                <div class="advantages-block-card-count">
+                                    3
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div data-aos="fade-up" data-aos-delay="350" class="advantages-block-card">
+                            <div class="advantages-block-card-title">{{ advantages.fourth_advantage }}</div>
+                            <div class="advantages-block-card-footer">
+                                <div class="advantages-block-card-image">
+                                    <img src="{% static 'img/svg/advantages-4.svg' %}" alt="">
+                                </div>
+                                <div class="advantages-block-card-count">
+                                    4
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div data-aos="fade-up" data-aos-delay="400" class="advantages-block-card">
+                            <div class="advantages-block-card-title">{{ advantages.fifth_advantage }}</div>
+                            <div class="advantages-block-card-footer">
+                                <div class="advantages-block-card-image">
+                                    <img src="{% static 'img/svg/advantages-5.svg' %}" alt="">
+                                </div>
+                                <div class="advantages-block-card-count">
+                                    5
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div data-aos="fade-up" data-aos-delay="450" class="advantages-block-card">
+                            <div class="advantages-block-card-title">{{ advantages.sixth_advantage }}</div>
+                            <div class="advantages-block-card-footer">
+                                <div class="advantages-block-card-image">
+                                    <img src="{% static 'img/svg/advantages-6.svg' %}" alt="">
+                                </div>
+                                <div class="advantages-block-card-count">
+                                    6
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+            </div>
         </div>
-        <div class="swiper-pagination"></div>
-        <div class="swiper-button-prev"></div>
-        <div class="swiper-button-next"></div>
-      </div>
-    </div>
-    <div class="container">
-      <div class="production-block-text">
-        <p>{{ main_prod.bottom_text }}</p>
+    </section>
 
+
+
+
+    <section class="group-of-companies-block"
+             style="background-image: linear-gradient(90deg, rgba(41,91,184,0.9), rgba(30,30,30,0.9)), url({% static 'img/image.jpg' %})">
+        <div class="container">
+            <h3 class="section-title" data-aos="fade-up" data-aos-delay="250">{{ groups.title }}</h3>
+            <div class="swiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="group-of-companies-block-card" data-aos="fade-up" data-aos-delay="200">
+                            <div class="group-of-companies-block-card-logo">
+                                <img src="{% static 'img/svg/group-logo-1.svg' %}" alt="">
+                            </div>
+                            <div class="group-of-companies-block-card-desc">
+                                <p>
+                                    {{ groups.sandwich_text }}
+                                </p>
+                            </div>
+                            <img class="group-of-companies-block-card-decor" src="{% static 'img/svg/group-1.svg' %}" alt="" data-aos="fade-up-left" data-aos-delay="500">
+                            <a href="https://sandwich.kg/ru/" class="group-of-companies-block-card-link red" target="_blank">sandwich.kg</a>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="group-of-companies-block-card" data-aos="fade-up" data-aos-delay="250">
+                            <div class="group-of-companies-block-card-logo">
+                                <img src="{% static 'img/svg/group-logo-2.svg' %}" alt="">
+                            </div>
+                            <div class="group-of-companies-block-card-desc">
+                                <p>{{ groups.toyboss_text }}</p>
+                            </div>
+                            <img class="group-of-companies-block-card-decor" src="{% static 'img/svg/group-2.svg' %}" alt="" data-aos="fade-up-left" data-aos-delay="500">
+                            <a href="https://toyboss.kg/ru/" class="group-of-companies-block-card-link blue">toyboss.kg</a>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="group-of-companies-block-card" data-aos="fade-up" data-aos-delay="300">
+                            <div class="group-of-companies-block-card-logo">
+                                <img src="{% static 'img/svg/group-logo-3.svg' %}" alt="">
+                            </div>
+                            <div class="group-of-companies-block-card-desc">
+                                <p>{{ groups.agrokush_text }}</p>
+                            </div>
+                            <img class="group-of-companies-block-card-decor" src="{% static 'img/svg/group-3.svg' %}" alt="" data-aos="fade-up-left" data-aos-delay="500">
+                            <a href="https://www.agrokush.kg/" class="group-of-companies-block-card-link green" target="_blank">agrokush.kg</a>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="group-of-companies-block-card" data-aos="fade-up" data-aos-delay="350">
+                            <div class="group-of-companies-block-card-logo">
+                                <img src="{% static 'img/svg/group-logo-4.svg' %}" alt="">
+                            </div>
+                            <div class="group-of-companies-block-card-desc">
+                                <p>{{ groups.broiler_text }}</p>
+                            </div>
+                            <img class="group-of-companies-block-card-decor" src="{% static 'img/svg/group-4.svg' %}" alt="" data-aos="fade-up-left" data-aos-delay="500">
+                            {#              <a href="" class="group-of-companies-block-card-link orange">broiler.kg</a>#}
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+    <section class="production-block">
+        <div class="decor decor-left rellax" data-rellax-speed="-3" data-rellax-percentage="0.4"></div>
+        <div class="decor decor-right rellax" data-rellax-speed="-3" data-rellax-percentage="0.4"></div>
+        <div class="decor decor-bottom-left rellax" data-rellax-speed="3" data-rellax-percentage="0"></div>
+        <div class="decor decor-bottom-right rellax" data-rellax-speed="3" data-rellax-percentage="0"></div>
+
+        <div class="container">
+            <h3 class="section-title" data-aos="fade-up" data-aos-delay="250">{{ main_prod.title }}</h3>
+            <div class="production-block-text" data-aos="fade-up" data-aos-delay="300">
+                <p>{{ main_prod.top_text }}</p>
+
+            </div>
+        </div>
+        <div class="production-block-carousel" data-aos="fade-up" data-aos-delay="350">
+            <div class="swiper">
+                <div class="swiper-wrapper">
+                    {% for i in main_prod.main_prod_slider.all %}
+                        <div class="swiper-slide">
+                            <img src="{{ i.image.url }}" alt="">
+                        </div>
+                    {% endfor %}
+
+                </div>
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="production-block-text" data-aos="fade-up" data-aos-delay="400">
+                <p>{{ main_prod.bottom_text }}</p>
+
+                <div class="section-show-more">
+                    <a href="{% url 'production_page' %}" class="button red-button">{{ general_translations.detail_button }}</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="statistics-block" style="background-image: linear-gradient(90deg, rgba(41,91,184,0.9), rgba(30,30,30,0.9)), url({% static 'img/png/stats.png' %})">
+        <div class="container">
+            <h3 class="section-title" data-aos="fade-up" data-aos-delay="250">{{ statistic.title }}</h3>
+            <div class="statistics-block-grid">
+                {% for i in statistic_points %}
+                    <div class="statistics-block-grid-item" data-aos="fade-up" data-aos-delay="100">
+                        <div class="statistics-block-grid-item-title">{{ i.title }}</div>
+                        <div class="statistics-block-grid-item-count">
+                            {% if i.left_postscript %}
+                                {{ i.left_postscript }}
+                            {% endif %}
+                            <span class="counter">{{ i.number }}</span>
+                            {% if i.right_postscript %}
+                                {{ i.right_postscript }}
+                            {% endif %}
+                        </div>
+                        <p class="statistics-block-grid-item-desc">
+                            {{ i.subtitle }}
+                        </p>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <section class="product-block">
+        <div class="container">
+            <h3 class="section-title" data-aos="fade-up" data-aos-delay="250">{{ product_page.page_title }}</h3>
+            <div id="tabs-production">
+                <div style="display: inline-flex; flex-wrap: wrap; gap: 4px; align-items: flex-start;" data-aos="fade-up" data-aos-delay="300" >
+                    <ul class="product-block-nav">
+                    {% for i in product_categories %}
+                        <li>
+                            <a class="product-block-nav-item" href="#product-tab-{{ forloop.counter }}">{{ i.category_title }}</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+
+                    <a class="product-block-nav-item" href="{% url 'products_page' %}">{{ general_translations.product_all }}</a>
+                </div>
+
+                {% for i in product_categories %}
+                    <div data-aos="fade-up" data-aos-delay="350" id="product-tab-{{ forloop.counter }}">
+                        {% if i.sandwich_mark %}
+                            <div class="product-block-sub-nav">
+                                <div class="product-block-sub-nav-item active">
+                                    {{ i.category_title }}
+                                </div>
+                            </div>
+
+                            <a href="https://sandwich.kg/ru/" target="_blank">
+                                {% if request.LANGUAGE_CODE == 'ru' %}
+                                    <img src="{% static 'img/png/sand.png' %}" width="100%" alt="" style="max-width: 100%">
+                                {% elif request.LANGUAGE_CODE == 'ky' %}
+                                    <img src="{% static 'img/png/sand3.png' %}" width="100%" alt="">
+                                {% else %}
+                                    <img src="{% static 'img/png/sand2.png' %}" width="100%" alt="">
+                                {% endif %}
+                            </a>
+                        {% endif %}
+                        {% for j in i.category_products.all %}
+                            {% if j.main_show %}
+                                <div class="product-block-sub-nav">
+                                    <div class="product-block-sub-nav-item active">
+                                        {{ j.product_title }}
+                                    </div>
+                                </div>
+                                <div class="product-block-content">
+                                    <div class="product-block-content-left">
+                                        <ul class="product-block-content-tabs">
+                                            <li class="product-block-content-tabs-item">
+                                                <a href="#product-tab-1-1">{{ general_translations.product_description }}</a>
+                                            </li>
+                                            {% if j.compound %}
+                                                <li class="product-block-content-tabs-item">
+                                                    <a href="#product-tab-1-2">{{ general_translations.product_compound }}</a>
+                                                </li>
+                                            {% endif %}
+                                        </ul>
+                                        <div class="product-block-content-tabs-content-wrapper" id="product-tab-1-1">
+                                            <p class="product-block-content-tabs-content-desc">{{ j.description }}
+                                            </p>
+                                        </div>
+                                        <div class="product-block-content-tabs-content-wrapper" id="product-tab-1-2">
+                                            <p class="product-block-content-tabs-content-desc">{{ j.compound }}</p>
+                                        </div>
+                                        <div class="product-block-content-certificates">
+                                            <div class="product-block-content-certificates-item">
+                                                <img src="{% static 'img/svg/certificate-halal-1.svg' %}" alt="">
+                                            </div>
+                                            <div class="product-block-content-certificates-item">
+                                                <img src="{% static 'img/svg/certificate-halal-2.svg' %}" alt="">
+                                            </div>
+                                            <div class="product-block-content-certificates-item">
+                                                <img src="{% static 'img/svg/certificate-halal-3.svg' %}" alt="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {% if j.first_image_animation and j.second_image_animation and j.third_image_animation %}
+                                        <div class="product-block-content-center">
+                                            <img class="i1" src="{{ j.first_image_animation.url }}" data-aos="fade-up" data-aos-delay="400" alt="">
+                                            <img class="i2" src="{{ j.second_image_animation.url }}" data-aos="fade-up" data-aos-delay="500" alt="">
+                                            <img class="i3" src="{{ j.third_image_animation.url }}" data-aos="fade-up" data-aos-delay="600" alt="">
+                                        </div>
+                                    {% endif %}
+                                    {% if j.image_detail and not j.first_image_animation and not j.second_image_animation and not j.third_image_animation %}
+                                        <div class="product-block-content-center">
+                                            <img src="{{ j.image_detail.url }}" alt="">
+                                        </div>
+                                    {% endif %}
+                                    <div class="product-block-content-center-right mode">
+                                        <div class="subtitle-num">{{ j.fact }}
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <section class="news-block">
+        <div class="container">
+            <h3 class="section-title news-block-title" data-aos="fade-up" data-aos-delay="250">{{ news_page.page_title }}</h3>
+            <div class="swiper">
+                <div class="swiper-wrapper">
+                    {% for i in news_items %}
+                        <div class="swiper-slide">
+                            <div class="news-block-card" data-aos="fade-up" data-aos-delay="300">
+                                <a href="{% url 'news_items' i.slug %}" class="news-block-card-link"></a>
+                            {% for j in i.news_images.all %}
+                                {% if forloop.first %}
+                                <picture class="news-block-card-picture">
+                                    <img class="news-block-card-img" src="{{ j.image_main_jpg.url }}" alt="">
+                                </picture>
+                                {% endif %}
+                                {% endfor %}
+                                <h6 class="news-block-card-date">{{ i.published }}</h6>
+                                <h2 class="news-block-card-title">
+                                    {{ i.news_title }}
+                                </h2>
+                                <p class="news-block-card-desc">
+                                    {% autoescape off %}{{ i.text|truncatewords:10|add_class_to_p }}{% endautoescape %}
+                                </p>
+                            </div>
+                        </div>
+                    {% endfor %}
+
+                </div>
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+            </div>
+            <div class="section-show-more">
+                <a href="{% url 'news_page' %}" class="button red-button">{{ news_page.button_name }}</a>
+            </div>
+        </div>
+    </section>
+    <section class="certificate-block">
+        <div class="container">
+            <h3 class="section-title" data-aos="fade-up" data-aos-delay="250">{{ certificates.title }}</h3>
+            <div class="swiper">
+                <div class="swiper-wrapper" id="lightgallery">
+                    {% for i in certificates.cert_images.all %}
+                        <div class="swiper-slide" data-src="{{ i.cert_image.url }}"
+                             data-sub-html="<h4>{{ i.title }}</h4><p>{{ i.description }}</p>">
+                            <picture class="certificate-block-card-picture" data-aos="fade-up" data-aos-delay="300">
+                                <img class="certificate-block-card-img" src="{{ i.cert_image.url }}" alt="{{ i.title }}">
+                            </picture>
+                        </div>
+                    {% endfor %}
+
+                </div>
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+            </div>
+        </div>
         <div class="section-show-more">
-          <a href="" class="button red-button">Подробнее</a>
+            <a href="{% url 'about_page' %}" class="button red-button">{{ certificates.button_name }}</a>
         </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <section
-        class="statistics-block"
-        style="background-image: linear-gradient(90deg, rgba(41,91,184,0.9), rgba(30,30,30,0.9)), url({% static 'img/png/stats.png' %})">
-    <div class="container">
-        <h3 class="section-title">{{ statistic.title }}</h3>
-        <div class="statistics-block-grid">
-            {% for i in statistic_points %}
-            <div class="statistics-block-grid-item">
-                <div class="statistics-block-grid-item-title">{{ i.title }}</div>
-                <div class="statistics-block-grid-item-count">
-                    {% if i.left_postscript %}
-                    {{ i.left_postscript }}
-                    {% endif %}
-                    <span class="counter">{{ i.number }}</span>
-                {% if i.right_postscript %}
-                    {{ i.right_postscript }}
-                {% endif %}
+    <section class="cooperation-block" style="background-image: linear-gradient(90deg, rgba(41,91,184,0.9), rgba(30,30,30,0.9)), url({% static 'img/png/stats.png' %})">
+        <div class="container">
+            <div class="cooperation-block-grid">
+                <div class="cooperation-block-grid-left">
+                    <h4 class="cooperation-block-grid-left-title" data-aos="fade-up" data-aos-delay="250">{{ main_cooperation.title }}</h4>
+                    <p class="cooperation-block-grid-left-desc" data-aos="fade-up" data-aos-delay="300">{{ main_cooperation.subtitle }}:</p>
                 </div>
-                <p class="statistics-block-grid-item-desc">
-                    {{ i.subtitle }}
-                </p>
-            </div>
-            {% endfor %}
-        </div>
-    </div>
-</section>
-
-  <section class="product-block" data-aos="fade-in">
-    <div class="container">
-      <h3 class="section-title">Продукция</h3>
-      <div id="tabs-production">
-        <ul class="product-block-nav">
-          <li>
-            <a class="product-block-nav-item" href="#product-tab-1">Полукопченые колбасы</a>
-          </li>
-          <li>
-            <a class="product-block-nav-item" href="#product-tab-2">Вареные колбасы</a>
-          </li>
-          <li>
-            <a class="product-block-nav-item" href="#product-tab-3">Сосиски</a>
-          </li>
-          <li>
-            <a class="product-block-nav-item" href="#product-tab-4">КУРИНОЕ МЯСО</a>
-          </li>
-          <li>
-            <a class="product-block-nav-item" href="#product-tab-5">Сэндвичи</a>
-          </li>
-          <li>
-            <a class="product-block-nav-item" href="#product-tab-6">Все</a>
-          </li>
-        </ul>
-        <div id="product-tab-1">
-          <div class="product-block-sub-nav">
-            <div class="product-block-sub-nav-item active">
-              Пепперони
-            </div>
-          </div>
-          <div class="product-block-content">
-            <div class="product-block-content-left">
-              <ul class="product-block-content-tabs">
-                <li class="product-block-content-tabs-item">
-                  <a href="#product-tab-1-1">Описание</a>
-                </li>
-                <li class="product-block-content-tabs-item">
-                  <a href="#product-tab-1-2">Состав</a>
-                </li>
-                <li class="product-block-content-tabs-item">
-                  <a href="#product-tab-1-3">Специи</a>
-                </li>
-              </ul>
-              <div class="product-block-content-tabs-content-wrapper" id="product-tab-1-1">
-                <p class="product-block-content-tabs-content-desc">Пепперони отлично подходит для
-                  приготовления
-                  пиццы. Изысканный, терпкий вкус пицце придает
-                  основной ингредиент – колбаса пепперони. Пепперони отлично подходит для приготовления
-                  пиццы.
-                  Изысканный, терпкий вкус пицце придает основной ингредиент – колбаса пепперони.
-                  Пепперони
-                  отлично подходит для приготовления пиццы. Изысканный, терпкий вкус пицце придает
-                  основной
-                  ингредиент – колбаса пепперони.
-                </p>
-              </div>
-              <div class="product-block-content-tabs-content-wrapper" id="product-tab-1-2">
-                <p class="product-block-content-tabs-content-desc">Lorem ipsum dolor sit amet, consectetur
-                  adipisicing elit. Doloribus, tempora!</p>
-              </div>
-              <div class="product-block-content-tabs-content-wrapper" id="product-tab-1-3">
-                <p class="product-block-content-tabs-content-desc">Lorem ipsum dolor sit amet, consectetur
-                  adipisicing elit. Consequuntur dicta dolore incidunt ipsa neque, quibusdam similique ut.
-                  Ab ipsa, nobis!</p>
-              </div>
-              <div class="product-block-content-certificates">
-                <div class="product-block-content-certificates-item">
-                  <img src="img/svg/certificate-halal-1.svg" alt="">
+                <div class="cooperation-block-grid-right" data-aos="fade-up" data-aos-delay="350">
+                    <img class="cooperation-block-grid-right-img" src="{% static 'img/svg/logo.svg' %}" alt="">
                 </div>
-                <div class="product-block-content-certificates-item">
-                  <img src="img/svg/certificate-halal-2.svg" alt="">
+            </div>
+        </div>
+        <div class="cooperation-block-line"></div>
+        <div class="container">
+            <div class="cooperation-block-contacts">
+                <a data-aos="fade-up" data-aos-delay="400" class="cooperation-block-contacts-link" href="tel:{{ main_cooperation.first_phone }}">{{ main_cooperation.first_city }}:
+                    <span>{{ main_cooperation.first_phone }}</span></a>
+                <a data-aos="fade-up" data-aos-delay="450" class="cooperation-block-contacts-link" href="tel:{{ main_cooperation.second_phone }}">{{ main_cooperation.second_city }}:
+                    <span>{{ main_cooperation.second_phone }}</span></a>
+            </div>
+        </div>
+    </section>
+
+    <section class="faq-block">
+        <div class="container">
+            <h3 class="section-title" data-aos="fade-up" data-aos-delay="250">{{ faq_page.page_title }}</h3>
+            <div class="faq-block-container">
+                <div class="faq-block-accordions" id="faq">
+                    {% for i in questions %}
+                        <div class="faq-block-accordion-item" data-aos="fade-up" data-aos-delay="300">
+                            <button class="faq-block-accordion">{{ i.question }}</button>
+                        </div>
+                        <div class="faq-block-accordion-panel">
+                            {% autoescape off %}{{ i.answer }}{% endautoescape %}
+                        </div>
+                    {% endfor %}
                 </div>
-              </div>
             </div>
-            <div class="product-block-content-center">
-              <img src="img/png/man-product-decor.png" alt="">
+            <div class="section-show-more">
+                <a href="{% url 'faq_page' %}" class="button red-button">{{ faq_page.main_button }}</a>
             </div>
-            <div class="product-block-content-center-right">
-              <div class="product-block-content-center-right-status">
-                ХИТ ПРОДАЖ
-              </div>
-              <div class="product-block-content-center-right-img">
-                <img src="img/png/man-product.png" alt="">
-              </div>
-              <h3 class="product-block-content-center-right-title">Фирменная</h3>
-              <p class="product-block-content-center-right-desc">
-                Фирменный продукт, выпускаемый по эксклюзивной
-                рецептуре отлично подходит для ...
-              </p>
-              <a href="" class="button red-button">Подробнее</a>
-            </div>
-          </div>
         </div>
-        <div id="product-tab-2">
-          <div class="product-block-sub-nav">
-            <div class="product-block-sub-nav-item active">
-              Пепперони
-            </div>
-          </div>
-          <div class="product-block-content">
-            <div class="product-block-content-left">
-              <ul class="product-block-content-tabs">
-                <li class="product-block-content-tabs-item">
-                  <a href="#product-tab-2-1">Описание</a>
-                </li>
-                <li class="product-block-content-tabs-item">
-                  <a href="#product-tab-2-2">Состав</a>
-                </li>
-                <li class="product-block-content-tabs-item">
-                  <a href="#product-tab-2-3">Специи</a>
-                </li>
-              </ul>
-              <div class="product-block-content-tabs-content-wrapper" id="product-tab-2-1">
-                <p class="product-block-content-tabs-content-desc">Пепперони отлично подходит для
-                  приготовления
-                  пиццы. Изысканный, терпкий вкус пицце придает
-                  основной ингредиент – колбаса пепперони. Пепперони отлично подходит для приготовления
-                  пиццы.
-                  Изысканный, терпкий вкус пицце придает основной ингредиент – колбаса пепперони.
-                  Пепперони
-                  отлично подходит для приготовления пиццы. Изысканный, терпкий вкус пицце придает
-                  основной
-                  ингредиент – колбаса пепперони.
-                </p>
-              </div>
-              <div class="product-block-content-tabs-content-wrapper" id="product-tab-2-2">
-                <p class="product-block-content-tabs-content-desc">Lorem ipsum dolor sit amet, consectetur
-                  adipisicing elit. Doloribus, tempora!</p>
-              </div>
-              <div class="product-block-content-tabs-content-wrapper" id="product-tab-2-3">
-                <p class="product-block-content-tabs-content-desc">Lorem ipsum dolor sit amet, consectetur
-                  adipisicing elit. Consequuntur dicta dolore incidunt ipsa neque, quibusdam similique ut.
-                  Ab ipsa, nobis!</p>
-              </div>
+    </section>
 
-              <div class="product-block-content-certificates">
-                <div class="product-block-content-certificates-item">
-                  <img src="img/svg/certificate-halal-1.svg" alt="">
+    <section class="question-block">
+        <div class="container">
+            <div class="question-block-content">
+                <h5 class="question-block-content-title" data-aos="fade-up" data-aos-delay="250">{{ survey.title }}</h5>
+                <h6 class="question-block-content-subtitle" data-aos="fade-up" data-aos-delay="300">{{ survey.subtitle }}</h6>
+                <div class="question-block-content-grid" data-aos="fade-up" data-aos-delay="350">
+                    <a href="{{ survey.link }}" class="button red-button" target="_blank">{{ survey.button_name }}</a>
                 </div>
-                <div class="product-block-content-certificates-item">
-                  <img src="img/svg/certificate-halal-2.svg" alt="">
-                </div>
-              </div>
-            </div>
-            <div class="product-block-content-center">
-              <img src="img/png/man-product-decor.png" alt="">
-            </div>
-            <div class="product-block-content-center-right">
-              <div class="product-block-content-center-right-status">
-                ХИТ ПРОДАЖ
-              </div>
-              <div class="product-block-content-center-right-img">
-                <img src="img/png/man-product.png" alt="">
-              </div>
-              <h3 class="product-block-content-center-right-title">Фирменная</h3>
-              <p class="product-block-content-center-right-desc">
-                Фирменный продукт, выпускаемый по эксклюзивной
-                рецептуре отлично подходит для ...
-              </p>
-              <a href="" class="button red-button">Подробнее</a>
-            </div>
-          </div>
-        </div>
-        <div id="product-tab-3"></div>
-        <div id="product-tab-4"></div>
-        <div id="product-tab-5"></div>
-        <div id="product-tab-6"></div>
-      </div>
-
-    </div>
-  </section>
-
-  <section class="news-block" data-aos="fade-in">
-    <div class="container">
-      <h3 class="section-title news-block-title">{{ news_page.page_title }}</h3>
-      <div class="swiper">
-        <div class="swiper-wrapper">
-            {% for i in news_items %}
-          <div class="swiper-slide">
-            <div class="news-block-card">
-              <a href="" class="news-block-card-link"></a>
-              <picture class="news-block-card-picture">
-                <img class="news-block-card-img" src="https://picsum.photos/350/300" alt="">
-              </picture>
-              <h6 class="news-block-card-date">{{ i.published }}</h6>
-              <h2 class="news-block-card-title">
-                {{ i.news_title }}
-              </h2>
-              <p class="news-block-card-desc">
-                {% autoescape off %}{{ i.text|truncatewords:10|add_class_to_p }}{% endautoescape %}
-              </p>
-            </div>
-          </div>
-          {% endfor %}
-        </div>
-        <div class="swiper-pagination"></div>
-        <div class="swiper-button-prev"></div>
-        <div class="swiper-button-next"></div>
-      </div>
-      <div class="section-show-more">
-        <a href="" class="button red-button">Все новости</a>
-      </div>
-    </div>
-  </section>
-
-  <section class="certificate-block" data-aos="fade-in">
-    <div class="container">
-      <h3 class="section-title">{{ certificates.title }}</h3>
-      <div class="swiper">
-        <div class="swiper-wrapper" id="lightgallery">
-
-          {% for i in certificates.cert_images.all %}
-                <div class="swiper-slide" data-src="{{ i.cert_image }}" data-sub-html="<h4>{{ i.title }}</h4><p>{{ i.description }}</p>">
-                    <picture class="certificate-block-card-picture">
-                        <img class="certificate-block-card-img" src="{{ i.cert_image.url }}" alt="{{ i.title }}">
-                    </picture>
-                </div>
-                {% endfor %}
-
-
-        </div>
-        <div class="swiper-pagination"></div>
-        <div class="swiper-button-prev"></div>
-        <div class="swiper-button-next"></div>
-      </div>
-    </div>
-    <div class="section-show-more">
-      <a href="" class="button red-button">{{ certificates.button_name }}</a>
-    </div>
-  </section>
-
-  <section
-          class="cooperation-block"
-          data-aos="fade-in"
-          style="background-image: linear-gradient(90deg, rgba(41,91,184,0.9), rgba(30,30,30,0.9)), url(https://picsum.photos/1920/465)"
-  >
-    <div class="container">
-      <div class="cooperation-block-grid">
-        <div class="cooperation-block-grid-left">
-          <h4 class="cooperation-block-grid-left-title">{{ main_cooperation.title }}</h4>
-          <p class="cooperation-block-grid-left-desc">{{ main_cooperation.subtitle }}:</p>
-        </div>
-        <div class="cooperation-block-grid-right">
-          <img class="cooperation-block-grid-right-img" src="{% static 'img/svg/logo.svg' %}" alt="">
-        </div>
-      </div>
-    </div>
-    <div class="cooperation-block-line"></div>
-    <div class="container">
-      <div class="cooperation-block-contacts">
-        <a class="cooperation-block-contacts-link" href="tel:{{ main_cooperation.first_phone }}">{{ main_cooperation.first_city }}:
-          <span>{{ main_cooperation.first_phone }}</span></a>
-        <a class="cooperation-block-contacts-link" href="tel:{{ main_cooperation.second_phone }}">{{ main_cooperation.second_city }}:
-          <span>{{ main_cooperation.second_phone }}</span></a>
-      </div>
-    </div>
-  </section>
-
-  <section class="faq-block" data-aos="fade-in">
-    <div class="container">
-        <h3 class="section-title">{{ faq_page.page_title }}</h3>
-        <div class="faq-block-container">
-            <div class="faq-block-accordions" id="faq">
-                {% for i in questions %}
-                <div class="faq-block-accordion-item">
-                    <button class="faq-block-accordion">{{ i.question }}</button>
-                </div>
-                <div class="faq-block-accordion-panel">
-                    {% autoescape off %}{{ i.answer }}{% endautoescape %}
-                </div>
-                {% endfor %}
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-  <section class="question-block" data-aos="fade-in">
-    <div class="container">
-      <div class="question-block-content">
-        <h5 class="question-block-content-title">Примите участие в опросе</h5>
-        <h6 class="question-block-content-subtitle">Уделите 2 минуты и помогите стать нам лучше</h6>
-        <div class="question-block-content-grid">
-          <a href="" class="button red-button">От друзей</a>
-        </div>
-      </div>
-    </div>
-  </section>
-  
- {% endblock %}
+{% endblock %}

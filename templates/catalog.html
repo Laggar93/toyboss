@@ -1,7 +1,15 @@
 {% extends 'base.html' %}
 {% load static %}
+{% block seo %}
+    <title>{{ product_page.title }}</title>
+    <meta name="title" content="{{ product_page.title }}">
+    <meta name="keywords" content="{{ product_page.keywords }}">
+    <meta name="description" content="{{ product_page.description }}">
+    <meta property="og:title" content="{{ product_page.title }}">
+    <meta property="og:url" content="{{ site_name }}{{ request.path }}">
+    <meta property="og:description" content="{{ product_page.description }}">
+{% endblock %}
 {% block content %}
-
 
     <section class="product-block" id="tabs-production" style="padding-bottom: 0">
         <div class="container">
@@ -20,27 +28,40 @@
             </div>
             {% for i in product_categories %}
                 <div id="product-tab-{{ forloop.counter }}">
-                    <div class="catalogs" {% if i.chicken_mark %}style="background-color: #51A563;"{% endif %}>
-                        <div class="container">
-                            <h5 class="catalogs-title">{{ i.category_title }}</h5>
-                            {% if i.sandwich_mark %}
-                                <a href="https://sandwich.kg/ru/" target="_blank">
+                {% if i.sandwich_mark %}
+{#                        <div id="product-tab-5">#}
+                            <a href="https://sandwich.kg/ru/" target="_blank">
                                     {% if request.LANGUAGE_CODE == 'ru' %}
                                         <img src="{% static 'img/png/sand.png' %}" width="100%" alt="">
                                     {% elif request.LANGUAGE_CODE == 'ky' %}
-                                        <img src="{% static 'img/png/sandky.png' %}" width="100%" alt="">
+                                        <img src="{% static 'img/png/sand3.png' %}" width="100%" alt="">
                                     {% else %}
-                                        <img src="{% static 'img/png/sandeng.png' %}" width="100%" alt="">
+                                        <img src="{% static 'img/png/sand2.png' %}" width="100%" alt="">
                                     {% endif %}
                                 </a>
-                            {% endif %}
+{#                        </div>#}
+                    {% endif %}
+                {% if not i.sandwich_mark %}
+                    <div class="catalogs" {% if i.chicken_mark %}style="background-color: #51A563;"{% endif %}>
+                        <div class="container">
+                            <h5 class="catalogs-title">{{ i.category_title }}</h5>
                             <div class="catalogs-grid">
                                 {% for j in i.category_products.all %}
+                                    {% if j.catalog_show %}
                                     <div class="catalogs-grid-item">
                                         <a href="#ex{{ j.id }}" rel="modal:open" class="link-modal">Open Modal</a>
-                                    {% if j.image_semismocked %}
-                                        <img class="catalogs-grid-item-image" src="{{ j.image_semismocked.url }}" alt="" style="margin-left: 25px">
-                                    {% endif %}
+                                        {% if j.image_semismocked %}
+                                            <img class="catalogs-grid-item-image" src="{{ j.image_semismocked.url }}" alt="" style="margin-left: 25px">
+                                        {% endif %}
+                                    {% if j.image_boiled %}
+                                            <img class="catalogs-grid-item-image" src="{{ j.image_boiled.url }}" alt="" style="margin-left: 25px">
+                                        {% endif %}
+                                    {% if j.image_chicken %}
+                                            <img class="catalogs-grid-item-image center" src="{{ j.image_chicken.url }}" alt="">
+                                        {% endif %}
+                                    {% if j.image_sausages %}
+                                            <img class="catalogs-grid-item-image center" src="{{ j.image_sausages.url }}" alt="">
+                                        {% endif %}
                                         <h3 class="catalogs-grid-item-title">{{ j.product_title }}</h3>
                                         <p class="catalogs-grid-item-desc">{{ j.description }}</p>
                                         <div id="ex{{ j.id }}" class="modal">
@@ -54,12 +75,14 @@
                                                             </div>
                                                         </div>
                                                         <ul class="product-block-content-tabs">
+                                                        {% if j.description %}
                                                             <li class="product-block-content-tabs-item">
-                                                                <a href="#product-tab-1-1">Описание</a>
+                                                                <a href="#product-tab-1-1">{{ general_translations.product_description }}</a>
                                                             </li>
+                                                        {% endif %}
                                                             {% if j.compound %}
                                                                 <li class="product-block-content-tabs-item">
-                                                                    <a href="#product-tab-1-2">Состав</a>
+                                                                    <a href="#product-tab-1-2">{{ general_translations.product_compound }}</a>
                                                                 </li>
                                                             {% endif %}
                                                         </ul>
@@ -80,35 +103,35 @@
                                                                 <img src="{% static 'img/svg/certificate-halal-2.svg' %}" alt="">
                                                             </div>
                                                             <div class="product-block-content-certificates-item">
-                                                <img src="{% static 'img/svg/certificate-halal-3.svg' %}" alt="">
-                                            </div>
+                                                                <img src="{% static 'img/svg/certificate-halal-3.svg' %}" alt="">
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                {% if j.image_detail %}
-                                                    <div class="product-block-content-center">
-                                                        <img src="{{ j.image_detail.url }}" alt="">
-                                                    </div>
-                                                {% endif %}
+                                                    {% if j.image_detail %}
+                                                        <div class="product-block-content-center">
+                                                            <img src="{{ j.image_detail.url }}" alt="">
+                                                        </div>
+                                                    {% endif %}
+                                                {% if j.fact %}
                                                     <div class="product-block-content-center-right mode">
                                                         <div class="subtitle-num">{{ j.fact }}
                                                         </div>
                                                     </div>
+                                                {% endif %}
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
+                                    {% endif %}
                                 {% endfor %}
                             </div>
                         </div>
                     </div>
+                {% endif %}
                 </div>
+
             {% endfor %}
 
-            <div id="product-tab-5">
-                <a href="https://sandwich.kg/ru/">
-                    <img src="img/png/sand.png" width="100%" alt="">
-                </a>
-            </div>
         </div>
 
     </section>

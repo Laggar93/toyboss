@@ -175,6 +175,7 @@ img {
   .button.red-button{
     padding: 0 20px;
     height: 46px;
+    cursor: pointer;
     @media (max-width: 1200px) {
       display: none;
     }
@@ -382,6 +383,7 @@ img {
     color: #ffffff;
   }
   .footer-right-nav{
+    margin-top: -10px;
     a{
       display: flex;
       width: 100%;

@@ -1,15 +1,25 @@
 {% extends 'base.html' %}
 {% load static %}
+{% block seo %}
+    <title>{{ current_news.title }}</title>
+    <meta name="title" content="{{ current_news.title }}">
+    <meta name="keywords" content="{{ current_news.keywords }}">
+    <meta name="description" content="{{ current_news.description }}">
+    <meta property="og:title" content="{{ current_news.title }}">
+    <meta property="og:url" content="{{ site_name }}{{ request.path }}">
+    <meta property="og:description" content="{{ current_news.description }}">
+{% endblock %}
 {% load custom_tags %}
 {% block content %}
-    <section class="news-detail">
-        <div class="container">
-            <div class="date">{{ current_news.published }}</div>
-            <h1 class="title">{{ current_news.news_title }}</h1>
-            <div class="swiper-container">
-                <div class="swiper">
-                    <div class="swiper-wrapper">
-                        {% for i in current_news.news_images.all %}
+
+<section class="news-detail">
+    <div class="container">
+        <div class="date">{{ current_news.published }}</div>
+        <h1 class="title">{{ current_news.news_title }}</h1>
+        <div class="swiper-container">
+            <div class="swiper">
+                <div class="swiper-wrapper">
+                    {% for i in current_news.news_images.all %}
                             <div class="swiper-slide">
                                 <picture class="image">
                                     <source type="image/webp" media="(min-width: 1200px)" srcset="{{ i.image_1499_webp.url }} 1x, {{ i.image_1499_webp.url }} 2x">
@@ -18,38 +28,21 @@
                                 </picture>
                             </div>
                         {% endfor %}
-
-                    </div>
                 </div>
-                <div class="swiper-button-prev"></div>
-                <div class="swiper-button-next"></div>
             </div>
-            <div class="swiper-pagination"></div>
-            <div class="desc">
-                {% autoescape off %}{{ current_news.text|add_class_to_p }}{% endautoescape %}
-
-                <div class="line"></div>
-
-            </div>
-
-            {#        <div class="social">#}
-            {#            Поделиться:#}
-            {#            <a href="">#}
-            {#                <img src="img/svg/vk.svg" alt="">#}
-            {#            </a>#}
-            {#            <a href="">#}
-            {#                <img src="img/svg/ok.svg" alt="">#}
-            {#            </a>#}
-            {#            <a href="">#}
-            {#                <img src="img/svg/telegram.svg" alt="">#}
-            {#            </a>#}
-            {#            <a href="">#}
-            {#                <img src="img/svg/whatsappI.svg" alt="">#}
-            {#            </a>#}
-            {#        </div>#}
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
         </div>
-    </section>
-    <section class="news-block">
+        <div class="swiper-pagination"></div>
+        <div class="desc">
+            {% autoescape off %}{{ current_news.text|add_class_to_p }}{% endautoescape %}
+            <div class="line"></div>
+        </div>
+    </div>
+</section>
+
+
+<section class="news-block">
         <div class="container">
             <h3 class="section-title section-title-left news-block-title">{{ news_page.other_news_title }}</h3>
             <div class="swiper">
@@ -58,9 +51,13 @@
                         <div class="swiper-slide">
                             <div class="news-block-card">
                                 <a href="{% url 'news_items' i.slug %}" class="news-block-card-link"></a>
+                                {% for j in i.news_images.all %}
+                                {% if forloop.first %}
                                 <picture class="news-block-card-picture">
-                                    <img class="news-block-card-img" src="https://picsum.photos/350/300" alt="">
+                                    <img class="news-block-card-img" src="{{ j.image_main_jpg.url }}" alt="">
                                 </picture>
+                                {% endif %}
+                                {% endfor %}
                                 <h6 class="news-block-card-date">{{ i.published }}</h6>
                                 <h2 class="news-block-card-title">
                                     {{ i.news_title }}

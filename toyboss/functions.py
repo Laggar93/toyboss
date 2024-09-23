@@ -8,7 +8,7 @@ from django.core.files.uploadedfile import InMemoryUploadedFile
 import random, string
 
 
-quality = 100
+quality = 70
 reduce = None
 
 

@@ -1,0 +1,3 @@
+User-agent: *
+Disallow: /UBp6tR5=mGqWB
+Sitemap: {{site_name}}/sitemap.xml

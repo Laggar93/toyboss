@@ -4,7 +4,7 @@ from production.models import Advantages
 from about.models import StatisticPoints, Statistic, Certificates, AboutPage, History, Mission, Vision
 from product.models import ProductCategory, Products, ProductPage
 from news.models import NewsPage, NewsItem
-from .models import MainPage, Groups, MainProd, MainCooperation, MainPageSlider, MainQuote
+from .models import MainPage, Groups, MainProd, MainCooperation, MainPageSlider, MainQuote, Survey
 
 
 def main_view(request):
@@ -34,9 +34,10 @@ def main_view(request):
         'mission': Mission.objects.first(),
         'vision': Vision.objects.first(),
         'main_quote': MainQuote.objects.first(),
+        'survey': Survey.objects.first(),
         'link_kg': link_kg,
         'link_ru': link_ru,
         'link_en': link_en,
     }
 
-    return render(request, 'index1.html', content)
+    return render(request, 'index.html', content)

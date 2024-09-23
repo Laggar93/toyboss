@@ -14,7 +14,14 @@ class ProductsTranslationOptions(TranslationOptions):
     #                       'en': ('category_title')}
 
 
+class ProductPageTranslationOptions(TranslationOptions):
+    fields = ('title', 'description', 'keywords', 'page_title')
+    required_languages = {'ky': ('title', 'page_title'),
+                          'en': ('title', 'page_title')}
+
+
 translator.register(ProductCategory, ProductCategoryTranslationOptions)
 translator.register(Products, ProductsTranslationOptions)
+translator.register(ProductPage, ProductPageTranslationOptions)
 
 

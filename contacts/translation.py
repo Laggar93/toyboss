@@ -51,9 +51,9 @@ class CorporateOfficeTranslationOptions(TranslationOptions):
 
 
 class ContactFormTranslationOptions(TranslationOptions):
-    fields = ('main_title', 'subtitle', 'name', 'message', 'send_button', 'phone')
-    required_languages = {'ky': ('main_title', 'subtitle', 'name', 'message', 'send_button', 'phone'),
-                          'en': ('main_title', 'subtitle', 'name', 'message', 'send_button', 'phone')}
+    fields = ('main_title', 'subtitle', 'name', 'email', 'message', 'rules', 'send_button', 'phone')
+    required_languages = {'ky': ('main_title', 'subtitle', 'name', 'email', 'message', 'rules', 'send_button', 'phone'),
+                          'en': ('main_title', 'subtitle', 'name', 'email', 'message', 'rules', 'send_button', 'phone')}
 
 
 translator.register(ContactsPage, ContactsPageTranslationOptions)

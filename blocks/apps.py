@@ -3,4 +3,4 @@ from django.apps import AppConfig
 
 class BlocksConfig(AppConfig):
     name = 'blocks'
-    verbose_name = 'Общие блоки'
+    verbose_name = 'Блоки'

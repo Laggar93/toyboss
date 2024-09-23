@@ -14,8 +14,11 @@
     <link rel="stylesheet" href="{% static 'libs/lightgallery/lightgallery.css' %}">
     <link rel="stylesheet" href="{% static 'libs/modals/jquery.modal.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/global.css' %}">
+    <style>.blocker{z-index: 20}</style>
+    <link rel="icon" href="{% static 'img/svg/favicon.svg' %}">
 
-    <title>Document</title>
+    {% block seo %}
+    {% endblock %}
     <script>
         function saveScrollPosition(savePosition) {
             console.log('savePosition', savePosition);
@@ -23,73 +26,76 @@
                 localStorage.setItem('scrollPosition', window.scrollY);
             }
         }
+
         function changeLanguage(url, savePosition) {
             saveScrollPosition(savePosition);
             window.location.href = url;
         }
+
         window.addEventListener('beforeunload', saveScrollPosition);
     </script>
 </head>
 <body>
 <div id="preloader">
     <div>
-        <img src="{% static 'img/svg/preloader.svg' %}" alt="">
+        <img src="{% static 'img/svg/preloader.svg' %}" alt="Toyboss">
     </div>
 </div>
-<main class="main ">
+<main class="main">
 
     <header class="header">
         <div class="container">
             <div class="header-grid">
                 <a href="{% url 'main_page' %}" class="header-logo">
-                    <img src="{% static 'img/svg/toyboss-logo-white.svg' %}" alt="">
+                    <img src="{% static 'img/svg/toyboss-logo-white.svg' %}" alt="Toyboss">
                 </a>
                 <nav class="nav">
-                    <a href="{% url 'about_page' %}">О НАС</a>
-                    <a href="{% url 'production_page' %}">Производство</a>
-                    <a href="{% url 'products_page' %}">Продукция</a>
-                    <a href="{% url 'cooperation_page' %}">СОТРУДНИЧЕСТВО</a>
-                    <a href="{% url 'news_page' %}">НОВОСТИ</a>
-                    <a href="{% url 'contacts' %}">КОНТАКТЫ</a>
+                    <a href="{% url 'about_page' %}">{{ navigation_menu.about }}</a>
+                    <a href="{% url 'production_page' %}">{{ navigation_menu.production }}</a>
+                    <a href="{% url 'products_page' %}">{{ navigation_menu.product }}</a>
+                    <a href="{% url 'cooperation_page' %}">{{ navigation_menu.cooperation }}</a>
+                    <a href="{% url 'news_page' %}">{{ navigation_menu.news }}</a>
+                    <a href="{% url 'contacts' %}">{{ navigation_menu.contact }}</a>
                 </nav>
                 <div class="nav-right">
                     <div class="nav-right-set-lang">
                         <div onclick="openDropdown('landDropdown')" class="dropbtn">{{ LANGUAGE_CODE }}</div>
                         <div id="landDropdown" class="dropdown-content">
                             <a href="javascript:void(0);" onclick="changeLanguage('{{ link_kg }}', true)" {% if request.LANGUAGE_CODE == 'ky' %}class="active"{% endif %}><img
-                                    src="{% static 'img/svg/kg.svg' %}" alt="">KY</a>
+                                    src="{% static 'img/svg/kg.svg' %}" alt="KY">KY</a>
 
                             <a href="javascript:void(0);" onclick="changeLanguage('{{ link_ru }}', true)" {% if request.LANGUAGE_CODE == 'ru' %}class="active"{% endif %}><img
-                                    src="{% static 'img/svg/ru.svg' %}" alt="">RU</a>
+                                    src="{% static 'img/svg/ru.svg' %}" alt="RU">RU</a>
 
                             <a href="javascript:void(0);" onclick="changeLanguage('{{ link_en }}', true)" {% if request.LANGUAGE_CODE == 'en' %}class="active"{% endif %}><img
-                                    src="{% static 'img/svg/en.svg' %}" alt="">EN</a>
+                                    src="{% static 'img/svg/en.svg' %}" alt="EN">EN</a>
                         </div>
                     </div>
                     <div class="mobile-burger" onclick="showMobileMenu()">
-                        <img src="{% static 'img/svg/menu.svg' %}" alt="">
+                        <img src="{% static 'img/svg/menu.svg' %}" alt="Toyboss">
                     </div>
-                    <a href="" class="red-button button">Игра «Ustukan»</a>
+                    <a class="red-button button showError" id="showError">{{ navigation_menu.ustukan_game_general }}</a>
                 </div>
+
             </div>
         </div>
     </header>
     <div id="mobile-menu" class="mobile-menu">
         <div class="mobile-menu-head">
-            <a href="./"><img src="{% static 'img/svg/toyboss-logo-blue.svg' %}" alt=""></a>
+            <a href="{% url 'main_page' %}"><img src="{% static 'img/svg/toyboss-logo-blue.svg' %}" alt="Toyboss"></a>
             <div onclick="hiddenMobileMenu()">
-                <img src="{% static 'img/svg/close.svg' %}" alt="">
+                <img src="{% static 'img/svg/close.svg' %}" alt="Toyboss">
             </div>
         </div>
         <nav class="mobile-menu-head-nav">
-            <a href="./about-us.html">О НАС</a>
-            <a href="./production.html">Производство</a>
-            <a href="./catalog.html">Продукция</a>
-            <a href="./cooperation.html">СОТРУДНИЧЕСТВО</a>
-            <a href="./news.html">НОВОСТИ</a>
-            <a href="./contacts.html">КОНТАКТЫ</a>
+            <a href="{% url 'about_page' %}">{{ navigation_menu.about }}</a>
+                    <a href="{% url 'production_page' %}">{{ navigation_menu.production }}</a>
+                    <a href="{% url 'products_page' %}">{{ navigation_menu.product }}</a>
+                    <a href="{% url 'cooperation_page' %}">{{ navigation_menu.cooperation }}</a>
+                    <a href="{% url 'news_page' %}">{{ navigation_menu.news }}</a>
+                    <a href="{% url 'contacts' %}">{{ navigation_menu.contact }}</a>
         </nav>
-        <a href="" class="red-button button">Игра «Ustukan»</a>
+        <a class="red-button button showError" id="showError">{{ navigation_menu.ustukan_game_general }}</a>
     </div>
     {% block content %}
     {% endblock %}
@@ -97,54 +103,46 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-grid-left">
-                    <a href="" class="footer-grid-left-logo"><img src="{% static 'img/svg/toyboss-logo-white.svg' %}" alt=""></a>
-                    <p class="footer-slogan">Компания «Тойбосс» -производитель
-                        колбасных изделий</p>
+                    <a href="{% url 'main_page' %}" class="footer-grid-left-logo"><img src="{% static 'img/svg/toyboss-logo-white.svg' %}" alt="Toyboss"></a>
+                    <p class="footer-slogan">{{ footer.title }}</p>
                     <div class="footer-social">
-                        <a href="">
-                            <img src="{% static 'img/svg/facebook.svg' %}" alt="">
+                        {% for i in social_network.social_items.all %}
+                        <a href="{{ i.link }}" target="_blank">
+                            <img src="{{ i.icon.url }}" alt="{{ i.link }}">
                         </a>
-                        <a href="">
-                            <img src="{% static 'img/svg/tiktok.svg' %}" alt="">
-                        </a>
-                        <a href="">
-                            <img src="{% static 'img/svg/facebook-2.svg' %}" alt="">
-                        </a>
-                        <a href="">
-                            <img src="{% static 'img/svg/youtube.svg' %}" alt="">
-                        </a>
+                        {% endfor %}
                     </div>
                     <div class="footer-whatsapp">
                         <div class="footer-whatsapp-label">WhatsApp:</div>
-                        <a class="footer-whatsapp-link" href="tel: +996 312 45 37 66"><img src="{% static 'img/svg/whatsapp.svg' %}"
-                                                                                           alt="">+996 312 45 37 66</a>
+                        <a class="footer-whatsapp-link" href="https://wa.me/{{ footer.whatsup_number }}"><img src="{% static 'img/svg/whatsapp.svg' %}"
+                                                                                           alt="Toyboss WhatsApp">{{ footer.whatsup_number }}</a>
                     </div>
                 </div>
                 <div class="footer-grid-right">
                     <div>
-                        <div class="footer-right-title">контакты</div>
+                        <div class="footer-right-title">{{ navigation_menu.contact }}</div>
                         <div class="footer-right-info">
-                            <div class="footer-right-info-label">Офис в г. Бишкек</div>
-                            <div class="footer-right-info-title">Ул. Чокана Валиханова 2/3Б</div>
+                            <div class="footer-right-info-label">{{ footer.office_title }}</div>
+                            <div class="footer-right-info-title">{{ footer.address }}</div>
                         </div>
                         <div class="footer-right-info">
-                            <div class="footer-right-info-label">Телефон:</div>
-                            <div class="footer-right-info-title">+996 312 45 37 66</div>
+                            <div class="footer-right-info-label">{{ footer.phone_title }}:</div>
+                            <div class="footer-right-info-title">{{ footer.phone_number }}</div>
                         </div>
                         <div class="footer-right-info">
                             <div class="footer-right-info-label">E-mail:</div>
-                            <div class="footer-right-info-title">info@toyboss.kg</div>
+                            <div class="footer-right-info-title">{{ footer.email }}</div>
                         </div>
                     </div>
                     <div>
                         <div class="footer-right-title">Меню</div>
                         <nav class="footer-right-nav">
-                            <a href="">О НАС</a>
-                            <a href="./production.html">Производство</a>
-                            <a href="./catalog.html">Продукция</a>
-                            <a href="./cooperation.html">СОТРУДНИЧЕСТВО</a>
-                            <a href="">НОВОСТИ</a>
-                            <a href="{% url 'faq_page' %}">Часто задаваемые вопросы</a>
+                            <a href="{% url 'about_page' %}">{{ navigation_menu.about }}</a>
+                    <a href="{% url 'production_page' %}">{{ navigation_menu.production }}</a>
+                    <a href="{% url 'products_page' %}">{{ navigation_menu.product }}</a>
+                    <a href="{% url 'cooperation_page' %}">{{ navigation_menu.cooperation }}</a>
+                    <a href="{% url 'news_page' %}">{{ navigation_menu.news }}</a>
+                            <a href="{% url 'faq_page' %}"> {{ navigation_menu.faq }}</a>
                         </nav>
                     </div>
                 </div>
@@ -152,19 +150,38 @@
         </div>
     </footer>
     <div class="footer-copyright">
-        Все права защищены. ОсОО Адал Азык 2024
+        {{ footer.rights }} 2012-{% now 'Y' %}
     </div>
 </main>
 
-<div id="modalSuccess" class="modal-form modal">
+{#<div id="modalSuccess" class="modal-form modal">#}
+{#    <div class="modal-form-flex">#}
+{#        <a href="#" rel="modal:close" class="modal-form-close">#}
+{#            <img src="{% static 'img/svg/close-modal.svg' %}" alt="">#}
+{#        </a>#}
+{#        <img src="{% static 'img/svg/check.svg' %}" class="modal-form-image" alt="">#}
+{#        <h4 class="modal-form-title">Спасибо, ваша заявка успешно отправлена</h4>#}
+{#    </div>#}
+{#</div>#}
+<div id="modalError" class="modal-form modal" style="max-width: 500px">
     <div class="modal-form-flex">
         <a href="#" rel="modal:close" class="modal-form-close">
             <img src="{% static 'img/svg/close-modal.svg' %}" alt="">
         </a>
-        <img src="{% static 'img/svg/check.svg' %}" class="modal-form-image" alt="">
-        <h4 class="modal-form-title">Спасибо, ваша заявка успешно отправлена</h4>
+        {#    <img src="{% static 'img/svg/check.svg' %}" class="modal-form-image" alt="">#}
+        {#    <h4 class="modal-form-title">Игра еще в разработке</h4>#}
+        {#    <img src="{% static 'img/error.png' %}" alt="" width="90px">#}
+        {% if navigation_menu.ustukan_game_first %}
+        <h4 class="modal-form-title error-title">{{ navigation_menu.ustukan_game_first }}</h4>
+        {% endif %}
+        <br>
+    {% if navigation_menu.ustukan_game_second %}
+        <h4 class="modal-form-title error-title">{{ navigation_menu.ustukan_game_second }}</h4>
+    {% endif %}
     </div>
+
 </div>
+
 
 <script src="{% static 'libs/jquery/jquery-v2.2.4.min.js' %}"></script>
 <script>
@@ -183,24 +200,20 @@
 <script src="{% static 'libs/modals/modals.js' %}"></script>
 <script src="{% static 'js/swiper.js' %}"></script>
 <script src="{% static 'js/global.js' %}"></script>
+{% block scripts %}
+{% endblock %}
 <script>
     // $('#modalSuccess').modal({
     //   showClose: false
     // });
-    // данная функция вызовет модальное окно success
-</script>
-<script>
-    window.addEventListener('load', function () {
-        const scrollPosition = localStorage.getItem('scrollPosition');
-        if (scrollPosition !== null) {
-            window.scrollTo({
-                top: parseInt(scrollPosition),
-                left: 0,
-                behavior: "smooth",
-            });
-            localStorage.removeItem('scrollPosition');
-        }
+
+    $(".showError").click(function () {
+        $('#modalError').modal({
+            showClose: false
+        })
     });
+
+    // данная функция вызовет модальное окно success
 </script>
 </body>
 </html>

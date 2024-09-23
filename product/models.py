@@ -49,12 +49,14 @@ class Products(models.Model):
     image_semismocked = models.ImageField('Изображение 239 x 306 (полукопченая колбаса)', upload_to=get_file_path, help_text=image_help_text, blank=True)
     image_boiled = models.ImageField('Изображение 274 x 331 (вареная колбаса)', upload_to=get_file_path, help_text=image_help_text, blank=True)
     image_chicken = models.ImageField('Изображение 185 x 267 (куриное мясо)', upload_to=get_file_path, help_text=image_help_text, blank=True)
-    image_sausages = models.ImageField('Изображение 199 x 251 (куриное мясо)', upload_to=get_file_path, help_text=image_help_text, blank=True)
+    image_sausages = models.ImageField('Изображение 199 x 251 (сосиски)', upload_to=get_file_path, help_text=image_help_text, blank=True)
 
     image_detail = models.ImageField('Детальное изображение продукции', upload_to=get_file_path, help_text=image_help_text, blank=True)
 
 
     main_show = models.BooleanField('Отобразить на главной странице', default=False, blank=True)
+    catalog_show = models.BooleanField('Отобразить на странице продукции (каталога)', default=True, blank=True)
+
 
     slug = models.SlugField('URL', max_length=50, allow_unicode=True, unique=True, blank=True)
 
@@ -179,6 +181,12 @@ class Products(models.Model):
         else:
             return 'Изображение не найдено'
     image_tag.short_description = 'Изображение продукта'
+
+    def image_tag_detail(self):
+        if self.image_detail:
+            return mark_safe('<img src="%s" style="width: 100px; height:100px;" />' % self.image_detail.url)
+
+    image_tag_detail.short_description = 'Детальное изображение продукта'
 
 
 class ProductPage(models.Model):

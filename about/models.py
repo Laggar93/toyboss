@@ -38,7 +38,6 @@ class History(models.Model):
 
         if self.image and self.image != self.__original_image:
             self.image = resize_img(self.image, self.image, [730, 504], 'jpeg')
-
         super().save(*args, **kwargs)
 
     def __str__(self):

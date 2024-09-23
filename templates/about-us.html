@@ -1,12 +1,25 @@
 {% extends 'base.html' %}
 {% load static %}
+{% block seo %}
+    <title>{{ main_page.title }}</title>
+    <meta name="title" content="{{ about_page.title }}">
+    <meta name="keywords" content="{{ about_page.keywords }}">
+    <meta name="description" content="{{ about_page.description }}">
+    <meta property="og:title" content="{{ about_page.title }}">
+    <meta property="og:url" content="{{ site_name }}{{ request.path }}">
+    <meta property="og:description" content="{{ about_page.description }}">
+{% endblock %}
 {% block content %}
 
-<section class="about-us-bg-block" style="background-image: url({% static 'img/5L7A3982.jpg' %})">
+<section class="about-us-bg-block" style="background: linear-gradient(90deg, rgba(41, 91, 184, 0.7) 0%, rgba(4, 15, 36, 0.7) 100%), url({% static 'img/png/factory.png' %})">
+
     <div class="container">
         <h1 class="about-us-bg-block-title rellax" data-rellax-speed="3" >{{ about_page.page_title }}</h1>
     </div>
 </section>
+
+
+
 <section class="history-block">
     <div class="container">
         <div class="history-block-preview-grid " >
@@ -16,8 +29,8 @@
                     {{ history.text }}
                 </p>
             </div>
-            <div class="history-block-preview-grid-right rellax" id="scene-about-us" data-rellax-speed="2">
-                <img class="history-block-preview-grid-right-img" data-depth="0.3" src="{{ history.image.url }}" alt="{{ history.title }}">
+            <div class="history-block-preview-grid-right rellax"  data-rellax-speed="2">
+                <img class="history-block-preview-grid-right-img" src="{{ history.image.url }}" alt="{{ history.title }}">
             </div>
         </div>
         <div class="history-block-tab" id="tab-history">
@@ -41,9 +54,13 @@
                 </div>
                 {% endfor %}
             </div>
+
         </div>
     </div>
 </section>
+
+
+
 <section class="mission-block">
     <div class="container">
         <div class="mission-block-wrapper">
@@ -55,6 +72,8 @@
         </div>
     </div>
 </section>
+
+
 
 <section class="advantages-block mode">
     <div class="container">
@@ -141,6 +160,7 @@
             </div>
             <div class="advantages-block-tab-text" id="tabs-advantages-1">
                 <p>{{ value_points.first_text }}</p>
+
             </div>
             <div class="advantages-block-tab-text" id="tabs-advantages-2">
                 <p>{{ value_points.second_text }}</p>
@@ -155,11 +175,13 @@
                 <p>{{ value_points.fifth_text }}</p>
             </div>
         </div>
+
+
     </div>
 </section>
-<section
-        class="statistics-block"
-        style="background-image: linear-gradient(90deg, rgba(41,91,184,0.9), rgba(30,30,30,0.9)), url({% static 'img/png/stats.png' %})">
+
+
+<section class="statistics-block" style="background-image: linear-gradient(90deg, rgba(41,91,184,0.9), rgba(30,30,30,0.9)), url({% static 'img/png/stats.png' %})">
     <div class="container">
         <h3 class="section-title">{{ statistic.title }}</h3>
         <div class="statistics-block-grid">
@@ -183,28 +205,37 @@
         </div>
     </div>
 </section>
+
+
+
+
 <section class="certificate-block">
     <div class="container">
         <h3 class="section-title">{{ certificates.title }}</h3>
         <div class="swiper">
             <div class="swiper-wrapper" id="lightgallery">
                 {% for i in certificates.cert_images.all %}
-                <div class="swiper-slide" data-src="{{ i.cert_image }}" data-sub-html="<h4>{{ i.title }}</h4><p>{{ i.description }}</p>">
+                <div
+                        class="swiper-slide"
+                        data-src="{{ i.cert_image.url }}"
+                        data-sub-html="<h4>{{ i.title }}</h4><p>{{ i.description }}</p>">
                     <picture class="certificate-block-card-picture">
                         <img class="certificate-block-card-img" src="{{ i.cert_image.url }}" alt="{{ i.title }}">
                     </picture>
                 </div>
                 {% endfor %}
+
+
             </div>
             <div class="swiper-pagination"></div>
             <div class="swiper-button-prev"></div>
             <div class="swiper-button-next"></div>
         </div>
     </div>
-    <div class="section-show-more">
-        <a href="" class="button red-button">{{ certificates.button_name }}</a>
-    </div>
 </section>
+
+
+
 <div class="hr"></div>
 
 <section class="certificate-block">
@@ -224,9 +255,6 @@
             <div class="swiper-button-prev"></div>
             <div class="swiper-button-next"></div>
         </div>
-    </div>
-    <div class="section-show-more">
-        <a href="" class="button red-button">{{ rewards.button_name }}</a>
     </div>
 </section>
 

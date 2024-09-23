@@ -1,11 +1,11 @@
 from django.shortcuts import render, get_object_or_404
 from .models import NewsPage, NewsItem
-from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
+from django.core.paginator import Paginator
 
 
 def news_page_view(request):
     all_news = NewsItem.objects.all().order_by('-published')
-    paginator = Paginator(all_news, 1)
+    paginator = Paginator(all_news, 8)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
 

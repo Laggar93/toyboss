@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+        <loc>{{ site_name }}/en/</loc>
+    </url>
+    <url>
+        <loc>{{ site_name }}/ru/</loc>
+    </url>
+<url>
+        <loc>{{ site_name }}/ky/</loc>
+    </url>
+    <url>
+        <loc>{{ site_name }}/en/about/</loc>
+    </url>
+    <url>
+        <loc>{{ site_name }}/ru/about/</loc>
+    </url>
+<url>
+        <loc>{{ site_name }}/ky/about/</loc>
+    </url>
+
+
+    <url>
+        <loc>{{ site_name }}/en/contacts/</loc>
+    </url>
+    <url>
+        <loc>{{ site_name }}/ru/contacts/</loc>
+    </url>
+<url>
+        <loc>{{ site_name }}/ky/contacts/</loc>
+    </url>
+
+    <url>
+        <loc>{{ site_name }}/en/cooperation/</loc>
+    </url>
+    <url>
+        <loc>{{ site_name }}/ru/cooperation/</loc>
+    </url>
+<url>
+        <loc>{{ site_name }}/ky/cooperation/</loc>
+    </url>
+
+    <url>
+        <loc>{{ site_name }}/en/faq/</loc>
+    </url>
+    <url>
+        <loc>{{ site_name }}/ru/faq/</loc>
+    </url>
+<url>
+        <loc>{{ site_name }}/ky/faq/</loc>
+    </url>
+
+    <url>
+        <loc>{{ site_name }}/en/news/</loc>
+    </url>
+    <url>
+        <loc>{{ site_name }}/ru/news/</loc>
+    </url>
+<url>
+        <loc>{{ site_name }}/ky/news/</loc>
+    </url>
+
+    {% for i in news_items %}
+         <url>
+        <loc>{{ site_name }}/en/news/{{ i.slug }}/</loc>
+    </url>
+    <url>
+        <loc>{{ site_name }}/ru/news/{{ i.slug }}/</loc>
+    </url>
+<url>
+        <loc>{{ site_name }}/ky/news/{{ i.slug }}/</loc>
+    </url>
+    {% endfor %}
+
+<url>
+        <loc>{{ site_name }}/en/products/</loc>
+    </url>
+    <url>
+        <loc>{{ site_name }}/ru/products/</loc>
+    </url>
+<url>
+        <loc>{{ site_name }}/ky/products/</loc>
+    </url>
+
+<url>
+        <loc>{{ site_name }}/en/production/</loc>
+    </url>
+    <url>
+        <loc>{{ site_name }}/ru/production/</loc>
+    </url>
+<url>
+        <loc>{{ site_name }}/ky/production/</loc>
+    </url>
+
+</urlset>
