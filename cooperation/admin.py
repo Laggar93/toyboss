@@ -35,6 +35,7 @@ class RetailsaleAdmin(TranslationAdmin):
 class PartnersItemsAdmin(admin.StackedInline):
     model = PartnersItems
     readonly_fields = ('display_image',)
+    exclude = ('image_1500_webp', 'image_1500_png')
     extra = 0
 
 

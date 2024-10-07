@@ -105,6 +105,22 @@ class PartnersItems(models.Model):
 
     image = models.ImageField('Логотип', upload_to=get_file_path, help_text=image_help_text)
 
+    image_1500_webp = models.ImageField(upload_to=get_file_path)
+    image_1500_png = models.ImageField(upload_to=get_file_path)
+
+    __original_image = None
+
+    def __init__(self, *args, **kwargs):
+        super(PartnersItems, self).__init__(*args, **kwargs)
+        self.__original_image = self.image
+
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+        if self.image and self.image != self.__original_image:
+            self.image_1500_webp = resize_img(self.image_1500_webp, self.image, [249, 155], 'webp')
+            self.image_1500_jpg = resize_img(self.image_1500_png, self.image, [249, 155], 'png')
+        super().save(*args, **kwargs)
+
     def __str__(self):
         return str(self.id)
 
