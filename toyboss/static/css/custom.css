@@ -1,0 +1,25 @@
+.main-block .swiper-button-wrapper {
+  left: 0;
+  right: 0;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.main-block .swiper-button-prev, .main-block .swiper-button-next {
+  border-radius: 6px;
+}
+.main-block .main-block-text {
+  max-width: 920px;
+  padding-right: 0;
+  padding-left: 70px;
+}
+@media (max-width: 960px) {
+  .main-block .main-block-text {
+    width: 100%;
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+}
+
+.main-block .swiper-button-next, .main-block .swiper-button-prev {
+  position: absolute;
+}

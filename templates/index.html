@@ -31,10 +31,10 @@
                                     <a href="{% url 'about_page' %}" class="button red-button">{{ general_translations.detail_button }}</a>
                                 {% endif %}
                             </div>
-                            <div class="swiper-button-wrapper ">
+
                                 <div class="swiper-button-prev"></div>
                                 <div class="swiper-button-next"></div>
-                            </div>
+
                         </div>
                     </div>
                 {% endfor %}
@@ -507,7 +507,7 @@
             </div>
         </div>
         <div class="section-show-more">
-            <a href="{% url 'about_page' %}" class="button red-button">{{ certificates.button_name }}</a>
+            <a href="{% url 'about_page' %}#anchor-certificates" class="button red-button">{{ certificates.button_name }}</a>
         </div>
     </section>
 
