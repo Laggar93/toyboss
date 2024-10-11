@@ -192,7 +192,52 @@ const swiper = [
         },
 
     }),
+new Swiper('.history-block .swiper', {
+    on: {
+        activeIndexChange: function (e) {
+            console.log(e.realIndex);
+            $("#tab-history").tabs({
+                active: e.realIndex
+            });
+        },
+    },
+    loop: false,
+    initialSlide: 2,
+    speed: 2000,
+    allowTouchMove: false,
+    centeredSlides: true,
+    scrollbar: {
+        draggable: false,
+    },
+    breakpoints: {
+        // mobile + tablet - 320-990
+        320: {
+            slidesPerView: 1,
+            spaceBetween: 90,
+            initialSlide: 0,
+        },
+        960: {
+            slidesPerView: 3,
+            spaceBetween: 90,
+        },
 
+
+        1200: {
+            slidesPerView: 3,
+            spaceBetween: 120,
+        },
+        1532: {
+            slidesPerView: 5,
+            spaceBetween: 120,
+        },
+
+    },
+    navigation: {
+        nextEl: '.history-block .swiper-button-next',
+        prevEl: '.history-block .swiper-button-prev',
+    },
+
+})
 
 ]
 
@@ -235,51 +280,7 @@ const customSlider = new Swiper('.production-block-carousel .swiper', {
 //     }, "1000");
 // })
 
-const historySwiper = new Swiper('.history-block .swiper', {
-    on: {
-        activeIndexChange: function (e) {
-            console.log(e.realIndex);
-            $("#tab-history").tabs({
-                active: e.realIndex
-            });
-        },
-    },
-    loop: false,
-    initialSlide: 2,
-    speed: 2000,
-    allowTouchMove: false,
-    centeredSlides: true,
-    scrollbar: {
-        draggable: false,
-    },
-    breakpoints: {
-        // mobile + tablet - 320-990
-        320: {
-            slidesPerView: 1,
-            spaceBetween: 90,
-        },
-        960: {
-            slidesPerView: 3,
-            spaceBetween: 90,
-        },
 
-
-        1200: {
-            slidesPerView: 3,
-            spaceBetween: 120,
-        },
-        1532: {
-            slidesPerView: 5,
-            spaceBetween: 120,
-        },
-
-    },
-    navigation: {
-        nextEl: '.history-block .swiper-button-next',
-        prevEl: '.history-block .swiper-button-prev',
-    },
-
-})
 // $('.history-block .swiper-slide').on('mouseover', function() {
 //   historySwiper.slideTo($(this).index());
 // })
