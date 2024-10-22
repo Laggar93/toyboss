@@ -76,7 +76,7 @@
                             <a href="{% url 'about_page' %}" class="button red-button">{{ general_translations.detail_button }}</a>
                         </div>
                         <div class="about-us-block-grid-tabs-content" id="about-us-tabs-2" data-aos="fade-up" data-aos-delay="350">
-                            <p>{{ main_quote.mission_text }}</p>
+                            {% autoescape off %}{{ main_quote.mission_text }}{% endautoescape %}
                             <a href="{% url 'about_page' %}" class="button red-button">{{ general_translations.detail_button }}</a>
                         </div>
                         <div class="about-us-block-grid-tabs-content" id="about-us-tabs-3" data-aos="fade-up" data-aos-delay="350">

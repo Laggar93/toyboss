@@ -154,17 +154,15 @@
 {% block scripts %}
 
 <script>
-  // надо зафорычить и подставлять index в #swiper-сюда
   {% for i in points %}
   const productInfoSwiper{{ forloop.counter }} = new Swiper('#swiper-{{ forloop.counter }} .swiper', {
     slidesPerView: 2,
       {#autoplay: false,#}
     initialSlide: 1,
     centeredSlides: true,
-    speed: 1200,
+    speed: 5000,
     spaceBetween: 30,
     breakpoints: {
-      // mobile + tablet - 320-990
       0: {
           initialSlide: 0,
         slidesPerView: 1,

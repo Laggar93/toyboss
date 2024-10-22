@@ -23,3 +23,27 @@
 .main-block .swiper-button-next, .main-block .swiper-button-prev {
   position: absolute;
 }
+
+.products-info .products-info-grid-left h4 {
+    word-spacing: 0px;
+}
+
+.products-info .products-info-grid-right {
+    max-height: 100%;
+    font-size: 24px;
+
+}
+
+.products-info .products-info-grid {
+    grid-template-columns: 500px 1fr;
+    grid-gap: 60px;
+    align-items: flex-start;
+}
+
+
+@media (max-width: 960px) {
+    .products-info .products-info-grid {
+        grid-gap: 30px;
+        grid-template-columns: 1fr;
+    }
+}

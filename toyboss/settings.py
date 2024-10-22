@@ -147,17 +147,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-CKEDITOR_CONFIGS = {
-    'default': {
-        'toolbar': 'Custom',
-        'allowedContent': True,
-        'toolbar_Custom': [
-            ['BulletedList'],
-            ['Source'],
-        ]
-    },
-}
-
 
 
 EMAIL_HOST = config.mail_host

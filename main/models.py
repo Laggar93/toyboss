@@ -1,3 +1,4 @@
+from ckeditor.fields import RichTextField
 from django.db import models
 from toyboss.functions import resize_img, get_file_path, image_help_text
 from django.utils.html import format_html
@@ -162,7 +163,7 @@ class MainQuote(models.Model):
     history_text = models.TextField('Текст истории')
 
     mission_title = models.CharField('Заголовок миссии', max_length=255)
-    mission_text = models.TextField('Текст миссии')
+    mission_text = RichTextField('Текст миссии')
 
     value_title = models.CharField('Заголовок ценности', max_length=255)
     value_text = models.TextField('Текст ценности')
@@ -175,11 +176,11 @@ class MainQuote(models.Model):
     position = models.CharField('Должность', max_length=255)
 
     def __str__(self):
-        return 'Цитата гендира на главной странице'
+        return 'История, миссия и ценности'
 
     class Meta:
-        verbose_name = 'Цитата гендира на главной странице'
-        verbose_name_plural = 'Цитата гендира на главной странице'
+        verbose_name = 'История, миссия и ценности'
+        verbose_name_plural = 'История, миссия и ценности'
 
 
 
