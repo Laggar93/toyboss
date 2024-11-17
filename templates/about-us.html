@@ -205,27 +205,18 @@
         </div>
     </div>
 </section>
-
-
-
-
 <section class="certificate-block" id="anchor-certificates">
     <div class="container">
         <h3 class="section-title">{{ certificates.title }}</h3>
         <div class="swiper">
             <div class="swiper-wrapper" id="lightgallery">
                 {% for i in certificates.cert_images.all %}
-                <div
-                        class="swiper-slide"
-                        data-src="{{ i.cert_image.url }}"
-                        data-sub-html="<h4>{{ i.title }}</h4><p>{{ i.description }}</p>">
+                <div class="swiper-slide" data-src="{{ i.cert_image.url }}" data-sub-html="<h4>{{ i.title }}</h4><p>{{ i.description }}</p>">
                     <picture class="certificate-block-card-picture">
-                        <img class="certificate-block-card-img" src="{{ i.cert_image.url }}" alt="{{ i.title }}">
+                        <img class="certificate-block-card-img" src="{{ i.cert_image_184.url }}" alt="{{ i.title }}">
                     </picture>
                 </div>
                 {% endfor %}
-
-
             </div>
             <div class="swiper-pagination"></div>
             <div class="swiper-button-prev"></div>

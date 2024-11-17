@@ -75,6 +75,7 @@ class CertificatesItemsAdmin(TranslationStackedInline):
     model = CertificatesItems
     extra = 0
     readonly_fields = ('display_image',)
+    exclude = ('cert_image_184',)
 
 
 class CertificatesAdmin(TranslationAdmin):

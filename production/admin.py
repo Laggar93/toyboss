@@ -26,7 +26,7 @@ class PointsSliderAdmin(admin.StackedInline):
     model = PointsSlider
     readonly_fields = ('display_image',)
     extra = 0
-    exclude = ('image_735_webp', 'image_735_jpg')
+    exclude = ('image_1470_webp', 'image_1470_jpg', 'image_735_webp', 'image_735_jpg')
 
 
 class PointsAdmin(SortableAdminMixin, TranslationAdmin):

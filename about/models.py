@@ -180,20 +180,21 @@ class CertificatesItems(models.Model):
     certificates = models.ForeignKey(Certificates, related_name='cert_images', on_delete=models.CASCADE)
 
     cert_image = models.ImageField('Сертификат', upload_to=get_file_path, help_text=image_help_text)
+    cert_image_184 = models.ImageField(upload_to=get_file_path)
     title = models.CharField('Заголовок', max_length=255, blank=True)
     description = models.TextField('Текст', blank=True)
 
-    # __original_image = None
-    #
-    # def __init__(self, *args, **kwargs):
-    #     super(CertificatesItems, self).__init__(*args, **kwargs)
-    #     self.__original_image = self.cert_image
-    #
-    # def save(self, *args, **kwargs):
-    #     super().save(*args, **kwargs)
-    #     if self.cert_image and self.cert_image != self.__original_image:
-    #         self.cert_image = resize_img(self.cert_image, self.cert_image, [184, 260])
-    #     super().save(*args, **kwargs)
+    __original_image = None
+
+    def __init__(self, *args, **kwargs):
+        super(CertificatesItems, self).__init__(*args, **kwargs)
+        self.__original_image = self.cert_image
+
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+        if self.cert_image and self.cert_image != self.__original_image:
+            self.cert_image_184 = resize_img(self.cert_image_184, self.cert_image, [184, 260])
+        super().save(*args, **kwargs)
 
     def __str__(self):
         return str(self.id)

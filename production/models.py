@@ -69,6 +69,9 @@ class PointsSlider(models.Model):
 
     image = models.ImageField('Изображение', upload_to=get_file_path, help_text=image_help_text)
 
+    image_1470_webp = models.ImageField(upload_to=get_file_path)
+    image_1470_jpg = models.ImageField(upload_to=get_file_path)
+
     image_735_webp = models.ImageField(upload_to=get_file_path)
     image_735_jpg = models.ImageField(upload_to=get_file_path)
 
@@ -82,6 +85,9 @@ class PointsSlider(models.Model):
         super().save(*args, **kwargs)
 
         if self.image and self.image != self.__original_image:
+            self.image_1470_webp = resize_img(self.image_1470_webp, self.image, [1470, 1122], 'webp')
+            self.image_1470_jpg = resize_img(self.image_1470_jpg, self.image, [1470, 1122], 'jpeg')
+
             self.image_735_webp = resize_img(self.image_735_webp, self.image, [735, 561], 'webp')
             self.image_735_jpg = resize_img(self.image_735_jpg, self.image, [735, 561], 'jpeg')
 

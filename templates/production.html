@@ -131,9 +131,9 @@
           {% for j in i.points_slider.all %}
           <div class="swiper-slide">
             <picture class="image">
-              <source type="image/webp" media="(min-width: 1200px)" srcset="{{ j.image_735_webp.url }} 1x, {{ j.image_735_webp.url }} 2x">
-              <source type="image/jpeg" media="(min-width: 1200px)" srcset="{{ j.image_735_jpg.url }} 1x, {{ j.image_735_jpg.url }} 2x">
-              <img class="photo-card__img" src="{{ j.image.url }}" srcset="{{ j.image.url }} 2x" width="735" height="561" alt="" loading="lazy">
+              <source type="image/webp" media="(min-width: 1200px)" srcset="{{ j.image_1470_webp.url }} 1x, {{ j.image_1470_webp.url }} 2x">
+              <source type="image/jpeg" media="(min-width: 1200px)" srcset="{{ j.image_1470_jpg.url }} 1x, {{ j.image_1470_jpg.url }} 2x">
+              <img class="photo-card__img" src="{{ j.image_735_jpg.url }}" srcset="{{ j.image_735_jpg.url }} 2x" width="735" height="561" alt="{{ i.point_title }}" loading="lazy">
             </picture>
           </div>
           {% endfor %}
@@ -160,7 +160,7 @@
       {#autoplay: false,#}
     initialSlide: 1,
     centeredSlides: true,
-    speed: 5000,
+    speed: 3000,
     spaceBetween: 30,
     breakpoints: {
       0: {
@@ -182,9 +182,7 @@
 
   })
 
-  $('#swiper-{{ forloop.counter }} .swiper-slide').on('mouseover', function() {
-    productInfoSwiper{{ forloop.counter }}?.slideTo($(this).index());
-  })
+
   {% endfor %}
 
 </script>
