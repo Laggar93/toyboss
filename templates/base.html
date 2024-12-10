@@ -4,13 +4,12 @@
 <!doctype html>
 <html lang="en">
 <head>
-<!-- Google tag (gtag.js) -->
+
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-KJKEMS9LPT"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'G-KJKEMS9LPT');
 </script>
     <meta charset="UTF-8">
@@ -164,23 +163,11 @@
     </div>
 </main>
 
-{#<div id="modalSuccess" class="modal-form modal">#}
-{#    <div class="modal-form-flex">#}
-{#        <a href="#" rel="modal:close" class="modal-form-close">#}
-{#            <img src="{% static 'img/svg/close-modal.svg' %}" alt="">#}
-{#        </a>#}
-{#        <img src="{% static 'img/svg/check.svg' %}" class="modal-form-image" alt="">#}
-{#        <h4 class="modal-form-title">Спасибо, ваша заявка успешно отправлена</h4>#}
-{#    </div>#}
-{#</div>#}
 <div id="modalError" class="modal-form modal" style="max-width: 500px">
     <div class="modal-form-flex">
         <a href="#" rel="modal:close" class="modal-form-close">
             <img src="{% static 'img/svg/close-modal.svg' %}" alt="">
         </a>
-        {#    <img src="{% static 'img/svg/check.svg' %}" class="modal-form-image" alt="">#}
-        {#    <h4 class="modal-form-title">Игра еще в разработке</h4>#}
-        {#    <img src="{% static 'img/error.png' %}" alt="" width="90px">#}
         {% if navigation_menu.ustukan_game_first %}
         <h4 class="modal-form-title error-title">{{ navigation_menu.ustukan_game_first }}</h4>
         {% endif %}
@@ -189,9 +176,7 @@
         <h4 class="modal-form-title error-title">{{ navigation_menu.ustukan_game_second }}</h4>
     {% endif %}
     </div>
-
 </div>
-
 
 <script src="{% static 'libs/jquery/jquery-v2.2.4.min.js' %}"></script>
 <script>
@@ -213,17 +198,11 @@
 {% block scripts %}
 {% endblock %}
 <script>
-    // $('#modalSuccess').modal({
-    //   showClose: false
-    // });
-
     $(".showError").click(function () {
         $('#modalError').modal({
             showClose: false
         })
     });
-
-    // данная функция вызовет модальное окно success
 </script>
 </body>
 </html>

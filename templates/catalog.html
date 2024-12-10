@@ -10,11 +10,9 @@
     <meta property="og:description" content="{{ product_page.description }}">
 {% endblock %}
 {% block content %}
-
     <section class="product-block" id="tabs-production" style="padding-bottom: 0">
         <div class="container">
             <h3 class="section-title">{{ product_page.page_title }}</h3>
-
         </div>
         <div>
             <div class="container">
@@ -29,7 +27,6 @@
             {% for i in product_categories %}
                 <div id="product-tab-{{ forloop.counter }}">
                 {% if i.sandwich_mark %}
-{#                        <div id="product-tab-5">#}
                             <a href="https://sandwich.kg/ru/" target="_blank">
                                     {% if request.LANGUAGE_CODE == 'ru' %}
                                         <img src="{% static 'img/png/sand.png' %}" width="100%" alt="">
@@ -39,7 +36,6 @@
                                         <img src="{% static 'img/png/sand2.png' %}" width="100%" alt="">
                                     {% endif %}
                                 </a>
-{#                        </div>#}
                     {% endif %}
                 {% if not i.sandwich_mark %}
                     <div class="catalogs" {% if i.chicken_mark %}style="background-color: #51A563;"{% endif %}>
@@ -129,11 +125,7 @@
                     </div>
                 {% endif %}
                 </div>
-
             {% endfor %}
-
         </div>
-
     </section>
-
 {% endblock %}
