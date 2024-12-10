@@ -18,8 +18,6 @@
 <url>
         <loc>{{ site_name }}/ky/about/</loc>
     </url>
-
-
     <url>
         <loc>{{ site_name }}/en/contacts/</loc>
     </url>

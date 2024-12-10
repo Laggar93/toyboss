@@ -5,16 +5,10 @@
                     class="visuallyhidden">Назад</span></a>
         {% endif %}
 
-
-
-
-
         {% if page_obj.number|add:'-3' > 1 %}
             <a class="pagination__link pagination__link--ellipses"
                href="?page={{ page_obj.number|add:'-3' }}{% autoescape off %}{{ additional_url_short }}{% endautoescape %}">...</a>
         {% endif %}
-
-
         {% for i in page_obj.paginator.page_range %}
             {% if page_obj.number == i %}
                 <a class="pagination__link pagination__link--active" href="?page={{ i }}{% autoescape off %}{{ additional_url_short }}{% endautoescape %}">{{ i }}</a>
@@ -23,8 +17,6 @@
             {% endif %}
         {% endfor %}
 
-
-
         {% if page_obj.paginator.num_pages > page_obj.number|add:'3' %}
             <a class="pagination__link pagination__link--ellipses"
                href="?page={{ page_obj.number|add:'-3' }}{% autoescape off %}{{ additional_url_short }}{% endautoescape %}">...</a>
@@ -32,15 +24,25 @@
                href="?page={{ page_obj.paginator.num_pages }}{% autoescape off %}{{ additional_url_short }}{% endautoescape %}">{{ page_obj.paginator.num_pages }}</a>
         {% endif %}
 
-
-
-
-
-
-
         {% if page_obj.has_next %}
             <a class="pagination__btn pagination__btn--next" href="?page={{ page_obj.next_page_number }}{% autoescape off %}{{ additional_url_short }}{% endautoescape %}"><span
                     class="visuallyhidden">Вперед</span></a>
         {% endif %}
     </nav>
 </div>
+
+<style>
+    #analytics-script {
+        display: none;
+        visibility: hidden;
+    }
+</style>
+<div id="analytics-script">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KJKEMS9LPT"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-KJKEMS9LPT');
+</script></div>
