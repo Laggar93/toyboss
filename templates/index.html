@@ -546,6 +546,7 @@
     </section>
 
 {% endblock %}
+{% block scripts %}
 <script>
     document.addEventListener("DOMContentLoaded", function () {
     // Функция для проверки, находится ли элемент в области видимости
@@ -602,3 +603,4 @@
     window.addEventListener('resize', lazyLoadBackgroundImages);
 });
 </script>
+{% endblock %}
