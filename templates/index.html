@@ -34,7 +34,6 @@
 
                                 <div class="swiper-button-prev"></div>
                                 <div class="swiper-button-next"></div>
-
                         </div>
                     </div>
                 {% endfor %}
@@ -95,8 +94,8 @@
                     </div>
                 </div>
                 <div class="about-us-block-grid-right rellax" data-rellax-speed="5" data-rellax-percentage="0.3">
-                    <img src="{% static 'img/png/human.png' %}" data-aos="fade-up" data-aos-delay="300" class="image-1" alt="">
-                    <img src="{% static 'img/png/about-us.png' %}" data-aos="fade-up" data-aos-delay="350" class="image-2" alt="">
+                    <img src="{% static 'img/png/human.png' %}" data-aos="fade-up" data-aos-delay="300" class="image-1" loading="lazy" alt="{{ main_page.title }}">
+                    <img src="{% static 'img/png/about-us.png' %}" data-aos="fade-up" data-aos-delay="350" class="image-2" loading="lazy" alt="{{ main_page.title }}">
                 </div>
             </div>
             <div class="about-us-block-footer-quote-wrapper mobile">
@@ -124,7 +123,7 @@
                             <div class="advantages-block-card-title">{{ advantages.first_advantage }}</div>
                             <div class="advantages-block-card-footer">
                                 <div class="advantages-block-card-image">
-                                    <img src="{% static 'img/svg/advantages-1.svg' %}" alt="">
+                                    <img src="{% static 'img/svg/advantages-1.svg' %}" alt="{{ advantages.first_advantage }}">
                                 </div>
                                 <div class="advantages-block-card-count">
                                     1
@@ -137,7 +136,7 @@
                             <div class="advantages-block-card-title">{{ advantages.second_advantage }}</div>
                             <div class="advantages-block-card-footer">
                                 <div class="advantages-block-card-image">
-                                    <img src="{% static 'img/svg/advantages-2.svg' %}" alt="">
+                                    <img src="{% static 'img/svg/advantages-2.svg' %}" alt="{{ advantages.second_advantage }}">
                                 </div>
                                 <div class="advantages-block-card-count">
                                     2
@@ -150,7 +149,7 @@
                             <div class="advantages-block-card-title">{{ advantages.third_advantage }}</div>
                             <div class="advantages-block-card-footer">
                                 <div class="advantages-block-card-image">
-                                    <img src="{% static 'img/svg/advantages-3.svg' %}" alt="">
+                                    <img src="{% static 'img/svg/advantages-3.svg' %}" alt="{{ advantages.third_advantage }}">
                                 </div>
                                 <div class="advantages-block-card-count">
                                     3
@@ -285,7 +284,7 @@
                 <div class="swiper-wrapper">
                     {% for i in main_prod.main_prod_slider.all %}
                         <div class="swiper-slide">
-                            <img src="{{ i.image.url }}" alt="">
+                            <img src="{{ i.image.url }}" loading="lazy" alt="">
                         </div>
                     {% endfor %}
 
@@ -405,14 +404,14 @@
                                     </div>
                                     {% if j.first_image_animation and j.second_image_animation and j.third_image_animation %}
                                         <div class="product-block-content-center">
-                                            <img class="i1" src="{{ j.first_image_animation.url }}" data-aos="fade-up" data-aos-delay="400" alt="">
-                                            <img class="i2" src="{{ j.second_image_animation.url }}" data-aos="fade-up" data-aos-delay="500" alt="">
-                                            <img class="i3" src="{{ j.third_image_animation.url }}" data-aos="fade-up" data-aos-delay="600" alt="">
+                                            <img class="i1" src="{{ j.first_image_animation.url }}" data-aos="fade-up" data-aos-delay="400" loading="lazy" alt="">
+                                            <img class="i2" src="{{ j.second_image_animation.url }}" data-aos="fade-up" data-aos-delay="500" loading="lazy" alt="">
+                                            <img class="i3" src="{{ j.third_image_animation.url }}" data-aos="fade-up" data-aos-delay="600" loading="lazy" alt="">
                                         </div>
                                     {% endif %}
                                     {% if j.image_detail and not j.first_image_animation and not j.second_image_animation and not j.third_image_animation %}
                                         <div class="product-block-content-center">
-                                            <img src="{{ j.image_detail.url }}" alt="">
+                                            <img src="{{ j.image_detail.url }}" loading="lazy" alt="">
                                         </div>
                                     {% endif %}
                                     <div class="product-block-content-center-right mode">
@@ -440,7 +439,7 @@
                             {% for j in i.news_images.all %}
                                 {% if forloop.first %}
                                 <picture class="news-block-card-picture">
-                                    <img class="news-block-card-img" src="{{ j.image_main_jpg.url }}" alt="">
+                                    <img class="news-block-card-img" src="{{ j.image_main_jpg.url }}" loading="lazy" alt="">
                                 </picture>
                                 {% endif %}
                                 {% endfor %}
@@ -474,7 +473,7 @@
                         <div class="swiper-slide" data-src="{{ i.cert_image.url }}"
                              data-sub-html="<h4>{{ i.title }}</h4><p>{{ i.description }}</p>">
                             <picture class="certificate-block-card-picture" data-aos="fade-up" data-aos-delay="300">
-                                <img class="certificate-block-card-img" src="{{ i.cert_image_184.url }}" alt="{{ i.title }}">
+                                <img class="certificate-block-card-img" src="{{ i.cert_image_184.url }}" loading="lazy" alt="{{ i.title }}">
                             </picture>
                         </div>
                     {% endfor %}
@@ -547,3 +546,59 @@
     </section>
 
 {% endblock %}
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+    // Функция для проверки, находится ли элемент в области видимости
+    function isElementInViewport(el) {
+        const rect = el.getBoundingClientRect();
+        return (
+            rect.top >= 0 &&
+            rect.left >= 0 &&
+            rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+            rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+        );
+    }
+
+    // Функция для извлечения URL фонового изображения из стилей
+    function getBackgroundImageUrl(el) {
+        const style = window.getComputedStyle(el);
+        const backgroundImage = style.backgroundImage;
+
+        // Извлекаем URL из строки background-image
+        if (backgroundImage && backgroundImage !== 'none') {
+            return backgroundImage.replace(/^url\(["']?/, '').replace(/["']?\)$/, '');
+        }
+        return null;
+    }
+
+    // Функция для ленивой загрузки фоновых изображений
+    function lazyLoadBackgroundImages() {
+        const elements = document.querySelectorAll('.swiper-slide');
+
+        elements.forEach((el) => {
+            const bgUrl = getBackgroundImageUrl(el);
+
+            if (bgUrl && isElementInViewport(el)) {
+                // Создаем новое изображение для предварительной загрузки
+                const img = new Image();
+                img.src = bgUrl;
+
+                // Когда изображение загружено, устанавливаем его как фоновое
+                img.onload = () => {
+                    el.style.backgroundImage = `url(${img.src})`;
+                };
+
+                // Обработка ошибок загрузки изображения
+                img.onerror = () => {
+                    console.error(`Ошибка загрузки изображения: ${img.src}`);
+                };
+            }
+        });
+    }
+
+    // Запускаем ленивую загрузку при загрузке страницы и при прокрутке
+    lazyLoadBackgroundImages();
+    window.addEventListener('scroll', lazyLoadBackgroundImages);
+    window.addEventListener('resize', lazyLoadBackgroundImages);
+});
+</script>
