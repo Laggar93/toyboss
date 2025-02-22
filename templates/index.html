@@ -123,7 +123,7 @@
                             <div class="advantages-block-card-title">{{ advantages.first_advantage }}</div>
                             <div class="advantages-block-card-footer">
                                 <div class="advantages-block-card-image">
-                                    <img src="{% static 'img/svg/advantages-1.svg' %}" alt="{{ advantages.first_advantage }}">
+                                    <img src="{% static 'img/svg/advantages-1.svg' %}" loading="lazy" alt="{{ advantages.first_advantage }}">
                                 </div>
                                 <div class="advantages-block-card-count">
                                     1
@@ -136,7 +136,7 @@
                             <div class="advantages-block-card-title">{{ advantages.second_advantage }}</div>
                             <div class="advantages-block-card-footer">
                                 <div class="advantages-block-card-image">
-                                    <img src="{% static 'img/svg/advantages-2.svg' %}" alt="{{ advantages.second_advantage }}">
+                                    <img src="{% static 'img/svg/advantages-2.svg' %}" loading="lazy" alt="{{ advantages.second_advantage }}">
                                 </div>
                                 <div class="advantages-block-card-count">
                                     2
@@ -149,7 +149,7 @@
                             <div class="advantages-block-card-title">{{ advantages.third_advantage }}</div>
                             <div class="advantages-block-card-footer">
                                 <div class="advantages-block-card-image">
-                                    <img src="{% static 'img/svg/advantages-3.svg' %}" alt="{{ advantages.third_advantage }}">
+                                    <img src="{% static 'img/svg/advantages-3.svg' %}" loading="lazy" alt="{{ advantages.third_advantage }}">
                                 </div>
                                 <div class="advantages-block-card-count">
                                     3
@@ -162,7 +162,7 @@
                             <div class="advantages-block-card-title">{{ advantages.fourth_advantage }}</div>
                             <div class="advantages-block-card-footer">
                                 <div class="advantages-block-card-image">
-                                    <img src="{% static 'img/svg/advantages-4.svg' %}" alt="">
+                                    <img src="{% static 'img/svg/advantages-4.svg' %}" loading="lazy" alt="{{ advantages.fourth_advantage }}">
                                 </div>
                                 <div class="advantages-block-card-count">
                                     4
@@ -175,7 +175,7 @@
                             <div class="advantages-block-card-title">{{ advantages.fifth_advantage }}</div>
                             <div class="advantages-block-card-footer">
                                 <div class="advantages-block-card-image">
-                                    <img src="{% static 'img/svg/advantages-5.svg' %}" alt="">
+                                    <img src="{% static 'img/svg/advantages-5.svg' %}" loading="lazy" alt="{{ advantages.fifth_advantage }}">
                                 </div>
                                 <div class="advantages-block-card-count">
                                     5
@@ -188,7 +188,7 @@
                             <div class="advantages-block-card-title">{{ advantages.sixth_advantage }}</div>
                             <div class="advantages-block-card-footer">
                                 <div class="advantages-block-card-image">
-                                    <img src="{% static 'img/svg/advantages-6.svg' %}" alt="">
+                                    <img src="{% static 'img/svg/advantages-6.svg' %}" loading="lazy" alt="{{ advantages.sixth_advantage }}">
                                 </div>
                                 <div class="advantages-block-card-count">
                                     6
@@ -356,11 +356,11 @@
 
                             <a href="https://sandwich.kg/ru/" target="_blank">
                                 {% if request.LANGUAGE_CODE == 'ru' %}
-                                    <img src="{% static 'img/png/sand.png' %}" width="100%" alt="" style="max-width: 100%">
+                                    <img src="{% static 'img/png/sand.png' %}" width="100%" loading="lazy" alt="" style="max-width: 100%">
                                 {% elif request.LANGUAGE_CODE == 'ky' %}
-                                    <img src="{% static 'img/png/sand3.png' %}" width="100%" alt="">
+                                    <img src="{% static 'img/png/sand3.png' %}" width="100%" loading="lazy" alt="">
                                 {% else %}
-                                    <img src="{% static 'img/png/sand2.png' %}" width="100%" alt="">
+                                    <img src="{% static 'img/png/sand2.png' %}" width="100%" loading="lazy" alt="">
                                 {% endif %}
                             </a>
                         {% endif %}
@@ -392,13 +392,13 @@
                                         </div>
                                         <div class="product-block-content-certificates">
                                             <div class="product-block-content-certificates-item">
-                                                <img src="{% static 'img/svg/certificate-halal-1.svg' %}" alt="">
+                                                <img src="{% static 'img/svg/certificate-halal-1.svg' %}" loading="lazy" alt="">
                                             </div>
                                             <div class="product-block-content-certificates-item">
-                                                <img src="{% static 'img/svg/certificate-halal-2.svg' %}" alt="">
+                                                <img src="{% static 'img/svg/certificate-halal-2.svg' %}" loading="lazy" alt="">
                                             </div>
                                             <div class="product-block-content-certificates-item">
-                                                <img src="{% static 'img/svg/certificate-halal-3.svg' %}" alt="">
+                                                <img src="{% static 'img/svg/certificate-halal-3.svg' %}" loading="lazy" alt="">
                                             </div>
                                         </div>
                                     </div>
