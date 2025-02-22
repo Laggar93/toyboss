@@ -24,7 +24,7 @@
                                 <picture class="image">
                                     <source type="image/webp" media="(min-width: 1200px)" srcset="{{ i.image_1499_webp.url }} 1x, {{ i.image_1499_webp.url }} 2x">
                                     <source type="image/jpeg" media="(min-width: 1200px)" srcset="{{ i.image_1499_jpg.url }} 1x, {{ i.image_1499_jpg.url }} 2x">
-                                    <img class="photo-card__img" src="{{ i.image_1499_jpg.url }}" srcset="{{ i.image_1499_jpg.url }} 2x" width="1500" height="576" alt="">
+                                    <img class="photo-card__img" src="{{ i.image_1499_jpg.url }}" srcset="{{ i.image_1499_jpg.url }} 2x" width="1500" height="576" loading="lazy" alt="">
                                 </picture>
                             </div>
                         {% endfor %}
@@ -54,7 +54,7 @@
                                 {% for j in i.news_images.all %}
                                 {% if forloop.first %}
                                 <picture class="news-block-card-picture">
-                                    <img class="news-block-card-img" src="{{ j.image_main_jpg.url }}" alt="">
+                                    <img class="news-block-card-img" src="{{ j.image_main_jpg.url }}" loading="lazy" alt="">
                                 </picture>
                                 {% endif %}
                                 {% endfor %}

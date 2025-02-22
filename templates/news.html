@@ -21,7 +21,7 @@
                         {% for j in i.news_images.all %}
                             {% if forloop.first %}
                                 <picture class="news-block-card-picture">
-                                    <img class="news-block-card-img" src="{{ j.image_main_jpg.url }}" alt="">
+                                    <img class="news-block-card-img" src="{{ j.image_main_jpg.url }}" loading="lazy" alt="">
                                 </picture>
                             {% endif %}
                         {% endfor %}

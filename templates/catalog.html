@@ -29,11 +29,11 @@
                 {% if i.sandwich_mark %}
                             <a href="https://sandwich.kg/ru/" target="_blank">
                                     {% if request.LANGUAGE_CODE == 'ru' %}
-                                        <img src="{% static 'img/png/sand.png' %}" width="100%" alt="">
+                                        <img src="{% static 'img/png/sand.png' %}" width="100%" loading="lazy" alt="">
                                     {% elif request.LANGUAGE_CODE == 'ky' %}
-                                        <img src="{% static 'img/png/sand3.png' %}" width="100%" alt="">
+                                        <img src="{% static 'img/png/sand3.png' %}" width="100%" loading="lazy" alt="">
                                     {% else %}
-                                        <img src="{% static 'img/png/sand2.png' %}" width="100%" alt="">
+                                        <img src="{% static 'img/png/sand2.png' %}" width="100%" loading="lazy" alt="">
                                     {% endif %}
                                 </a>
                     {% endif %}
@@ -47,16 +47,16 @@
                                     <div class="catalogs-grid-item">
                                         <a href="#ex{{ j.id }}" rel="modal:open" class="link-modal">Open Modal</a>
                                         {% if j.image_semismocked %}
-                                            <img class="catalogs-grid-item-image" src="{{ j.image_semismocked.url }}" alt="" style="margin-left: 25px">
+                                            <img class="catalogs-grid-item-image" src="{{ j.image_semismocked.url }}" loading="lazy" alt="" style="margin-left: 25px">
                                         {% endif %}
                                     {% if j.image_boiled %}
-                                            <img class="catalogs-grid-item-image" src="{{ j.image_boiled.url }}" alt="" style="margin-left: 25px">
+                                            <img class="catalogs-grid-item-image" src="{{ j.image_boiled.url }}" loading="lazy" alt="" style="margin-left: 25px">
                                         {% endif %}
                                     {% if j.image_chicken %}
-                                            <img class="catalogs-grid-item-image center" src="{{ j.image_chicken.url }}" alt="">
+                                            <img class="catalogs-grid-item-image center" src="{{ j.image_chicken.url }}" loading="lazy" alt="">
                                         {% endif %}
                                     {% if j.image_sausages %}
-                                            <img class="catalogs-grid-item-image center" src="{{ j.image_sausages.url }}" alt="">
+                                            <img class="catalogs-grid-item-image center" src="{{ j.image_sausages.url }}" loading="lazy" alt="">
                                         {% endif %}
                                         <h3 class="catalogs-grid-item-title">{{ j.product_title }}</h3>
                                         <p class="catalogs-grid-item-desc">{{ j.description }}</p>
@@ -93,19 +93,19 @@
                                                         {% endif %}
                                                         <div class="product-block-content-certificates">
                                                             <div class="product-block-content-certificates-item">
-                                                                <img src="{% static 'img/svg/certificate-halal-1.svg' %}" alt="">
+                                                                <img src="{% static 'img/svg/certificate-halal-1.svg' %}" loading="lazy" alt="">
                                                             </div>
                                                             <div class="product-block-content-certificates-item">
-                                                                <img src="{% static 'img/svg/certificate-halal-2.svg' %}" alt="">
+                                                                <img src="{% static 'img/svg/certificate-halal-2.svg' %}" loading="lazy" alt="">
                                                             </div>
                                                             <div class="product-block-content-certificates-item">
-                                                                <img src="{% static 'img/svg/certificate-halal-3.svg' %}" alt="">
+                                                                <img src="{% static 'img/svg/certificate-halal-3.svg' %}" loading="lazy" alt="">
                                                             </div>
                                                         </div>
                                                     </div>
                                                     {% if j.image_detail %}
                                                         <div class="product-block-content-center">
-                                                            <img src="{{ j.image_detail.url }}" alt="">
+                                                            <img src="{{ j.image_detail.url }}" loading="lazy" alt="">
                                                         </div>
                                                     {% endif %}
                                                 {% if j.fact %}

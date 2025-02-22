@@ -42,6 +42,7 @@ class MainProdSliderAdmin(admin.StackedInline):
     model = MainProdSlider
     extra = 0
     readonly_fields = ('display_image',)
+    exclude = ('image_webp',)
 
 
 class MainProdAdmin(TranslationAdmin):
