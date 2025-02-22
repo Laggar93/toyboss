@@ -27,6 +27,7 @@ class MainPageSlider(models.Model):
     title = models.CharField('Заголовок', max_length=255, blank=True)
     subtitle = models.CharField('Подзаголовок', max_length=255, blank=True)
     image = models.ImageField('Изображение', upload_to=get_file_path, help_text=image_help_text)
+    image_webp = models.ImageField(upload_to=get_file_path)
 
     __original_image = None
 
@@ -38,6 +39,7 @@ class MainPageSlider(models.Model):
         super().save(*args, **kwargs)
         if self.image and self.image != self.__original_image:
             self.image = resize_img(self.image, self.image, [1920, 1080], 'jpeg')
+            self.image_webp = resize_img(self.image_webp, self.image, [1920, 1080], 'webp')
         super().save(*args, **kwargs)
 
     def __str__(self):

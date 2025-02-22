@@ -10,6 +10,7 @@ class MainPageSliderAdmin(SortableAdminMixin, TranslationAdmin):
     save_on_top = True
     list_display = ('title', 'image_tag')
     readonly_fields = ('display_image',)
+    exclude = ('image_webp',)
 
 
 class MainPageAdmin(TranslationAdmin):
