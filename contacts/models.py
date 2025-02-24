@@ -1,9 +1,7 @@
 from django.core.validators import FileExtensionValidator
 from django.db import models
 from ckeditor.fields import RichTextField
-from django.utils.html import format_html
-from django.utils.functional import cached_property
-from toyboss.functions import get_file_path, image_help_text, make_slug, svg_help_text
+from toyboss.functions import get_file_path, svg_help_text
 
 
 class ContactsPage(models.Model):

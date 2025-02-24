@@ -27,7 +27,7 @@
                 </p>
             </div>
             <div class="history-block-preview-grid-right rellax"  data-rellax-speed="2">
-                <img class="history-block-preview-grid-right-img" src="{{ history.image.url }}" loading="lazy" alt="{{ history.title }}">
+                <img class="history-block-preview-grid-right-img" src="{{ history.image.url }}" loading="lazy" alt="Тойбосс {{ history.title }}">
             </div>
         </div>
         <div class="history-block-tab" id="tab-history">
@@ -81,7 +81,7 @@
                             </div>
                             <div class="advantages-block-card-footer">
                                 <div class="advantages-block-card-image">
-                                    <img class="advantages-block-card-decor" src="{% static 'img/svg/caret-down.svg' %}" loading="lazy" alt="">
+                                    <img class="advantages-block-card-decor" src="{% static 'img/svg/caret-down.svg' %}" loading="lazy" alt="Тойбосс {{ value_points.first_title }}">
                                 </div>
                                 <div class="advantages-block-card-count">
                                     1
@@ -95,7 +95,7 @@
                             </div>
                             <div class="advantages-block-card-footer">
                                 <div class="advantages-block-card-image">
-                                    <img class="advantages-block-card-decor" src="{% static 'img/svg/caret-down.svg' %}" loading="lazy" alt="">
+                                    <img class="advantages-block-card-decor" src="{% static 'img/svg/caret-down.svg' %}" loading="lazy" alt="Тойбосс {{ value_points.second_title }}">
                                 </div>
                                 <div class="advantages-block-card-count">
                                     2
@@ -109,7 +109,7 @@
                             </div>
                             <div class="advantages-block-card-footer">
                                 <div class="advantages-block-card-image">
-                                    <img class="advantages-block-card-decor" src="{% static 'img/svg/caret-down.svg' %}" loading="lazy" alt="">
+                                    <img class="advantages-block-card-decor" src="{% static 'img/svg/caret-down.svg' %}" loading="lazy" alt="Тойбосс {{ value_points.third_title }}">
                                 </div>
                                 <div class="advantages-block-card-count">
                                     3
@@ -123,7 +123,7 @@
                             </div>
                             <div class="advantages-block-card-footer">
                                 <div class="advantages-block-card-image">
-                                    <img class="advantages-block-card-decor" src="{% static 'img/svg/caret-down.svg' %}" loading="lazy" alt="">
+                                    <img class="advantages-block-card-decor" src="{% static 'img/svg/caret-down.svg' %}" loading="lazy" alt="Тойбосс {{ value_points.fourth_title }}">
                                 </div>
                                 <div class="advantages-block-card-count">
                                     4
@@ -138,7 +138,7 @@
                             </div>
                             <div class="advantages-block-card-footer">
                                 <div class="advantages-block-card-image">
-                                    <img class="advantages-block-card-decor" src="{% static 'img/svg/caret-down.svg' %}" loading="lazy" alt="">
+                                    <img class="advantages-block-card-decor" src="{% static 'img/svg/caret-down.svg' %}" loading="lazy" alt="Тойбосс {{ value_points.fifth_title }}">
                                 </div>
                                 <div class="advantages-block-card-count">
                                     5
@@ -206,7 +206,7 @@
                 {% for i in certificates.cert_images.all %}
                 <div class="swiper-slide" data-src="{{ i.cert_image.url }}" data-sub-html="<h4>{{ i.title }}</h4><p>{{ i.description }}</p>">
                     <picture class="certificate-block-card-picture">
-                        <img class="certificate-block-card-img" src="{{ i.cert_image_184.url }}" loading="lazy" alt="{{ i.title }}">
+                        <img class="certificate-block-card-img" src="{{ i.cert_image_184.url }}" loading="lazy" alt="Тойбосс {{ i.title }}">
                     </picture>
                 </div>
                 {% endfor %}
@@ -217,11 +217,7 @@
         </div>
     </div>
 </section>
-
-
-
 <div class="hr"></div>
-
 <section class="certificate-block">
     <div class="container">
         <h3 class="section-title">{{ rewards.title }}</h3>
@@ -230,7 +226,7 @@
                 {% for i in rewards.rewards_images.all %}
                 <div class="swiper-slide">
                     <picture class="certificate-block-card-picture">
-                        <img class="certificate-block-card-img" src="{{ i.reward_image.url }}" loading="lazy" alt="{{ rewards.title }}">
+                        <img class="certificate-block-card-img" src="{{ i.reward_image.url }}" loading="lazy" alt="Тойбосс {{ rewards.title }}">
                     </picture>
                 </div>
                 {% endfor %}

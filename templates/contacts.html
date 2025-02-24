@@ -25,7 +25,7 @@
                         <span>{{ social_network.page_title }}:</span>
                         {% for i in social_network.social_items.all %}
                             <a href="{{ i.link }}">
-                                <img src="{{ i.icon.url }}" alt="">
+                                <img src="{{ i.icon.url }}" alt="Тойбосс {{ i.link }}">
                             </a>
                         {% endfor %}
                     </div>
@@ -65,7 +65,6 @@
         </div>
     </section>
 
-
     <section class="form-block">
         <div class="container">
             <h4 class="section-title">{{ contact_form.main_title }}</h4>
@@ -103,16 +102,16 @@
         <div class="container">
             <div class="grid">
                 <a href="" class="item">
-                    <img src="{% static 'img/svg/group-logo-1.svg' %}" alt="">
+                    <img src="{% static 'img/svg/group-logo-1.svg' %}" alt="Тойбосс сэндвич">
                 </a>
                 <a href="" class="item">
-                    <img src="{% static 'img/svg/group-logo-2.svg' %}" alt="">
+                    <img src="{% static 'img/svg/group-logo-2.svg' %}" alt="Тойбосс колбаса">
                 </a>
                 <a href="" class="item">
-                    <img src="{% static 'img/svg/group-logo-3.svg' %}" alt="">
+                    <img src="{% static 'img/svg/group-logo-3.svg' %}" alt="Тойбосс агрокуш">
                 </a>
                 <a href="" class="item">
-                    <img src="{% static 'img/svg/group-logo-4.svg' %}" alt="">
+                    <img src="{% static 'img/svg/group-logo-4.svg' %}" alt="Тойбосс Кыргыз Бройлер">
                 </a>
             </div>
         </div>
@@ -141,9 +140,9 @@
     <div id="modalSuccess" class="modal-form modal">
         <div class="modal-form-flex">
             <a href="#" rel="modal:close" class="modal-form-close">
-                <img src="{% static 'img/svg/close-modal.svg' %}" alt="">
+                <img src="{% static 'img/svg/close-modal.svg' %}" alt="Тойбосс форма обратной связи">
             </a>
-            <img src="{% static 'img/svg/check.svg' %}" class="modal-form-image" alt="">
+            <img src="{% static 'img/svg/check.svg' %}" class="modal-form-image" alt="Тойбосс форма обратной связи">
             <h4 class="modal-form-title">Спасибо, ваша заявка успешно отправлена</h4>
         </div>
     </div>

@@ -29,11 +29,11 @@
                 {% if i.sandwich_mark %}
                             <a href="https://sandwich.kg/ru/" target="_blank">
                                     {% if request.LANGUAGE_CODE == 'ru' %}
-                                        <img src="{% static 'img/png/sand.png' %}" width="100%" loading="lazy" alt="">
+                                        <img src="{% static 'img/png/sand.png' %}" width="100%" loading="lazy" alt="Тойбосс сэндвич">
                                     {% elif request.LANGUAGE_CODE == 'ky' %}
-                                        <img src="{% static 'img/png/sand3.png' %}" width="100%" loading="lazy" alt="">
+                                        <img src="{% static 'img/png/sand3.png' %}" width="100%" loading="lazy" alt="Тойбосс сэндвич">
                                     {% else %}
-                                        <img src="{% static 'img/png/sand2.png' %}" width="100%" loading="lazy" alt="">
+                                        <img src="{% static 'img/png/sand2.png' %}" width="100%" loading="lazy" alt="Тойбосс сэндвич">
                                     {% endif %}
                                 </a>
                     {% endif %}
@@ -47,22 +47,21 @@
                                     <div class="catalogs-grid-item">
                                         <a href="#ex{{ j.id }}" rel="modal:open" class="link-modal">Open Modal</a>
                                         {% if j.image_semismocked %}
-                                            <img class="catalogs-grid-item-image" src="{{ j.image_semismocked.url }}" loading="lazy" alt="" style="margin-left: 25px">
+                                            <img class="catalogs-grid-item-image" src="{{ j.image_semismocked.url }}" loading="lazy" alt="Тойбосс {{ j.product_title }}" style="margin-left: 25px">
                                         {% endif %}
                                     {% if j.image_boiled %}
-                                            <img class="catalogs-grid-item-image" src="{{ j.image_boiled.url }}" loading="lazy" alt="" style="margin-left: 25px">
+                                            <img class="catalogs-grid-item-image" src="{{ j.image_boiled.url }}" loading="lazy" alt="Тойбосс {{ j.product_title }}" style="margin-left: 25px">
                                         {% endif %}
                                     {% if j.image_chicken %}
-                                            <img class="catalogs-grid-item-image center" src="{{ j.image_chicken.url }}" loading="lazy" alt="">
+                                            <img class="catalogs-grid-item-image center" src="{{ j.image_chicken.url }}" loading="lazy" alt="Тойбосс {{ j.product_title }}">
                                         {% endif %}
                                     {% if j.image_sausages %}
-                                            <img class="catalogs-grid-item-image center" src="{{ j.image_sausages.url }}" loading="lazy" alt="">
+                                            <img class="catalogs-grid-item-image center" src="{{ j.image_sausages.url }}" loading="lazy" alt="Тойбосс {{ j.product_title }}">
                                         {% endif %}
                                         <h3 class="catalogs-grid-item-title">{{ j.product_title }}</h3>
                                         <p class="catalogs-grid-item-desc">{{ j.description }}</p>
                                         <div id="ex{{ j.id }}" class="modal">
                                             <div id="tabs-product">
-
                                                 <div class="product-block-content">
                                                     <div class="product-block-content-left">
                                                         <div class="product-block-sub-nav">
@@ -93,19 +92,19 @@
                                                         {% endif %}
                                                         <div class="product-block-content-certificates">
                                                             <div class="product-block-content-certificates-item">
-                                                                <img src="{% static 'img/svg/certificate-halal-1.svg' %}" loading="lazy" alt="">
+                                                                <img src="{% static 'img/svg/certificate-halal-1.svg' %}" loading="lazy" alt="Тойбосс сертификаты халал">
                                                             </div>
                                                             <div class="product-block-content-certificates-item">
-                                                                <img src="{% static 'img/svg/certificate-halal-2.svg' %}" loading="lazy" alt="">
+                                                                <img src="{% static 'img/svg/certificate-halal-2.svg' %}" loading="lazy" alt="Тойбосс сертификаты халал">
                                                             </div>
                                                             <div class="product-block-content-certificates-item">
-                                                                <img src="{% static 'img/svg/certificate-halal-3.svg' %}" loading="lazy" alt="">
+                                                                <img src="{% static 'img/svg/certificate-halal-3.svg' %}" loading="lazy" alt="Тойбосс сертификаты халал">
                                                             </div>
                                                         </div>
                                                     </div>
                                                     {% if j.image_detail %}
                                                         <div class="product-block-content-center">
-                                                            <img src="{{ j.image_detail.url }}" loading="lazy" alt="">
+                                                            <img src="{{ j.image_detail.url }}" loading="lazy" alt="Тойбосс {{ j.product_title }}">
                                                         </div>
                                                     {% endif %}
                                                 {% if j.fact %}

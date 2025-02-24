@@ -18,7 +18,7 @@
                 <source type="image/webp" media="(min-width: 1200px)" srcset="{{ cooperation_page.image_1500_webp.url }} 1x, {{ cooperation_page.image_1500_webp.url }} 2x">
                 <source type="image/jpeg" media="(min-width: 1200px)" srcset="{{ cooperation_page.image_1500_jpg.url }} 1x, {{ cooperation_page.image_1500_jpg.url }} 2x">
                 <img class="photo-card__img" src="{{ cooperation_page.image_1500_jpg.url }}" srcset="{{ cooperation_page.image_1500_jpg.url }} 2x" width="1500" height="460"
-                     loading="lazy" alt="{{ cooperation_page.page_title }}">
+                     loading="lazy" alt="Тойбосс {{ cooperation_page.page_title }}">
             </picture>
             <div class="cooperation-page-grid">
                 <div>
@@ -64,7 +64,7 @@
             <div class="grid">
                 {% for i in partners.partner_items.all %}
                     <div class="item">
-                        <img src="{{ i.image.url }}" loading="lazy" alt="">
+                        <img src="{{ i.image.url }}" loading="lazy" alt="Тойбосс {{ partners.title }}">
                     </div>
                 {% endfor %}
             </div>
@@ -111,9 +111,9 @@
     <div id="modalSuccess" class="modal-form modal">
         <div class="modal-form-flex">
             <a href="#" rel="modal:close" class="modal-form-close">
-                <img src="{% static 'img/svg/close-modal.svg' %}" loading="lazy" alt="">
+                <img src="{% static 'img/svg/close-modal.svg' %}" loading="lazy" alt="Тойбосс форма обратной связи">
             </a>
-            <img src="{% static 'img/svg/check.svg' %}" class="modal-form-image" loading="lazy" alt="">
+            <img src="{% static 'img/svg/check.svg' %}" class="modal-form-image" loading="lazy" alt="Тойбосс форма обратной связи">
             <h4 class="modal-form-title">Спасибо, ваша заявка успешно отправлена</h4>
         </div>
     </div>

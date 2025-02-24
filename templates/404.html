@@ -1,7 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-
   <div class="error-page">
     <div class="container">
       <img src="{{ not_found.image.url }}" alt="404">
@@ -10,5 +9,4 @@
       <a href="{% url 'main_page' %}" class="red-button button">{{ not_found.to_main }}</a>
     </div>
   </div>
-
 {% endblock %}
