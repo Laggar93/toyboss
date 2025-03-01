@@ -46,7 +46,10 @@
     width: 100%;
 }
 
-
+.main-block .container {
+  position: relative;
+  z-index: 3;
+}
 
 
 .main-block .main-block-text{
