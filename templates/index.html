@@ -18,7 +18,12 @@
             <div class="swiper-right"></div>
             <div class="swiper-wrapper ">
                 {% for i in main_page_slider.all %}
-                    <div class="swiper-slide" style="background-image:  url({{ i.image_webp.url }})">
+                    <div class="swiper-slide">
+                    <picture>
+                      <source srcset="{{ i.image_webp.url }}" type="image/webp">
+                      <source srcset="{{ i.image.url }}" type="image/jpeg">
+                      <img src="{{ i.image.url }}" alt="Alt Text!">
+                    </picture>
                         <div class="container rellax" data-rellax-speed="-6">
                             <div class="main-block-text ">
                                 <h2 class="main-block-title">
@@ -584,5 +589,27 @@
     window.addEventListener('scroll', lazyLoadBackgroundImages);
     window.addEventListener('resize', lazyLoadBackgroundImages);
 });
+</script>
+
+
+    <script>
+  function supportsWebP(callback) {
+    var img = new Image();
+    img.onload = img.onerror = function() {
+      callback(img.height == 2);
+    };
+    img.src = "data:image/webp;base64,UklGRiYAAABXRUJQVlA4WAoAAAAwAAD+AAEAAwAA/6CQkHkAA/68gM8A4pgAZJ01qLYQxAcFMImChA8YYoAyRhSk4VEmws9uCUcs50gFpAqYcR8g5tLhwFCUbV2XWZ9fu91u9TwnW9Mi6shB+aVfe/QVRrhMcjpDKpPtoKMU3tkSYA==";
+  }
+
+  supportsWebP(function(isSupported) {
+    var divs = document.querySelectorAll('.main-block .swiper-slide');
+    divs.forEach(function(div) {
+      if (isSupported) {
+        div.style.backgroundImage = url({{ i.image_webp.url }});
+      } else {
+        div.style.backgroundImage = url('хуйг');
+      }
+    });
+  });
 </script>
 {% endblock %}
