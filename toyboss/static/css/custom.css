@@ -23,35 +23,7 @@
 .main-block .swiper-button-next, .main-block .swiper-button-prev {
   position: absolute;
 }
-.main-block .swiper-slide {
-    position: relative;
-}
-.main-block .swiper-slide:before{
-    z-index: 2;
-}
-.main-block picture{
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    left: 0;
-        object-fit: cover;
-    display: block;
-    z-index: 1;
-}
 
-.main-block picture img{
-    height: 100%;
-    object-fit: cover;
-    width: 100%;
-}
-
-
-
-
-.main-block .main-block-text{
-    z-index: 3;
-}
 .products-info .products-info-grid-left h4 {
     word-spacing: 0px;
 }
