@@ -29,9 +29,7 @@
                         <h2 class="news-block-card-title">
                             {{ i.news_title }}
                         </h2>
-                        <p class="news-block-card-desc">
                             {% autoescape off %}{{ i.text|truncatewords:10|add_class_to_p }}{% endautoescape %}
-                        </p>
                     </div>
                 {% endfor %}
             </div>
